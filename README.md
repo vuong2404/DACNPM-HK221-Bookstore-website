@@ -37,12 +37,12 @@ Tất cả link mockup vẽ bằng figma copy link vào [mockup.md](./Documents/
 5.  Sơ đồ usecase cho hệ thống, sơ đồ usecase + useecase scenartio của từng tính năng chỉnh sửa lại cho khớp với design.
 
 ## Các trang sẽ hiện thực
-# Trang xác thực: (Lương)
+### Trang xác thực: (Lương)
     - Trang đăng nhập: (Lương)
         + Xác thực OTP nếu là tài khoản admin
     - Trang đăng kí (Lương)
         + Xác thực OTP (Có thể sử dụng firebase)
-# Khách hàng: (Trình + Vương + Tiến)
+### Khách hàng: (Trình + Vương + Tiến)
     - Trang chủ: (Trình)
         + Tìm sách
         + Lọc sách
@@ -67,7 +67,7 @@ Tất cả link mockup vẽ bằng figma copy link vào [mockup.md](./Documents/
             + Đơn hàng trạng thái chờ xác nhận: option là hủy đơn hàng
             + Đơn hàng trạng thái đã hủy: option là đặt lại
             + Đơn hàng nhận thành công: Option là đánh giá, mua lại
-# Admin: (Vương + Thịnh + Lương)
+### Admin: (Vương + Thịnh + Lương)
     - Trang chủ: (Vương)
     - Trang quản lý đơn hàng: (Vương)
         + Tìm kiếm
