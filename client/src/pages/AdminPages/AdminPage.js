@@ -1,6 +1,6 @@
-import Admin from '~/pages/AdminPages/Admin';
+import DefaultLayout from './DefaultLayout/index.js';
 function AdminPage() {
-    return <Admin />;
+    return <DefaultLayout>Container</DefaultLayout>;
 }
 
 export default AdminPage;
