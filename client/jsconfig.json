@@ -1,4 +1,3 @@
-// set autoComplete when type ~/
 {
     "compilerOptions": {
         "baseUrl": ".",
