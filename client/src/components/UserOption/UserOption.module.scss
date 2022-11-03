@@ -1,0 +1,14 @@
+.wrapper {
+    background-color: #fff;
+    box-shadow: 1px 1px 6px #ccc;
+    .item {
+        padding: 8px;
+        margin: 0;
+        display: block;
+        text-align: left;
+    }
+}
+
+.item:hover {
+    background-color: #ddd;
+}
