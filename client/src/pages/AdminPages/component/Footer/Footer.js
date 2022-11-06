@@ -4,7 +4,7 @@ import styles from './Footer.module.scss';
 const cx = classNames.bind(styles);
 
 function Footer() {
-    return <h1 className={cx('footer')}> @iceTea Bookstore </h1>;
+    return <p className={cx('footer')}> @iceTea Bookstore </p>;
 }
 
 export default Footer;

@@ -10,6 +10,10 @@
         display: flex;
     }
 
+    .slider-item {
+        animation: fadeIn 0.5s linear;
+    }
+
     .ctrl-slider {
         position: absolute;
         bottom: 0;
@@ -44,4 +48,35 @@
     font-size: 4rem;
     position: absolute;
     right: 0;
+}
+
+@keyframes slideToLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideToRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

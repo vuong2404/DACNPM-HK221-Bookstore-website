@@ -1,5 +1,7 @@
 .container {
     min-height: calc(100vh - var(--admin-header-height) - var(--admin-footer-height));
     max-width: 1200px;
-    margin: auto;
+    margin: var(--admin-header-height) auto 0;
+    flex: 1;
+    padding: 24px var(--admin-footer-height);
 }
