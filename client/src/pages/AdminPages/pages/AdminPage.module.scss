@@ -1,3 +1,13 @@
+// for all pages
+
+.heading {
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 8px 0;
+}
+
+//Home page css
 .report {
     font-family: Georgia, 'Times New Roman', Times, serif;
     line-height: 4rem;
@@ -13,3 +23,5 @@
         color: red;
     }
 }
+
+// Manage order page css

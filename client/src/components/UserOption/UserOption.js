@@ -4,18 +4,9 @@ import styles from './UserOption.module.scss';
 
 const cx = classNames.bind(styles);
 
-const opt = [
-    {
-        name: 'Tài khoản của tôi',
-        to: '/myaccout',
-    },
-    {
-        name: 'Đăng xuất',
-        to: '/login',
-    },
-];
 
-function UserOpt({ option = opt }) {
+
+function UserOpt({ option = [] }) {
     return (
         <div className={cx('wrapper')}>
             {option.map((opt, index) => (

@@ -26,6 +26,7 @@ function SlideShow({ slides = [] }) {
         <div className={cx('wrapper')}>
             <span
                 className={cx('leftIcon')}
+                style={{ opacity: currentIndex === 1 ? 0.2 : 1 }}
                 onClick={() => {
                     setCurrentIndex((prev) => (prev > 1 ? prev - 1 : 1));
                 }}
@@ -52,7 +53,8 @@ function SlideShow({ slides = [] }) {
             </div>
 
             <span
-                className={cx('rightIcon', currentIndex === slides.length ? 'hidden' : 'show')}
+                className={cx('rightIcon')}
+                style={{ opacity: currentIndex === slides.length ? 0.2 : 1 }}
                 onClick={() => {
                     setCurrentIndex((prev) => (prev >= slides.length ? slides.length : prev + 1));
                 }}
