@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
-import styles from './AdminPage.module.scss';
 
+import styles from './scss/AdminPage.module.scss';
 import DefaultLayout from '../DefaultLayout/index.js';
 import SlideShow from '~/components/SlideShow/SlideShow.js';
 import Slide from '~/components/Slide/Slide.js';

@@ -1,5 +1,6 @@
 import AdminHomePage from '~/pages/AdminPages/pages/Home';
 import ManageOrder from '~/pages/AdminPages/pages/ManageOrder';
+import OrderDetail from '~/pages/AdminPages/pages/OrderDetails';
 import HomePage from '~/pages/CustomerPages/HomePage';
 
 const routes = [
@@ -8,6 +9,10 @@ const routes = [
     {
         path: '/manage-order',
         component: ManageOrder,
+    },
+    {
+        path: '/manage-order/details',
+        component: OrderDetail,
     },
 ];
 

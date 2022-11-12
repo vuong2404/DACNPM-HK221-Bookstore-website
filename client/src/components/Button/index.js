@@ -36,8 +36,6 @@ function Button({
         });
     }
 
-    //icon
-
     if (to) {
         props.to = to;
         Comp = Link;
