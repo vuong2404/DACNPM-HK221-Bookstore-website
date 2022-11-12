@@ -3,7 +3,7 @@
     top: 0;
     width: 100%;
     z-index: 100;
-    background-color: #d9d9d9;
+    background-color: var(--admin-primary);
     height: var(--admin-header-height);
     text-align: center;
 }
@@ -42,16 +42,23 @@
     li {
         padding: 0px 16px;
         height: 56px;
-        &:hover > a {
-            color: #ffa500;
+        &:hover {
+            background-color: #032b91;
         }
         a {
-            color: var(--text-color);
+            color: var(--white);
             font-weight: 600;
             line-height: 56px;
+            height: 56px;
             font-size: 1.6rem;
         }
     }
+    li.active {
+        background-color: #032b91;
+    }
+    // .active > a {
+    //     color: var(--admin-primary);
+    // }
 }
 
 .user {
@@ -59,8 +66,10 @@
     align-items: center;
     outline: none;
     cursor: pointer;
-    padding: 4px 4px;
+    padding: 4px 16px;
+    height: var(--admin-header-height);
     background-color: transparent;
+    color: var(--white);
     .icon {
         margin-left: 8px;
     }
@@ -68,5 +77,8 @@
         margin: 0;
         font-size: 1.6rem;
         font-weight: 500;
+    }
+    &:hover {
+        background-color: #032b91;
     }
 }

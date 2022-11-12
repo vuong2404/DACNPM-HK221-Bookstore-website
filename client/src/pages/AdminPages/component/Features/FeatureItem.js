@@ -1,7 +1,7 @@
 import { faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
-import Button from '~/components/Button';
+import MyButton from '~/components/Button';
 import styles from './Features.module.scss';
 
 const cx = classNames.bind(styles);
@@ -11,7 +11,7 @@ function FeatureItem({ feature }) {
         <li className={cx('feature-item')}>
             <h3>{feature.name}</h3>
             <p>{feature.description}</p>
-            <Button
+            <MyButton
                 primary
                 rounded
                 className={cx('button')}
@@ -19,7 +19,7 @@ function FeatureItem({ feature }) {
                 rightIcon={<FontAwesomeIcon icon={faArrowAltCircleRight} />}
             >
                 Truy cập
-            </Button>
+            </MyButton>
         </li>
     );
 }

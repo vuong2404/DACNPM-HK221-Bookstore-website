@@ -13,9 +13,6 @@
     padding: 9px 16px;
     cursor: pointer;
     user-select: none;
-    &:hover {
-        background-color: #f8f8f8;
-    }
 
     + .wrapper {
         margin-left: 12px;
@@ -51,6 +48,7 @@
     color: #fff;
     font-weight: 400;
     &:hover {
+        color: #fff;
         border-color: transparent;
         background: linear-gradient(0deg, rgb(0, 105, 217), rgb(35, 113, 181));
     }
