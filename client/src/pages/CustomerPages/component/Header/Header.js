@@ -14,7 +14,7 @@ import UserOpt from '~/components/UserOption/UserOption';
 
 const cx = classNames.bind(styles);
 
-const adminOption = [
+const customerOption = [
     {
         name: 'Tài khoản của tôi',
         to: '/myaccout',
@@ -28,9 +28,8 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner-header')}>
-                <Link to="/admin" className={cx('logo-wrapper')}>
+                <Link to="/" className={cx('logo-wrapper')}>
                     <img className={cx('logo')} src={images.logo} alt="...." />
-                    {/* <span>IceBook</span> */}
                     <h1>iceTeaBook</h1>
                 </Link>
                 <div className={cx('searching')}>
@@ -45,7 +44,7 @@ function Header() {
                 </Link>
 
                 <Tippy
-                    render={(attrs) => <UserOpt option={adminOption} />}
+                    render={(attrs) => <UserOpt option={customerOption} />}
                     interactive
                     placement="bottom-end"
                     zIndex={999}

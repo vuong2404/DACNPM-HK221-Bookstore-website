@@ -1,8 +1,53 @@
 import classNames from "classnames";
 import Slide from "~/components/Slide/Slide";
 import SlideShow from "~/components/SlideShow/SlideShow";
+import Content from "../component/Content/Content";
 import DefaultLayout from "../DefaultLayout";
-import styles from "./CustomerPage.module.scss"
+import styles from "./CustomerPage.module.scss";
+
+const bookInfo= [
+    {
+      name: "Thiên tài bên trái, kẻ điên bên phải",
+      price: "138000",
+      sell: "389"
+    },
+    {
+      name: "Thiên tài bên trái, kẻ điên bên phải",
+      price: "138000",
+      sell: "389"
+    },
+    {
+      name: "Thiên tài bên trái, kẻ điên bên phải",
+      price: "138000",
+      sell: "389"
+    },
+    {
+      name: "Thiên tài bên trái, kẻ điên bên phải",
+      price: "138000",
+      sell: "389"
+    },
+    {
+      name: "Thiên tài bên trái, kẻ điên bên phải",
+      price: "138000",
+      sell: "389"
+    },
+    {
+      name: "Thiên tài bên trái, kẻ điên bên phải",
+      price: "138000",
+      sell: "389"
+    },
+    {
+      name: "Thiên tài bên trái, kẻ điên bên phải",
+      price: "138000",
+      sell: "389"
+    },
+    {
+      name: "Thiên tài bên trái, kẻ điên bên phải",
+      price: "138000",
+      sell: "389"
+    },
+  ]
+
 const cx= classNames.bind(styles)
 function Home() {
     return (
@@ -51,6 +96,7 @@ function Home() {
                     </Slide>,
             ]}
                     />
+                    <Content book={bookInfo}/>
         </DefaultLayout>
     );
 }

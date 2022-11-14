@@ -5,3 +5,10 @@
     flex: 1;
     padding: 24px var(--admin-footer-height);
 }
+
+a{
+    text-decoration: none;
+    &:hover{
+        color: black;
+    }
+}
