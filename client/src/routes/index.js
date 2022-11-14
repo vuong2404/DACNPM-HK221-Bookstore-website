@@ -3,7 +3,6 @@ import ManageOrder from '~/pages/AdminPages/pages/ManageOrder';
 import OrderDetail from '~/pages/AdminPages/pages/OrderDetails';
 import HomePage from '~/pages/CustomerPages/pages/HomePage';
 
-
 const routes = [
     { path: '/', component: HomePage },
     { path: '/admin', component: AdminHomePage },

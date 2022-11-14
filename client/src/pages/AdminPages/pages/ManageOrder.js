@@ -7,7 +7,7 @@ import DropdownItem from 'react-bootstrap/esm/DropdownItem';
 
 import DefaultLayout from '../DefaultLayout';
 import classNames from 'classnames/bind';
-import styles from './scss/AdminPage.module.scss';
+import styles from './AdminPage.module.scss';
 import MyButton from '~/components/Button';
 import reducer from '../reducer/orderReducer';
 import { setPage, gotoFirstPage, gotoLastPage, setNumberLine } from '../reducer/action';
@@ -196,7 +196,7 @@ function ManageOrder() {
                 <Status type="cancel" />
             </div>
 
-            <div className={'orders-wrapper'}>
+            <div className={cx('orders-wrapper')}>
                 {orderLists.map((item, index) => {
                     return <OrderItem key={index} order={item} />;
                 })}

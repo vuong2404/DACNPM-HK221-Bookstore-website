@@ -84,13 +84,19 @@
     border-radius: 8px;
 }
 
+.orders-wrapper {
+    margin-bottom: 24px;
+}
+
 //Order details css
-.wrapper {
+.order-details-wrapper {
     border: 1px solid #ccc;
     border-radius: 16px;
+    margin: 16px 0;
     .header {
         display: flex;
         align-items: center;
+        padding: 8px 16px 8px 0;
         border-bottom: 1px solid #ccc;
         .status {
             max-height: 30px;
@@ -102,10 +108,60 @@
     }
     .order-id {
         margin: 0 8px;
-        // &::after {
-        //     content: '';
-        //     height: 80%;
-        //     color: red;
-        // }
+        &::after {
+            content: '';
+            border-right: 1px solid #ccc;
+            padding-left: 8px;
+        }
+    }
+
+    .order-info {
+        display: flex;
+        flex-direction: column;
+        padding: 16px;
+        border-bottom: 1px solid #ccc;
+
+        .user-name {
+            margin-bottom: 8px;
+        }
+    }
+
+    .address-info {
+        padding: 16px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .products-info {
+        padding: 16px;
+    }
+
+    .payment-info {
+        padding: 0 16px 16px 16px;
+    }
+
+    .payment-info-item {
+        display: flex;
+        margin: auto;
+        align-items: center;
+        justify-content: flex-end;
+        span:first-child {
+            width: 80%;
+            text-align: right;
+            padding: 4px;
+        }
+        span:last-child {
+            width: 30%;
+            padding: 4px;
+        }
+    }
+}
+
+.order-details--actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+    button + button {
+        margin-left: 8px;
     }
 }
