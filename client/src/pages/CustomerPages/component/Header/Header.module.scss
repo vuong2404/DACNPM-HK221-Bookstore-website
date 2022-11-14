@@ -15,20 +15,20 @@
     align-items: center;
     justify-content: space-around;
     margin: 0 auto;
+    text-decoration: none;
+    h1{
+        font-size: 30px;
+    }
     .logo-wrapper {
         display: flex;
         align-items: center;
         cursor: pointer;
         color: white;
-        span {
-            color: #333;
-            font-size: 3rem;
-            font-weight: 600;
-            margin-left: 8px;
-        }
+        
     }
 
     .logo {
+        margin-right: 10px;
         width: 62px;
         height: 44px;
         background-color: transparent;
@@ -36,6 +36,7 @@
 
     .iconCart{
         color: white;
+        height: 25px;
     }
 }
 
@@ -57,28 +58,6 @@
         width: 90%;
     }
 }
-// .menu {
-//     flex: 1;
-//     display: flex;
-//     align-items: center;
-//     list-style: none;
-//     margin: 0 32px;
-//     li {
-//         padding: 0px 16px;
-//         height: 56px;
-//         &:hover > a {
-//             color: #ffa500;
-//         }
-//         a {
-//             color: white;
-//             font-weight: 600;
-//             line-height: 56px;
-//             font-size: 1.6rem;
-//         }
-//     }
-// }
-
-
 
 .user {
     display: flex;
