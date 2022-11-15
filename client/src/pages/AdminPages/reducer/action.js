@@ -1,5 +1,6 @@
 import { SET_FIRST_PAGE, SET_LAST_PAGE, SET_NUM_DISPLAY, SET_PAGE } from '../Constants/Constants';
 
+// Manage order actions
 export const setPage = (payload) => ({ payload, type: SET_PAGE });
 
 export const gotoFirstPage = () => ({

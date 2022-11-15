@@ -13,10 +13,10 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     margin: 0 auto;
     text-decoration: none;
-    h1{
+    h1 {
         font-size: 30px;
     }
     .logo-wrapper {
@@ -24,7 +24,6 @@
         align-items: center;
         cursor: pointer;
         color: white;
-        
     }
 
     .logo {
@@ -34,24 +33,24 @@
         background-color: transparent;
     }
 
-    .iconCart{
+    .iconCart {
         color: white;
         height: 25px;
     }
 }
 
-.searching{
+.searching {
     background-color: white;
     border-radius: 20px;
     height: 60%;
     width: 40%;
     display: flex;
     align-items: center;
-    .iconSearch{
+    .iconSearch {
         margin-left: 10px;
         height: 60%;
     }
-    .search-bar{
+    .search-bar {
         height: 100%;
         padding-left: 10px;
         font-size: 150%;
@@ -67,7 +66,7 @@
     padding: 4px 4px;
     background-color: transparent;
     color: white;
-    .iconUser{
+    .iconUser {
         margin-right: 8px;
     }
     .iconDown {

@@ -1,14 +1,13 @@
 .container {
-    min-height: calc(100vh - var(--admin-header-height) - var(--admin-footer-height));
+    min-height: calc(100vh - var(--custommer-header-height) - var(--custommer-footer-height));
     max-width: 1200px;
-    margin: var(--admin-header-height) auto 0;
+    margin: calc(var(--custommer-header-height) + 24px) auto;
     flex: 1;
-    padding: 24px var(--admin-footer-height);
 }
 
-a{
+a {
     text-decoration: none;
-    &:hover{
+    &:hover {
         color: black;
     }
 }

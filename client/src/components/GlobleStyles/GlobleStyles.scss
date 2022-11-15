@@ -7,13 +7,16 @@
     --text-color: #333;
 
     //for customer UI
-    --customer-primary: #a52a2a;
+    --custommer-primary: #a52a2a;
 
     // For admin Ui
     --admin-primary: #007bff;
 
     --admin-header-height: 56px;
     --admin-footer-height: 60px;
+
+    --custommer-header-height: 56px;
+    --custommer-footer-height: 60px;
 }
 * {
     box-sizing: inherit;
