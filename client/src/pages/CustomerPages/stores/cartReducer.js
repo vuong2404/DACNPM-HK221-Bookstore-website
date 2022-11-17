@@ -1,46 +1,9 @@
 import { REMOVE_CART_ITEM, SELECT_ALL_CART_ITEM, SELECT_CART_ITEM, UPDATE_CART } from './constants';
-
-export const products = [
-    {
-        product: {
-            id: 'BOOK1',
-            title: "Sophie's World (Sofies verden)",
-            price: 160000,
-        },
-        count: 1,
-        isSelected: false,
-    },
-    {
-        product: {
-            id: 'BOOK2',
-            title: 'The Name of the Rose (Il Nome della Rosa)',
-            price: 150000,
-        },
-        count: 1,
-        isSelected: false,
-    },
-    {
-        product: {
-            id: 'BOOK4',
-            title: "Sophie's World (Sofies verden)",
-            price: 170000,
-        },
-        count: 2,
-        isSelected: false,
-    },
-    {
-        product: {
-            id: 'BOOK3',
-            title: 'How the Steel Was Tempered (Как закалялась сталь))',
-            price: 160000,
-        },
-        count: 3,
-        isSelected: false,
-    },
-];
+import { addresses, products } from './fakeData';
 
 const initState = {
     listBooks: products,
+    addresses: addresses,
 };
 
 const reducer = (state, action) => {

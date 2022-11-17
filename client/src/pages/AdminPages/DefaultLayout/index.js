@@ -2,7 +2,6 @@ import classNames from 'classnames/bind';
 
 import Header from '../component/Header/Header';
 import Footer from '../component/Footer/Footer';
-
 import styles from './DefaultLayout.module.scss';
 
 const cx = classNames.bind(styles);
