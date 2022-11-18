@@ -8,6 +8,7 @@ import CartItem from '~/pages/CustomerPages/component/CartItem/CartItem';
 import Price from '~/components/PriceDisplay/Price';
 import { selectAllProducts } from '../../stores/actions';
 import EmptyCart from '../../component/EmptyCart/EmptyCart';
+import MyButton from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
@@ -24,45 +25,49 @@ function Cart() {
 
     return (
         <DefaultLayout>
-            <h1 className={cx('heading')}>Giỏ hàng của bạn</h1>
-
-            <div className={cx('cart-wrapper')}>
-                {products.length > 0 ? (
-                    products.map((item, index) => {
-                        return <CartItem key={index} cartItem={item} />;
-                    })
-                ) : (
-                    <EmptyCart />
-                )}
+            <div className={cx('heading')}>
+                <h1>Giỏ hàng của bạn</h1>
             </div>
 
-            <div className={cx('cart-action')}>
-                <div className={cx('select-all')}>
-                    <input
-                        type="checkBox"
-                        key={Math.random()}
-                        defaultChecked={isSelectedAll}
-                        onChange={(e) => handleSeclectAll(e.target.checked)}
-                    />
-                    <span>
-                        Chọn tất cả (<span>{products.length}</span>)
-                    </span>
-                </div>
-                <div className={cx('calc-cost')}>
-                    <b>
-                        Tổng thanh toán(<span>{ProductsCounter}</span> sản phẩm):{' '}
-                    </b>
-                    <Price primary large>
-                        {products.reduce(
-                            (res, item) => (item.isSelected ? res + item.product.price * item.count : res),
-                            0,
-                        )}
-                    </Price>
+            <div className={cx('wrapper')}>
+                <div className={cx('cart-wrapper')}>
+                    {products.length > 0 ? (
+                        products.map((item, index) => {
+                            return <CartItem key={index} cartItem={item} />;
+                        })
+                    ) : (
+                        <EmptyCart />
+                    )}
                 </div>
 
-                <button className={cx('buy-btn')} size="lg">
-                    Mua hàng
-                </button>
+                <div className={cx('cart-action')}>
+                    <div className={cx('select-all')}>
+                        <input
+                            type="checkBox"
+                            key={Math.random()}
+                            defaultChecked={isSelectedAll}
+                            onChange={(e) => handleSeclectAll(e.target.checked)}
+                        />
+                        <span>
+                            Chọn tất cả (<span>{products.length}</span>)
+                        </span>
+                    </div>
+                    <div className={cx('calc-cost')}>
+                        <b>
+                            Tổng thanh toán(<span>{ProductsCounter}</span> sản phẩm):{' '}
+                        </b>
+                        <Price primary large>
+                            {products.reduce(
+                                (res, item) => (item.isSelected ? res + item.product.price * item.count : res),
+                                0,
+                            )}
+                        </Price>
+                    </div>
+
+                    <MyButton to="/payment" primary user large>
+                        Thanh toán
+                    </MyButton>
+                </div>
             </div>
         </DefaultLayout>
     );

@@ -45,4 +45,7 @@ input,
 a {
     color: var(--text-color);
     text-decoration: none;
+    &:hover {
+        text-decoration: none;
+    }
 }
