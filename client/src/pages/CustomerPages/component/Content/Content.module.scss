@@ -4,10 +4,6 @@
     box-sizing: border-box;
 }
 
-Col{
-    width: fit-content;
-}
-
 .book{
     display: flex;
     flex-direction: column;
@@ -17,7 +13,7 @@ Col{
     img{
         width: 80%;
     }
-    margin: 0 0 20px 0;
+    margin:  20px auto;
 }
 
 .sellInfo{

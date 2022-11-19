@@ -1,9 +1,12 @@
-import classNames from 'classnames';
-import Slide from '~/components/Slide/Slide';
-import SlideShow from '~/components/SlideShow/SlideShow';
-import Content from '../component/Content/Content';
-import DefaultLayout from '../DefaultLayout';
-import styles from './CustomerPage.module.scss';
+import classNames from "classnames";
+import Slide from "~/components/Slide/Slide";
+import SlideShow from "~/components/SlideShow/SlideShow";
+import Navi from "../component/Navi/Navi";
+import Content from "../component/Content/Content";
+
+import DefaultLayout from "../DefaultLayout";
+import styles from "./CustomerPage.module.scss";
+
 
 const bookInfo = [
     {
@@ -48,9 +51,13 @@ const bookInfo = [
     },
 ];
 
-const cx = classNames.bind(styles);
+const bookType=['Hài hước', 'Kinh dị', 'Đời thường', 'Bí ẩn','Học đường','Khoa học','Trẻ em','Manga']
+
+const cx= classNames.bind(styles)
 function Home() {
     return (
+      <>
+      <Navi cates={bookType}/>
         <DefaultLayout>
             <div style={{ maxWidth: 1200, margin: 'auto' }}>
                 <SlideShow
@@ -101,6 +108,7 @@ function Home() {
                 <Content book={bookInfo} />
             </div>
         </DefaultLayout>
+        </>
     );
 }
 
