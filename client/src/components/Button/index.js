@@ -15,6 +15,7 @@ function Button({
     primary = false,
     text = false,
     disabled = false,
+    user = false,
     leftIcon,
     rightIcon,
     children,
@@ -36,8 +37,6 @@ function Button({
         });
     }
 
-    //icon
-
     if (to) {
         props.to = to;
         Comp = Link;
@@ -54,6 +53,7 @@ function Button({
         disabled,
         rounded,
         text,
+        user,
     });
     return (
         <Comp className={classes} {...props}>

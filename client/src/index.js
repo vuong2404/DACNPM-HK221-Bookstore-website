@@ -2,15 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from '~/App';
 import GlobleStyles from '~/components/GlobleStyles';
+import { StoreProvider } from './pages/CustomerPages/stores';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <React.StrictMode>
+    //<React.StrictMode
+    <StoreProvider>
         <GlobleStyles>
             <App />
         </GlobleStyles>
-    </React.StrictMode>,
+    </StoreProvider>,
+    // </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function

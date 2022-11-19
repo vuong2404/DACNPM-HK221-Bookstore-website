@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { faAngleDown,faMagnifyingGlass,faCartShopping} from '@fortawesome/free-solid-svg-icons';
-import {faUser} from '@fortawesome/free-regular-svg-icons'
+import { faAngleDown, faMagnifyingGlass, faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
@@ -33,13 +33,11 @@ function Header() {
                     <h1>iceTeaBook</h1>
                 </Link>
                 <div className={cx('searching')}>
-
                     <FontAwesomeIcon icon={faMagnifyingGlass} className={cx('iconSearch')} />
-                    <input className={cx('search-bar')}>
-                    </input>
+                    <input className={cx('search-bar')}></input>
                 </div>
-                
-                <Link>
+
+                <Link to="/cart">
                     <FontAwesomeIcon icon={faCartShopping} className={cx('iconCart')} />
                 </Link>
 

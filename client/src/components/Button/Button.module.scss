@@ -13,9 +13,6 @@
     padding: 9px 16px;
     cursor: pointer;
     user-select: none;
-    &:hover {
-        background-color: #f8f8f8;
-    }
 
     + .wrapper {
         margin-left: 12px;
@@ -41,7 +38,7 @@
 
 .text {
     &:hover {
-        text-decoration: underline;
+        opacity: 0.8;
     }
 }
 
@@ -51,13 +48,23 @@
     color: #fff;
     font-weight: 400;
     &:hover {
+        color: #fff;
         border-color: transparent;
-        background: linear-gradient(0deg, rgb(0, 105, 217), rgb(35, 113, 181));
+        background-color: linear-gradient(0deg, rgb(0, 105, 217), rgb(35, 113, 181));
+    }
+}
+
+.user {
+    background-color: var(--custommer-primary);
+    border-color: var(--custommer-primary);
+    &:hover {
+        color: #fff;
+        border-color: transparent;
+        background-color: rgb(225, 111, 111);
     }
 }
 
 .outline {
-    color: var(--primary-color);
     border-color: currentColor;
     &:hover {
         border-color: currentColor;
@@ -72,5 +79,6 @@
 
 .large {
     padding: 14px 16px;
-    min-width: 140px;
+    min-width: 210px;
+    min-height: 40px;
 }
