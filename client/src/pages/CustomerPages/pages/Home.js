@@ -1,7 +1,9 @@
 import classNames from "classnames";
 import Slide from "~/components/Slide/Slide";
 import SlideShow from "~/components/SlideShow/SlideShow";
+import Navi from "../component/Navi/Navi";
 import Content from "../component/Content/Content";
+
 import DefaultLayout from "../DefaultLayout";
 import styles from "./CustomerPage.module.scss";
 
@@ -48,9 +50,13 @@ const bookInfo= [
     },
   ]
 
+const bookType=['Hài hước', 'Kinh dị', 'Đời thường', 'Bí ẩn','Học đường','Khoa học','Trẻ em','Manga']
+
 const cx= classNames.bind(styles)
 function Home() {
     return (
+      <>
+      <Navi cates={bookType}/>
         <DefaultLayout>
             <SlideShow slides={[
                     <Slide image={require('~/assets/images/bg1.jpg')} className={cx('report')}>
@@ -98,6 +104,7 @@ function Home() {
                     />
                     <Content book={bookInfo}/>
         </DefaultLayout>
+        </>
     );
 }
 
