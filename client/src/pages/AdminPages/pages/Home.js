@@ -16,7 +16,7 @@ const adminFeatures = [
     {
         name: 'Quản lý sách',
         description: 'Thêm, sửa, xóa, cập nhật thông tin sách trên trang web',
-        goto: '/manage-books',
+        goto: '/manage-book',
     },
     {
         name: 'Quản lý đơn hàng',
