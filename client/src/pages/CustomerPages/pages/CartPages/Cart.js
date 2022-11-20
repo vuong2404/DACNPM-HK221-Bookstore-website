@@ -1,12 +1,12 @@
 import classNames from 'classnames/bind';
 import { useContext } from 'react';
 
-import { Context } from '../../stores';
+import { Context } from '../../../../stores';
 import styles from './Cart.module.scss';
 import DefaultLayout from '../../DefaultLayout';
 import CartItem from '~/pages/CustomerPages/component/CartItem/CartItem';
 import Price from '~/components/PriceDisplay/Price';
-import { selectAllProducts } from '../../stores/actions';
+import { selectAllProducts } from '../../../../stores/actions';
 import EmptyCart from '../../component/EmptyCart/EmptyCart';
 import MyButton from '~/components/Button';
 

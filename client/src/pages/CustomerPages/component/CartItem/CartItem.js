@@ -7,8 +7,8 @@ import { Modal } from 'react-bootstrap';
 
 import images from '~/assets/images';
 import Price from '~/components/PriceDisplay/Price';
-import { selectItem, removeCartItem, updateCart } from '../../stores/actions';
-import { Context } from '../../stores';
+import { selectItem, removeCartItem, updateCart } from '../../../../stores/actions';
+import { Context } from '../../../../stores';
 import styles from './CartItem.module.scss';
 
 const cx = classNames.bind(styles);

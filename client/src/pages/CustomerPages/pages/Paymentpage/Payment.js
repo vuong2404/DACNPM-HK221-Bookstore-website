@@ -6,7 +6,7 @@ import { Table } from 'react-bootstrap';
 import MyButton from '~/components/Button';
 import Price from '~/components/PriceDisplay/Price';
 import { useContext } from 'react';
-import { Context } from '../../stores';
+import { Context } from '../../../../stores';
 import { AddressModal, PaymentModal } from '../../component/Modal';
 
 const cx = classNames.bind(styles);
