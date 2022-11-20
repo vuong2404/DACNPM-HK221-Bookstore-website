@@ -57,8 +57,8 @@ const cx= classNames.bind(styles)
 function Home() {
     return (
       <>
-      <Navi cates={bookType}/>
         <DefaultLayout>
+            <Navi cates={bookType}/>
             <div style={{ maxWidth: 1200, margin: 'auto' }}>
                 <SlideShow
                     slides={[
