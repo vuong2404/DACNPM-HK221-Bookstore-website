@@ -16,8 +16,8 @@ function Navi({cates = []}){
         <div className={cx('Navi')}>
             <div className={cx('wrap-category')}>
                 <div className={cx('category')}>
-                    <p>Category</p>
                     <FontAwesomeIcon icon={faBars} />
+                    <p>Category</p>
                 </div>
                 <div className={cx('listType')}>
                     {cates.map((cate,index)=>(
