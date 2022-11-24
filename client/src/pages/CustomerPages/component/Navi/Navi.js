@@ -1,6 +1,6 @@
-import {faBars,faFilter} from '@fortawesome/free-solid-svg-icons'
-import classNames from 'classnames/bind'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faBars,faFilter} from '@fortawesome/free-solid-svg-icons';
+import classNames from 'classnames/bind';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 
 
