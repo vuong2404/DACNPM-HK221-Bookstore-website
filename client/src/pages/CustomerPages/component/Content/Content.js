@@ -13,7 +13,7 @@ function Book({value}){
   return (
       <Col>
           <Link to="/bookDetail" className={cx('book')}>
-              <img src={images.content1}/>
+              <img src={images.content1} alt="" />
               <h3>{value.name}</h3>
               <div className={cx('sellInfo')}>
                 <h3 className={cx('price')}>{value.price}vnd</h3>

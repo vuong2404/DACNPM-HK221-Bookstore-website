@@ -5,6 +5,7 @@
 }
 
 .book{
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,14 +20,16 @@
 .sellInfo{
     width: 100%;
     display: flex;
-    align-content: space-between;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     
     .price{
         color: red;
-        margin-right: 20%;
     }
 
     .sell{
+        font-size: smaller;
         font-weight: normal;
         opacity: 0.5;
     }
