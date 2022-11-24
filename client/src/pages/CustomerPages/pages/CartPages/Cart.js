@@ -1,12 +1,12 @@
 import classNames from 'classnames/bind';
 import { useContext } from 'react';
 
-import { Context } from '../../stores';
+import { Context } from '../../../../stores';
 import styles from './Cart.module.scss';
 import DefaultLayout from '../../DefaultLayout';
 import CartItem from '~/pages/CustomerPages/component/CartItem/CartItem';
 import Price from '~/components/PriceDisplay/Price';
-import { selectAllProducts } from '../../stores/actions';
+import { selectAllProducts } from '../../../../stores/actions';
 import EmptyCart from '../../component/EmptyCart/EmptyCart';
 import MyButton from '~/components/Button';
 
@@ -40,7 +40,7 @@ function Cart() {
                     )}
                 </div>
 
-                <div className={cx('cart-action')}>
+               {products.length > 0 && <div className={cx('cart-action')}>
                     <div className={cx('select-all')}>
                         <input
                             type="checkBox"
@@ -67,7 +67,7 @@ function Cart() {
                     <MyButton to="/payment" primary user large>
                         Thanh toán
                     </MyButton>
-                </div>
+                </div>}
             </div>
         </DefaultLayout>
     );

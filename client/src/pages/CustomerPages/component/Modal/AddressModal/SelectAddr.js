@@ -4,7 +4,7 @@ import { Modal } from 'react-bootstrap';
 import './AddressModal.scss';
 
 import MyButton from '~/components/Button';
-import { Context } from '../../../stores';
+import { Context } from '../../../../../stores';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { AddrModalContext } from './AddressModal';

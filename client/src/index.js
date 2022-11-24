@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from '~/App';
 import GlobleStyles from '~/components/GlobleStyles';
-import { StoreProvider } from './pages/CustomerPages/stores';
+import { StoreProvider } from './stores';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
