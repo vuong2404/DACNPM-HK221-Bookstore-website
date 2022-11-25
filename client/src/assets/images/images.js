@@ -4,8 +4,11 @@ const images = {
 
     content2: require('~/assets/images/content2.jpg'),
 
-    emptyCart: require('./empty_cart.png')
-
+    emptyCart: require('./empty_cart.png'),
+    momo: require('./momo.png'),
+    zalopay: require('./zalopay.png'),
+    vnpay: require('./vnpay.png'),
+    shipCode: require('./thanh-toan-khi-nhan-hang.png'),
 };
 
 export default images;

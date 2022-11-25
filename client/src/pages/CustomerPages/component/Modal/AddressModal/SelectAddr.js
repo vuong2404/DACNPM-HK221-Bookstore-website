@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Modal } from 'react-bootstrap';
 
-import './AddressModal.scss';
+import '../Modal.scss';
 
 import MyButton from '~/components/Button';
 import { Context } from '../../../../../stores';
@@ -19,13 +19,20 @@ function SelectAddr() {
     console.log('Select modal');
 
     return (
-        <Modal show={show} onHide={handleClose} size="lg">
+        <Modal
+            contentClassName="modal-height"
+            dialogClassName="modal-width"
+            show={show}
+            onHide={handleClose}
+            size="lg"
+            backdrop="static"
+        >
             <Modal.Header closeButton>
                 <Modal.Title>
-                    <h1>Địa chỉ nhận hàng</h1>
+                    <h3>Địa chỉ nhận hàng</h3>
                 </Modal.Title>
             </Modal.Header>
-            <Modal.Body>
+            <Modal.Body className="overflow-auto">
                 {addresses.map((item, index) => {
                     return (
                         <div key={index} className="d-flex align-items-start mx-4 py-4 border-bottom">

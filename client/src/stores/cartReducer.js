@@ -38,7 +38,6 @@ const reducer = (state, action) => {
         case UPDATE_CART: {
             return {
                 ...state,
-                count: action.payload,
             };
         }
         default:

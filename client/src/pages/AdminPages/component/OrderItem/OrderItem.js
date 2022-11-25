@@ -8,7 +8,7 @@ function OrderItem({ order }) {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('heading')}>
-                <h3>{order.addrInfo.name}</h3>
+                <h5>{order.addrInfo.name}</h5>
                 <p>{order.time}</p>
             </div>
             <p className={cx('order-id')}>ID: {order.id}</p>

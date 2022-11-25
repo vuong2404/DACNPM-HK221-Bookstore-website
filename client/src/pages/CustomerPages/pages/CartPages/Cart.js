@@ -26,7 +26,7 @@ function Cart() {
     return (
         <DefaultLayout>
             <div className={cx('heading')}>
-                <h1>Giỏ hàng của bạn</h1>
+                <h3>Giỏ hàng của bạn</h3>
             </div>
 
             <div className={cx('wrapper')}>
@@ -40,34 +40,36 @@ function Cart() {
                     )}
                 </div>
 
-               {products.length > 0 && <div className={cx('cart-action')}>
-                    <div className={cx('select-all')}>
-                        <input
-                            type="checkBox"
-                            key={Math.random()}
-                            defaultChecked={isSelectedAll}
-                            onChange={(e) => handleSeclectAll(e.target.checked)}
-                        />
-                        <span>
-                            Chọn tất cả (<span>{products.length}</span>)
-                        </span>
-                    </div>
-                    <div className={cx('calc-cost')}>
-                        <b>
-                            Tổng thanh toán(<span>{ProductsCounter}</span> sản phẩm):{' '}
-                        </b>
-                        <Price primary large>
-                            {products.reduce(
-                                (res, item) => (item.isSelected ? res + item.product.price * item.count : res),
-                                0,
-                            )}
-                        </Price>
-                    </div>
+                {products.length > 0 && (
+                    <div className={cx('cart-action')}>
+                        <div className={cx('select-all')}>
+                            <input
+                                type="checkBox"
+                                key={Math.random()}
+                                defaultChecked={isSelectedAll}
+                                onChange={(e) => handleSeclectAll(e.target.checked)}
+                            />
+                            <span>
+                                Chọn tất cả (<span>{products.length}</span>)
+                            </span>
+                        </div>
+                        <div className={cx('calc-cost')}>
+                            <b>
+                                Tổng thanh toán(<span>{ProductsCounter}</span> sản phẩm):{' '}
+                            </b>
+                            <Price primary large>
+                                {products.reduce(
+                                    (res, item) => (item.isSelected ? res + item.product.price * item.count : res),
+                                    0,
+                                )}
+                            </Price>
+                        </div>
 
-                    <MyButton to="/payment" primary user large>
-                        Thanh toán
-                    </MyButton>
-                </div>}
+                        <MyButton to="/payment" primary user large>
+                            Thanh toán
+                        </MyButton>
+                    </div>
+                )}
             </div>
         </DefaultLayout>
     );

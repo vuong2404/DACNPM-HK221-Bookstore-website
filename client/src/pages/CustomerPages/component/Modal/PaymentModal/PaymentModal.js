@@ -1,9 +1,9 @@
 import { createContext, useState } from 'react';
 
 import MyButton from '~/components/Button';
-
 import SelectPaymentMethod from './SelectPaymentMethod';
 import QRPayment from './QRPayment';
+import '../Modal.scss';
 
 export const PaymentModalContext = createContext();
 
@@ -26,7 +26,7 @@ function PaymentModal() {
     };
 
     return (
-        <PaymentModalContext.Provider value={value}>
+        <PaymentModalContext.Provider value={value} backdrop="static">
             <MyButton className="text-primary" onClick={handleShow}>
                 Thay đổi
             </MyButton>

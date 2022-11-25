@@ -10,10 +10,10 @@ function QRPayment() {
     console.log('create modal');
 
     return (
-        <Modal show={show} onHide={handleClose} size="lg">
+        <Modal show={show} onHide={handleClose} size="lg" backdrop="static">
             <Modal.Header closeButton>
                 <Modal.Title>
-                    <h1>Thanh toán bằng QR</h1>
+                    <h4>Thanh toán bằng QR</h4>
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body></Modal.Body>

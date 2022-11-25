@@ -15,8 +15,6 @@ const cx = classNames.bind(styles);
 
 function CartItem({ cartItem }) {
     const [state, dispatch] = useContext(Context);
-    console.log(state);
-
     const [confirmDelete, setConfirmDelete] = useState(false);
     const handleClose = () => setConfirmDelete(false);
     const handleConfirm = () => {
@@ -50,16 +48,16 @@ function CartItem({ cartItem }) {
                     dispatch(selectItem(cartItem.product.id));
                 }}
             />
-            <img src={images.content1} alt="" />
+            <img src={cartItem.product.image} alt="" />
             <div className={cx('book-info')}>
                 <p>{cartItem.product.title}</p>
                 <Price primary>{cartItem.product.price}</Price>
             </div>
 
             <div className={cx('quantity-controller')}>
-                <FontAwesomeIcon icon={faSquareMinus} onClick={handleDecrease} />
+                <FontAwesomeIcon size="lg" icon={faSquareMinus} onClick={handleDecrease} />
                 <span>{cartItem.count}</span>
-                <FontAwesomeIcon icon={faSquarePlus} onClick={handleIncrease} />
+                <FontAwesomeIcon size="lg" icon={faSquarePlus} onClick={handleIncrease} />
             </div>
 
             <Button onClick={handleRemoveCart} className={cx('remove-btn')} variant="danger">

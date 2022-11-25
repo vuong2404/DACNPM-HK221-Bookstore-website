@@ -86,7 +86,7 @@ function OrderDetail() {
                 </div>
 
                 <div className={cx('address-info')}>
-                    <h2>Địa chỉ nhận hàng</h2>
+                    <h4>Địa chỉ nhận hàng</h4>
                     <p>
                         Họ tên: <b>{order.addrInfo.name}</b>
                     </p>
@@ -99,7 +99,7 @@ function OrderDetail() {
                 </div>
 
                 <div className={cx('products-info')}>
-                    <h2>Bảng giá</h2>
+                    <h4>Bảng giá</h4>
                     <Table bordered hover>
                         <thead>
                             <tr>
@@ -116,11 +116,11 @@ function OrderDetail() {
                                     <td>{item.id}</td>
                                     <td>{item.title}</td>
                                     <td className="text-center">
-                                        <Price>{item.price}</Price>
+                                        <Price normal>{item.price}</Price>
                                     </td>
                                     <td className="text-center">{item.quantity}</td>
                                     <td className="text-center">
-                                        <Price>{item.price * item.quantity}</Price>
+                                        <Price normal>{item.price * item.quantity}</Price>
                                     </td>
                                 </tr>
                             </tbody>
