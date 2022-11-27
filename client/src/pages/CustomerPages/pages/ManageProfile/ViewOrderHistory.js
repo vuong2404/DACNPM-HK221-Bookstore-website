@@ -10,6 +10,25 @@ import OrderHistoryItem from '../../component/OrderHistory/OrderHistoryItem';
 const cx = classNames.bind(styles);
 const bookType = ['Hài hước', 'Kinh dị', 'Đời thường', 'Bí ẩn', 'Học đường', 'Khoa học', 'Trẻ em', 'Manga'];
 
+const orderList = [
+    {
+        orderID: 'MS00001',
+        supID: 'MS0000A',
+        time: '27/11/2022 12:12:30',
+        status: 'ĐANG VẬN CHUYỂN',
+        status2: 'Theo dõi',
+    },
+    { orderID: 'MS00002', supID: 'MS0000B', time: '27/11/2022 12:12:30', status: 'ĐÃ GIAO', status2: 'Đánh giá' },
+    { orderID: 'MS00003', supID: 'MS0000C', time: '27/11/2022 12:12:30', status: 'CHỜ XÁC NHẬN', status2: 'Hủy' },
+    {
+        orderID: 'MS00004',
+        supID: 'MS0000D',
+        time: '27/11/2022 12:12:30',
+        status: 'ĐANG VẬN CHUYỂN',
+        status2: 'Theo dõi',
+    },
+];
+
 function ViewOrderHistory() {
     return (
         <DefaultLayout>
@@ -39,78 +58,28 @@ function ViewOrderHistory() {
                         <FontAwesomeIcon icon={faMagnifyingGlass} className={cx('iconSearch')} />
                         <input placeholder="Nhập để tìm kiếm" className={cx('search-bar')}></input>
                     </div>
-                    <div style={{ overflow: 'auto', height: 800, marginTop: 20 }}>
+                    {/* <div style={{ overflow: 'auto', height: 800, marginTop: 20 }}> */}
+                    <div style={{ marginTop: 20 }}>
                         <OrderHistoryItem
-                            image="https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2"
-                            name="Người bán hàng vĩ đại nhất thế giới"
-                            author="OG. Mardino"
-                            price="200000"
+                            orderID={orderList[0].orderID}
+                            supID={orderList[0].supID}
+                            time={orderList[0].time}
+                            status={orderList[0].status}
+                            status2={orderList[0].status2}
                         ></OrderHistoryItem>
                         <OrderHistoryItem
-                            image="https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2"
-                            name="Người bán hàng vĩ đại nhất thế giới"
-                            author="OG. Mardino"
-                            price="200000"
+                            orderID={orderList[1].orderID}
+                            supID={orderList[1].supID}
+                            time={orderList[1].time}
+                            status={orderList[1].status}
+                            status2={orderList[1].status2}
                         ></OrderHistoryItem>
                         <OrderHistoryItem
-                            image="https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2"
-                            name="Người bán hàng vĩ đại nhất thế giới"
-                            author="OG. Mardino"
-                            price="200000"
-                        ></OrderHistoryItem>
-                        <OrderHistoryItem
-                            image="https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2"
-                            name="Người bán hàng vĩ đại nhất thế giới"
-                            author="OG. Mardino"
-                            price="200000"
-                        ></OrderHistoryItem>
-                        <OrderHistoryItem
-                            image="https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2"
-                            name="Người bán hàng vĩ đại nhất thế giới"
-                            author="OG. Mardino"
-                            price="200000"
-                        ></OrderHistoryItem>
-                        <OrderHistoryItem
-                            image="https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2"
-                            name="Người bán hàng vĩ đại nhất thế giới"
-                            author="OG. Mardino"
-                            price="200000"
-                        ></OrderHistoryItem>
-                        <OrderHistoryItem
-                            image="https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2"
-                            name="Người bán hàng vĩ đại nhất thế giới"
-                            author="OG. Mardino"
-                            price="200000"
-                        ></OrderHistoryItem>
-                        <OrderHistoryItem
-                            image="https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2"
-                            name="Người bán hàng vĩ đại nhất thế giới"
-                            author="OG. Mardino"
-                            price="200000"
-                        ></OrderHistoryItem>
-                        <OrderHistoryItem
-                            image="https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2"
-                            name="Người bán hàng vĩ đại nhất thế giới"
-                            author="OG. Mardino"
-                            price="200000"
-                        ></OrderHistoryItem>
-                        <OrderHistoryItem
-                            image="https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2"
-                            name="Người bán hàng vĩ đại nhất thế giới"
-                            author="OG. Mardino"
-                            price="200000"
-                        ></OrderHistoryItem>
-                        <OrderHistoryItem
-                            image="https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2"
-                            name="Người bán hàng vĩ đại nhất thế giới"
-                            author="OG. Mardino"
-                            price="200000"
-                        ></OrderHistoryItem>
-                        <OrderHistoryItem
-                            image="https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2"
-                            name="Người bán hàng vĩ đại nhất thế giới"
-                            author="OG. Mardino"
-                            price="200000"
+                            orderID={orderList[2].orderID}
+                            supID={orderList[2].supID}
+                            time={orderList[2].time}
+                            status={orderList[2].status}
+                            status2={orderList[2].status2}
                         ></OrderHistoryItem>
                     </div>
                 </div>

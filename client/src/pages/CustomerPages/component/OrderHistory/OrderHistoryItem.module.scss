@@ -1,57 +1,82 @@
-.post-item {
-    margin-top: 10px;
-    display: flex;
-    width: 100%;
-    height: 160px;
-    border: solid #d9d9d9;
-    background-color: #d9d9d9;
+.container {
+    border: solid #f5f5f5;
+    padding: 20px;
+    margin-bottom: 40px;
+    background-color: #f5f5f5;
 }
 
-.book-image {
-    width: 150px;
-    height: 100%;
-}
-
-.content {
-    margin: 20px 0 20px 29px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.book-name {
+.item1 {
+    text-transform: uppercase;
+    color: brown;
+    line-height: 25px;
     font-weight: bold;
 }
-
-.book-author {
-    font-style: italic;
+.item1-1 {
 }
-.button-container {
+.item1-2 {
+}
+.item2 {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    line-height: 30px;
+}
+.item2-1 {
+    line-height: 50px;
+    height: 50px;
+}
+.item2-2 {
+    width: 180px;
+    height: 50px;
+    background-color: green;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 10px;
+    color: #fff;
 }
 
-.book-price {
-    width: 140px;
-    height: 40px;
-    border-radius: 5px;
-    padding-top: 12px;
-    text-align: center;
+.item4 {
+    width: 180px;
+    height: 50px;
     background-color: grey;
     color: #fff;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 10px;
+    margin-left: 526px;
+    margin-top: 10px;
 }
 
-.buy-again {
-    background-color: green;
-    width: 140px;
-    height: 40px;
-    border-radius: 5px;
-    padding-top: 12px;
-    text-align: center;
-    color: #fff;
+.item5 {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
 }
-.buy-again:hover {
+
+.item5-1,
+.item5-2 {
+    width: 90px;
+    height: 45px;
     background-color: brown;
+    text-align: center;
+    line-height: 45px;
+
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.item5-3 {
+    width: 160px;
+    height: 45px;
+    background-color: brown;
+    text-align: center;
+    line-height: 45px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.item5-1:hover,
+.item5-2:hover,
+.item5-3:hover {
+    background-color: green;
     cursor: pointer;
-    color: #000;
 }
