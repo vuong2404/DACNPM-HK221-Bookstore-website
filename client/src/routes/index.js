@@ -35,7 +35,7 @@ const routes = [
         component: ManageBookAdvancedSearch
     },    
     {
-        path: '/manage-book/details',
+        path: '/manage-book/details/:id',
         component: ManageBookDetail
     },
     {
