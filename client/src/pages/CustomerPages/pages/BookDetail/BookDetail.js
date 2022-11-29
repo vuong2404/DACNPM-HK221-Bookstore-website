@@ -6,23 +6,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faCartPlus,faCartArrowDown} from '@fortawesome/free-solid-svg-icons';
 import {faThumbsUp} from '@fortawesome/free-regular-svg-icons';
 import Button from '~/components/Button';
-import Rating from '../../component/Rating/Rating';
 import { Link } from "react-router-dom";
+import Price from '~/components/PriceDisplay/Price';
+import Rate from '../../component/Rating/Rating';
 
 let FeedBack=[
     {
         id: 1,
         name: 'Nguyễn Văn A',
+        rate: 2,
         review: 'sách quá tuyệt vời'
     },
     {
         id: 2,
         name: 'Nguyễn văn B',
+        rate: 3,
         review: 'Sách hay, mọi người nên mua'
     },
     {
         id: 3,
         name: 'Nguyễn Văn C',
+        rate: 5,
         review: 'sách đọc gây lú ghê'
     }
 ];
@@ -45,7 +49,7 @@ function BookDetail(){
                 <div className={cx('description')}>
                     <div className={cx('title-price')}>
                         <p className={cx('book-title')}>Thiên tài bên trái, kẻ điên bên phải</p>
-                        <p className={cx('price')}>$180000vnd</p>
+                        <Price className={cx('price')}>180000</Price>
                     </div>
 
                     <div className={cx('info')}>
@@ -91,7 +95,7 @@ Thiên tài bên trái, kẻ điên bên phải là cuốn sách dành cho nhữ
 Chào mừng đến với thế giới của những kẻ điên.
                 </p>
             </div>
-            <Rating feedbacks={FeedBack}/>
+            <Rate feedbacks={FeedBack}/>
         </DefaultLayout>
     );
 }

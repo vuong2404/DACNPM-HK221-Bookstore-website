@@ -7,9 +7,6 @@ import { Link } from 'react-router-dom';
 import styles from './Navi.module.scss';
 
 const cx = classNames.bind(styles);
-
-
-
 function Navi({cates = []}){
 
     return (

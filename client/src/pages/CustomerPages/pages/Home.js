@@ -53,7 +53,7 @@ const bookInfo = [
 
 const bookType=['Hài hước', 'Kinh dị', 'Đời thường', 'Bí ẩn','Học đường','Khoa học','Trẻ em','Manga']
 
-const cx= classNames.bind(styles)
+const cx= classNames.bind(styles);
 function Home() {
     return (
       <>
