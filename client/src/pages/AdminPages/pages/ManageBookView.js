@@ -147,7 +147,7 @@ function ManageBookView(){
                                     <td className="text-center">{item.amount}</td>
                                     <td className="text-center">
                                     <MyButton class="btn btn-outline-primary"
-                                     to={`details?id=${item.id}`}
+                                     to={`details/${item.id}`}
                                     >    
                                         <FontAwesomeIcon icon={faEdit} />
                                     </MyButton>
