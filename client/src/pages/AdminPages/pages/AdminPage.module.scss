@@ -165,3 +165,125 @@
         margin-left: 8px;
     }
 }
+
+
+//manage book add   
+.manage-book-wrapper {
+    //border: 1px solid #ccc;
+    //border-radius: 16px;
+    margin: 16px 0;
+    .header {
+        display:flex;
+        align-items: center;
+        padding: 8px 16px 0px 0px;
+        border-bottom: 1px solid #DDDDDD;
+        justify-content: space-between;
+    }
+    .chosen{
+        font-weight: normal;
+        border-style: solid;
+        border-width: 1px 1px 0 1px;
+        border-radius: 10px 10px 0 0;
+        border-color: #DDDDDD;
+    }
+    .unchosen{
+        font-weight: normal;
+        color: #0275D8;  
+        &:hover {
+            background-color: #DDDDDD;
+        }  
+    }
+    .searchbox {
+        float:right;
+        width: 120%;
+        max-width: 300px;
+        background-color:white;
+    }
+    .tableview{
+        margin-top: 10px;
+        padding:10px;
+        min-height: 500px;
+    }
+    .tag{
+        border:1px solid #ccc;
+        margin: 2px;
+        padding:1px;
+        display:flex;
+        align-items: center;
+        text-align: center;
+        border-radius: 3px;
+        background: #f2f2f2;
+        font-size:12px;
+    }
+
+    thead th {
+        color: #337AB7;
+        min-width: 70px;
+        max-width:150px;
+        font-weight: normal;
+    }
+    td{
+        vertical-align: middle;
+    }
+    .bottom-pagination{
+        display: flex;
+        justify-content: center;
+        .pagination-btn {
+            border: 1px solid #ccc;
+            font-size: 14px;
+            font-weight: 300;
+            padding: 4px 8px;
+            height: 36px;
+            &:hover {
+                background: #007bff;
+                color: #fff;
+            }
+        }
+    }
+}
+
+span[id="iconClass"]{
+    background-color:white !important
+    }
+input[type="text"]{
+    font-size:15px!important;
+}
+.add-view{
+    margin-top: 50px;
+    .field{
+        
+        margin-top: 25px;
+        width: 60%;
+        max-width: 100%;
+        background-color:white;
+    }    
+    .add-image{
+        display:flex;
+        justify-content: center;
+        float:right;
+        width:40%;
+    }
+    .image{
+        font-size:100px!important;
+    }
+    .full-field{
+        margin-top: 25px;
+        max-width: 100%;
+        background-color:white;
+    }
+    .synopsis-field{
+        margin-top: 25px;
+        max-width: 100%;
+        background-color:white;      
+    textarea {
+        font-size: 16px;
+    }}
+    .button-field{
+        margin-top: 25px;
+        margin-left:30%;
+        width:40%;
+        display:flex;
+        justify-content: space-around;
+    }
+}
+form label {font-weight:bold}
