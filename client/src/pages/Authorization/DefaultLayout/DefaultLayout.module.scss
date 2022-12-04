@@ -1,0 +1,31 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('../imageAt/login_background.jpg');
+    background-size: cover;
+    // backdrop-filter: blur(1px);
+    // background: white;
+}
+
+.container {
+    // min-height: calc(90vh - var(--custommer-header-height) - var(--custommer-footer-height));
+    // width: 100%;
+
+    margin: var(--custommer-header-height) auto 0;
+
+
+    // flex: 1;
+    // background-color: white;
+
+    // backdrop-filter: blur(1px);
+}
+
+a {
+    text-decoration: none;
+
+    &:hover {
+        color: black;
+    }
+}
