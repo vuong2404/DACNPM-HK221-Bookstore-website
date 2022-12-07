@@ -1,0 +1,126 @@
+.authorization-wrapper {
+    @import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@600');
+
+    * {
+        padding: 0;
+        margin: 0;
+        text-decoration: none;
+    }
+
+
+    .form {
+        width: 420px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 25px 25px;
+        background: linear-gradient(51.7deg,
+                rgba(154, 59, 59, 0.9) 0%,
+                rgba(219, 126, 126, 0.9) 35.42%,
+                rgba(237, 169, 160, 0.9) 100%);
+        border-radius: 40px;
+    }
+
+    .header {
+        margin-top: 5px;
+        margin-bottom: 35px;
+        font-family: 'Source Serif Pro', serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 40px;
+        text-align: center;
+        color: #3b2828;
+    }
+
+    .box input {
+        // font-family: 'Source Serif Pro', serif;
+        width: 340px;
+        margin-bottom: 30px;
+        outline: none;
+        border: 0;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background-color: transparent;
+        border-bottom: 3px solid rgba(52, 52, 176, 0.6);
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    ::placeholder {
+        font-family: 'Source Serif Pro', serif;
+        font-size: 20px;
+        font-weight: bold;
+        color: #513838;
+    }
+
+    .get-code {
+        position: absolute;
+        width: 130px;
+        height: 32px;
+        left: calc(50% - 130px/2 + 105px);
+        top: calc(50% - 32px/2);
+        background: linear-gradient(270deg,
+                rgba(133, 83, 68, 0.7) 0%,
+                rgba(137, 84, 68, 0.6) 32.29%,
+                rgba(137, 84, 68, 0.6) 67.71%,
+                rgba(133, 83, 68, 0.7) 100%);
+        border: none;
+        border-radius: 20px;
+        font-family: 'Source Serif Pro', serif;
+        font-size: 14px;
+        color: #F1E0DF;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .get-code:active {
+        background: #212921;
+        color: rgb(201, 194, 194);
+        transition: all 0.1s
+    }
+
+    .submit {
+        display: block;
+        width: 340px;
+        height: 50px;
+        margin: 10px 0 10px 0;
+        background: linear-gradient(270deg,
+                rgba(100, 75, 75, 0.4) 0%,
+                rgba(92, 70, 70, 0.5) 32.29%,
+                rgba(63, 48, 48, 0.6) 67.71%,
+                rgba(47, 34, 34, 0.7) 100%);
+        border: none;
+        border-radius: 10px;
+        font: bold 20px '';
+        font-family: 'Source Serif Pro', serif;
+        text-decoration: none;
+        color: #F1E0DF;
+        padding: 12px;
+        letter-spacing: 1px;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .submit:active {
+        background: #212921;
+        color: rgb(201, 194, 194);
+        transition: all 0.1s
+    }
+
+    .goto {
+        color: #513838;
+        text-decoration: none;
+        font-family: 'Source Serif Pro', serif;
+        font-style: normal;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 2em;
+    }
+
+    .goto:hover {
+        text-decoration: underline;
+    }
+}
