@@ -106,7 +106,7 @@ function ViewProfile() {
                 <div style={{ maxWidth: 1200 }} className={cx('parent-viewProfile')}>
                     <div className={cx('item1-viewProfile')}>
                         <div className={cx('username-viewProfile')}>
-                            <b>USERNAME</b>
+                            <b>{user[a].username}</b>
                         </div>
                         <button className={cx('button1')}>
                             <Link to="/editProfile">
