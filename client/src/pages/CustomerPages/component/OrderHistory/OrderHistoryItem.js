@@ -4,6 +4,8 @@ import styles from './OrderHistoryItem.module.scss';
 import OrderHistoryProduct from './OrderHistoryProduct';
 import { useContext } from 'react';
 import { Context } from '../../../../stores';
+import Status from '~/components/OrderStatus/OrderStatus';
+import MyButton from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
@@ -80,6 +82,29 @@ const Product = [
     },
 ];
 
+function StatusSame({ type = 'watting', title = '', onClick, className, children, ...passProps }) {
+    const classes = [
+        cx('wrapper', {
+            [type]: type,
+            ...classNames,
+        }),
+    ];
+
+    const props = { onClick, ...passProps };
+    return (
+        <MyButton className={classes} {...props}>
+            {children ||
+                title ||
+                (type === 'waitting' && 'Hủy') ||
+                (type === 'confirmed' && 'Xem chi tiết') ||
+                (type === 'success' && 'Đánh giá') ||
+                (type === 'cancel' && 'Mua lại') ||
+                (type === 'intrans' && 'Xem chi tiết') ||
+                (type === 'undelivered' && 'Hủy')}
+        </MyButton>
+    );
+}
+
 function OrderHistoryItem(props) {
     const a = Math.floor(Math.random() * 10);
     const b = Math.floor(Math.random() * 10);
@@ -92,7 +117,9 @@ function OrderHistoryItem(props) {
             </div>
             <div className={cx('item2')}>
                 <div className={cx('item2-1')}>Đã đặt ngày: {props.time}</div>
-                <div className={cx('item2-2')}>{props.status}</div>
+                <div className={cx('item2-2')}>
+                    <Status type={props.status} />
+                </div>
             </div>
             <div className={cx('item3')}>
                 <OrderHistoryProduct
@@ -117,14 +144,14 @@ function OrderHistoryItem(props) {
                     amount={Product[c].amount}
                 ></OrderHistoryProduct>
             </div>
-            <div className={cx('item4')}>
+            <MyButton className={cx('item4')}>
                 Tổng số tiền:
                 {Product[a].amount * Product[a].price +
                     Product[b].amount * Product[b].price +
                     Product[c].amount * Product[c].price}
-            </div>
+            </MyButton>
             <div className={cx('item5')}>
-                <div className={cx('item5-1')}>{props.status2}</div>
+                <StatusSame className={cx('item5-1')} type={props.status} />
                 <div className={cx('item5-2')}>Mua lại</div>
                 <div className={cx('item5-3')}>Liên hệ người bán</div>
             </div>

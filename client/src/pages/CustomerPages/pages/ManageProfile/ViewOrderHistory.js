@@ -9,22 +9,21 @@ import OrderHistoryItem from '../../component/OrderHistory/OrderHistoryItem';
 
 const cx = classNames.bind(styles);
 const bookType = ['Hài hước', 'Kinh dị', 'Đời thường', 'Bí ẩn', 'Học đường', 'Khoa học', 'Trẻ em', 'Manga'];
-
 const orderList = [
     {
         orderID: 'MS00001',
         supID: 'MS0000A',
         time: '27/11/2022 12:12:30',
-        status: 'ĐANG VẬN CHUYỂN',
+        status: 'waitting',
         status2: 'Theo dõi',
     },
-    { orderID: 'MS00002', supID: 'MS0000B', time: '27/11/2022 12:12:30', status: 'ĐÃ GIAO', status2: 'Đánh giá' },
-    { orderID: 'MS00003', supID: 'MS0000C', time: '27/11/2022 12:12:30', status: 'CHỜ XÁC NHẬN', status2: 'Hủy' },
+    { orderID: 'MS00002', supID: 'MS0000B', time: '27/11/2022 12:12:30', status: 'intrans', status2: 'Đánh giá' },
+    { orderID: 'MS00003', supID: 'MS0000C', time: '27/11/2022 12:12:30', status: 'success', status2: 'Hủy' },
     {
         orderID: 'MS00004',
         supID: 'MS0000D',
         time: '27/11/2022 12:12:30',
-        status: 'ĐANG VẬN CHUYỂN',
+        status: 'confirmed',
         status2: 'Theo dõi',
     },
 ];
