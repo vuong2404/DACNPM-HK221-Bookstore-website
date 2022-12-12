@@ -1,6 +1,6 @@
 import Dropdown from 'react-bootstrap/Dropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useReducer } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
 import DropdownMenu from 'react-bootstrap/esm/DropdownMenu';
 import DropdownItem from 'react-bootstrap/esm/DropdownItem';
@@ -13,131 +13,74 @@ import reducer from '../reducer/orderReducer';
 import { setPage, gotoFirstPage, gotoLastPage, setNumberLine } from '../reducer/action';
 import OrderItem from '../component/OrderItem/OrderItem';
 import Status from '~/components/OrderStatus/OrderStatus';
+import { getOrderLists } from '~/api/orderApi';
+import axios from 'axios';
+import { Alert, Button } from 'react-bootstrap';
 
 const cx = classNames.bind(styles);
 
 //fetch API
-const orderLists = [
-    {
-        id: 'abc123',
-        userID: '1234',
-        status: 'success',
-        code: 'CMDJE42J238',
-        time: '12 Oct 2022 12:34:32 GMT+0700',
-        addrInfo: {
-            name: 'Nguyen Van A',
-            phoneNumeber: '01345875773',
-            addr: 'Ký túc xá khu A: Đường Tạ Quang Bửu, khu phố 6, phường Linh Trung, thành phố Thủ Đức, Thành phố Hồ Chí Minh',
-        },
-    },
-    {
-        id: 'abc123',
-        userID: '1234',
-        status: 'success',
-        code: 'CMDJE42J238',
-        time: '12 Oct 2022 12:34:32 GMT+0700',
-        addrInfo: {
-            name: 'Nguyen Van A',
-            phoneNumeber: '01345875773',
-            addr: 'Ký túc xá khu A: Đường Tạ Quang Bửu, khu phố 6, phường Linh Trung, thành phố Thủ Đức, Thành phố Hồ Chí Minh',
-        },
-    },
-    {
-        id: 'abc123',
-        userID: '1234',
-        status: 'success',
-        code: 'CMDJE42J238',
-        time: '12 Oct 2022 12:34:32 GMT+0700',
-        addrInfo: {
-            name: 'Nguyen Van A',
-            phoneNumeber: '01345875773',
-            addr: 'Ký túc xá khu A: Đường Tạ Quang Bửu, khu phố 6, phường Linh Trung, thành phố Thủ Đức, Thành phố Hồ Chí Minh',
-        },
-    },
-    {
-        id: 'abc123',
-        userID: '1234',
-        status: 'success',
-        code: 'CMDJE42J238',
-        time: '12 Oct 2022 12:34:32 GMT+0700',
-        addrInfo: {
-            name: 'Nguyen Van A',
-            phoneNumeber: '01345875773',
-            addr: 'Ký túc xá khu A: Đường Tạ Quang Bửu, khu phố 6, phường Linh Trung, thành phố Thủ Đức, Thành phố Hồ Chí Minh',
-        },
-    },
-    {
-        id: 'abc123',
-        userID: '1234',
-        status: 'success',
-        code: 'CMDJE42J238',
-        time: '12 Oct 2022 12:34:32 GMT+0700',
-        addrInfo: {
-            name: 'Nguyen Van A',
-            phoneNumeber: '01345875773',
-            addr: 'Ký túc xá khu A: Đường Tạ Quang Bửu, khu phố 6, phường Linh Trung, thành phố Thủ Đức, Thành phố Hồ Chí Minh',
-        },
-    },
-    {
-        id: 'abc123',
-        userID: '1234',
-        status: 'success',
-        time: '12 Oct 2022 12:34:32 GMT+0700',
-        addrInfo: {
-            name: 'Nguyen Van A',
-            phoneNumeber: '01345875773',
-            addr: 'Ký túc xá khu A: Đường Tạ Quang Bửu, khu phố 6, phường Linh Trung, thành phố Thủ Đức, Thành phố Hồ Chí Minh',
-        },
-    },
-    {
-        id: 'abc123',
-        userID: '1234',
-        status: 'success',
-        time: '12 Oct 2022 12:34:32 GMT+0700',
-        addrInfo: {
-            name: 'Nguyen Van A',
-            phoneNumeber: '01345875773',
-            addr: 'Ký túc xá khu A: Đường Tạ Quang Bửu, khu phố 6, phường Linh Trung, thành phố Thủ Đức, Thành phố Hồ Chí Minh',
-        },
-    },
-    {
-        id: 'abc123',
-        userID: '1234',
-        status: 'success',
-        time: '12 Oct 2022 12:34:32 GMT+0700',
-        addrInfo: {
-            name: 'Nguyen Van A',
-            phoneNumeber: '01345875773',
-            addr: 'Ký túc xá khu A: Đường Tạ Quang Bửu, khu phố 6, phường Linh Trung, thành phố Thủ Đức, Thành phố Hồ Chí Minh',
-        },
-    },
-    {
-        id: 'abc123',
-        userID: '1234',
-        status: 'success',
-        time: '12 Oct 2022 12:34:32 GMT+0700',
-        addrInfo: {
-            name: 'Nguyen Van A',
-            phoneNumeber: '01345875773',
-            addr: 'Ký túc xá khu A: Đường Tạ Quang Bửu, khu phố 6, phường Linh Trung, thành phố Thủ Đức, Thành phố Hồ Chí Minh',
-        },
-    },
-];
 
 function ManageOrder() {
-    let pages = 10; // = orderList.length ;
+    const [orderLists, setOrderLists] = useState([]);
+    const [keySearch, setKeySearch] = useState('');
+    const [records, setRecords] = useState([]) ;
+    
     const initState = {
         currentPage: 1,
         numberLine: 10,
         listOrder: orderLists,
-    };
+    }; 
     const [state, dispatch] = useReducer(reducer, initState);
 
+    const loadData = async () => {
+        return await getOrderLists().then((res) => setOrderLists(res));
+    };
+    useEffect(() => {
+        loadData();
+    }, []);
+
+    useEffect(() => { 
+        console.log(state)
+        let from = (state.currentPage - 1)*state.numberLine ;
+        let to = state.currentPage*state.numberLine 
+        if (to > orderLists.length) {
+            to = orderLists.length;
+        }
+        setRecords(orderLists.slice(from,to))
+    }, [state, orderLists])
+
+    console.log(records)
+    let pages = orderLists.length // = orderList.length ;
+    const handleFilterByStatus = async (status) => {
+        await axios
+            .get(`http://localhost:8080/api/order?status=${status}`)
+            .then((res) => res.data)
+            .then((data) => setOrderLists(data))
+            .catch((err) => alert('Đã xảy ra lỗi!', err));
+    };
+    const handleSearch = async (key) => {
+        await axios
+            .get(`http://localhost:8080/api/order?key=${key}`)
+            .then((res) => res.data)
+            .then((data) => setOrderLists(data))
+            .catch((err) => Alert('Đã xảy ra lỗi!', err));
+    };
     return (
         <DefaultLayout>
             <h1 className={cx('heading')}>Danh sách đơn hàng</h1>
             <div className={cx('order-filter')}>
-                <input className={cx('order-search')} placeholder="Tìm kiếm..........." />
+                <input
+                    className={cx('order-search')}
+                    placeholder="Tìm kiếm..........."
+                    onChange={(e) => setKeySearch(e.target.value)}
+                    onKeyDown={(e) => {
+                        if (e.key == 'Enter') {
+                            handleSearch(e.target.value);
+                            e.target.value = ''
+                        }
+                    }}
+                />
                 <div className={cx('order-pagination')}>
                     <Dropdown className={cx('dropdown-custom')}>
                         <DropdownToggle className={cx('title')}>
@@ -166,7 +109,7 @@ function ManageOrder() {
                     <Dropdown className={cx('dropdown-custom')}>
                         <DropdownToggle className={cx('title')}>{state.currentPage}</DropdownToggle>
                         <DropdownMenu className={cx('menu')}>
-                            {Array.from(Array(pages).keys()).map((i) => (
+                            {Array.from(Array(Math.floor(pages/state.numberLine)+1).keys()).map((i) => (
                                 <DropdownItem
                                     key={i}
                                     className={cx('menu-item')}
@@ -181,23 +124,26 @@ function ManageOrder() {
                     <MyButton
                         className={cx('pagination-btn')}
                         disabled={state.currentPage === pages}
-                        onClick={() => dispatch(gotoLastPage(pages))}
+                        onClick={() => dispatch(gotoLastPage(Math.floor(pages/state.numberLine)+1))}
                     >
                         Trang cuối
                     </MyButton>{' '}
                 </div>
             </div>
             <div className={cx('orders-status-filter')}>
-                <Status type="waitting" />
-                <Status type="confirmed" />
-                <Status type="intrans" />
-                <Status type="success" />
-                <Status type="undelivered" />
-                <Status type="cancel" />
+                <Button variant="dark me-3" t onClick={() => loadData()}>
+                    All
+                </Button>
+                <Status type="waiting" onClick={() => handleFilterByStatus('waiting')} />
+                <Status type="confirmed" onClick={() => handleFilterByStatus('confirmed')} />
+                <Status type="intrans" onClick={() => handleFilterByStatus('intrans')} />
+                <Status type="success" onClick={() => handleFilterByStatus('success')} />
+                <Status type="faild" onClick={() => handleFilterByStatus('faild')} />
+                <Status type="cancel" onClick={() => handleFilterByStatus('cancel')} />
             </div>
 
             <div className={cx('orders-wrapper')}>
-                {orderLists.map((item, index) => {
+                {records.map((item, index) => {
                     return <OrderItem key={index} order={item} />;
                 })}
             </div>

@@ -3,15 +3,20 @@ let cors = require("cors");
 
 const app = express();
 
-var corsOptions = {
-  origin: "http://localhost:8081",
-};
+app.use((req,res,next)=>{
+  res.setHeader('Access-Control-Allow-Origin','*');
+  res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE');
+  res.setHeader('Access-Control-Allow-Methods','Content-Type','Authorization');
+  next(); 
+})
 
-app.use(cors(corsOptions));
 let bodyParse = require("body-parser");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors({
+  origin: 'http://localhost:3000'
+}))
 
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to iceTea Book API!" });
@@ -19,6 +24,8 @@ app.get("/", (req, res) => {
 
 
 require('./routes/order.routes')(app);
+require('./routes/address.routes')(app);
+require('./routes/cart.routes')(app);
 // require('./routes/address.routes')(app);
 
 const PORT = process.env.PORT || 8080;

@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { Button, Table } from 'react-bootstrap';
+import { Alert, Button, Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import styles from './AdminPage.module.scss';
@@ -9,176 +9,167 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import Status from '~/components/OrderStatus/OrderStatus';
 import Price from '~/components/PriceDisplay/Price';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { cancelOrder, confirmOrder, getOrderById, updateOrderStatus } from '~/api/orderApi';
+import { useSearchParams } from 'react-router-dom';
+import axios from 'axios';
+import { getAddress_str, getPaymentMethod } from '~/helpper/helpper';
 const cx = classNames.bind(styles);
 
-const order = {
-    id: 'abc123',
-    userID: '1234',
-    username: 'Nguyen van A',
-    status: 'confirmed',
-    code: 'CMDJE42J238',
-    time: '12 Oct 2022 12:34:32 GMT+0700',
-    addrInfo: {
-        name: 'Nguyen Van A',
-        phoneNumber: '01345875773',
-        addr: 'Ký túc xá khu A: Đường Tạ Quang Bửu, khu phố 6, phường Linh Trung, thành phố Thủ Đức, Thành phố Hồ Chí Minh',
-    },
-};
-
-const products = [
-    {
-        id: 'BOOK' + Math.floor(Math.random() * 100000 + 1),
-        title: "Sophie's World (Sofies verden)",
-        price: 160000,
-        quantity: 2,
-    },
-    {
-        id: 'BOOK' + Math.floor(Math.random() * 100000 + 1),
-        title: 'The Name of the Rose (Il Nome della Rosa)',
-        price: 150000,
-        quantity: 2,
-    },
-    {
-        id: 'BOOK' + Math.floor(Math.random() * 100000 + 1),
-        title: 'How the Steel Was Tempered (Как закалялась сталь))',
-        price: 160000,
-        quantity: 1,
-    },
-    {
-        id: 'BOOK' + Math.floor(Math.random() * 100000 + 1),
-        title: "Sophie's World (Sofies verden)",
-        price: 170000,
-        quantity: 1,
-    },
-];
 function OrderDetail() {
-    const totalPrice = products.reduce((res, item) => res + item.price * item.quantity, 0);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [order, setOrder] = useState(null);
+    let id = searchParams.get('id');
 
+    useEffect(() => {
+        getOrderById(id).then((data) => setOrder(data));
+    }, []);
+    const handleConfirmOrder = async (id) => {
+        confirmOrder(id).then((res) => getOrderById(id).then((data) => setOrder(data)));
+    };
+
+    const handleCancelOrder = async (id) => {
+        cancelOrder(id).then((res) => getOrderById(id).then((data) => setOrder(data)));
+    };
+
+    const handleUpdateOrderStatus = async (id, cur_status) => {
+        
+        updateOrderStatus(id, cur_status).then((res) => getOrderById(id).then((data) => setOrder(data)));
+    };
     return (
         <DefaultLayout>
-            <div className={cx('order-details-wrapper')}>
-                <div className={cx('header')}>
-                    <MyButton
-                        className={cx('back')}
-                        to="/manage-order"
-                        leftIcon={<FontAwesomeIcon icon={faChevronLeft} />}
-                    >
-                        Trở về
-                    </MyButton>
-                    <span className={cx('order-id')}>
-                        <b>ID: {order.id}</b>
-                    </span>
-                    <Status type="success" />
-                    {order.code && <Status type="success">{order.code}</Status>}
-                </div>
+            {order && (
+                <div>
+                    <div className={cx('order-details-wrapper')}>
+                        <div className={cx('header')}>
+                            <MyButton
+                                className={cx('back')}
+                                to="/manage-order"
+                                leftIcon={<FontAwesomeIcon icon={faChevronLeft} />}
+                            >
+                                Trở về
+                            </MyButton>
+                            <span className={cx('order-id')}>
+                                <b>ID: #{order.orderID}</b>
+                            </span>
+                            <Status type={order.status} />
+                            {order.deliveryCode && <Status type={order.status}>{order.deliveryCode}</Status>}
+                        </div>
 
-                <div className={cx('order-info')}>
-                    <div className={cx('user-name')}>
-                        <span> Khách hàng: </span>
-                        <b>
-                            <a href="#">{order.username}</a>
-                        </b>
+                        <div className={cx('order-info')}>
+                            <div className={cx('user-name')}>
+                                <span> Khách hàng: </span>
+                                <b>
+                                    <a href="#">#{order.userID}</a>
+                                </b>
+                            </div>
+                            <span>
+                                Ngày đặt hàng: <b>{order.createAt}</b>
+                            </span>
+                        </div>
+
+                        <div className={cx('address-info')}>
+                            <h4>Thông tin nhận hàng</h4>
+                            <p>
+                                Họ tên: <b>{order.receiveInfo.receiverName}</b>
+                            </p>
+                            <p>
+                                Số điện thoại: <b>{order.receiveInfo.phoneNumber}</b>
+                            </p>
+                            <p>
+                                Địa chỉ: <b>{getAddress_str(order.receiveInfo)}</b>
+                            </p>
+                        </div>
+
+                        <div className={cx('books-info')}>
+                            <h4>Bảng giá</h4>
+                            <Table bordered hover>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Tên sách</th>
+                                        <th className="text-center">Đơn giá</th>
+                                        <th className="text-center">Số lượng</th>
+                                        <th className="text-center">Thành tiền</th>
+                                    </tr>
+                                </thead>
+                                {order.books.map((item, index) => (
+                                    <tbody key={index}>
+                                        <tr>
+                                            <td>{item.bookID}</td>
+                                            <td>{item.bookID}</td>
+                                            <td className="text-center">
+                                                <Price normal>{item.totalMoney}</Price>
+                                            </td>
+                                            <td className="text-center">{item.totalMoney}</td>
+                                            <td className="text-center">
+                                                <Price normal>{item.totalMoney * item.quantity}</Price>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                ))}
+                            </Table>
+                        </div>
+
+                        <div className={cx('payment-info')}>
+                            <div className={cx('payment-info-item')}>
+                                <span>Tổng đơn: </span>
+                                <Price className="">{order.totalMoney}</Price>
+                            </div>
+                            <div className={cx('payment-info-item')}>
+                                <span>Phí ship: </span>
+                                <Price className="">30000</Price>
+                            </div>
+                            <div className={cx('payment-info-item')}>
+                                <span>Tổng số tiền cần thanh toán: </span>
+                                <Price large className="">
+                                    {order.totalMoney + 30000}
+                                </Price>
+                            </div>
+
+                            <div className={cx('payment-info-item')}>
+                                <span>Phương thức thanh toán: </span>
+                                <span>
+                                    <b>{getPaymentMethod(order.paymentMethod)}</b>
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                    <span>
-                        Ngày đặt hàng: <b>12/4/2022 12:22:23</b>
-                    </span>
-                </div>
 
-                <div className={cx('address-info')}>
-                    <h4>Địa chỉ nhận hàng</h4>
-                    <p>
-                        Họ tên: <b>{order.addrInfo.name}</b>
-                    </p>
-                    <p>
-                        Số điện thoại: <b>{order.addrInfo.phoneNumber}</b>
-                    </p>
-                    <p>
-                        Địa chỉ: <b>{order.addrInfo.addr}</b>
-                    </p>
-                </div>
-
-                <div className={cx('products-info')}>
-                    <h4>Bảng giá</h4>
-                    <Table bordered hover>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Tên sách</th>
-                                <th className="text-center">Đơn giá</th>
-                                <th className="text-center">Số lượng</th>
-                                <th className="text-center">Thành tiền</th>
-                            </tr>
-                        </thead>
-                        {products.map((item, index) => (
-                            <tbody key={index}>
-                                <tr>
-                                    <td>{item.id}</td>
-                                    <td>{item.title}</td>
-                                    <td className="text-center">
-                                        <Price normal>{item.price}</Price>
-                                    </td>
-                                    <td className="text-center">{item.quantity}</td>
-                                    <td className="text-center">
-                                        <Price normal>{item.price * item.quantity}</Price>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        ))}
-                    </Table>
-                </div>
-
-                <div className={cx('payment-info')}>
-                    <div className={cx('payment-info-item')}>
-                        <span>Tổng đơn: </span>
-                        <Price className="">{totalPrice}</Price>
-                    </div>
-                    <div className={cx('payment-info-item')}>
-                        <span>Phí ship: </span>
-                        <Price className="">30000</Price>
-                    </div>
-                    <div className={cx('payment-info-item')}>
-                        <span>Tổng số tiền cần thanh toán: </span>
-                        <Price large className="">
-                            {totalPrice + 30000}
-                        </Price>
-                    </div>
-
-                    <div className={cx('payment-info-item')}>
-                        <span>Phương thức thanh toán: </span>
-                        <span>
-                            <b>Thanh toán khi nhận hàng</b>
-                        </span>
+                    <div className={cx('order-details--actions')}>
+                        {(order.status === 'waiting' && (
+                            <>
+                                <Button type="lg" variant="primary" onClick={() => handleConfirmOrder(order.orderID)}>
+                                    Xác nhận
+                                </Button>
+                                <Button type="lg" variant="danger" onClick={() => handleCancelOrder(order.orderID)}>
+                                    Từ chối
+                                </Button>
+                            </>
+                        )) ||
+                            ((order.status === 'success' || order.status === 'cancel') && (
+                                <React.Fragment>
+                                    <Button type="lg" variant="secondary">
+                                        Danh sách đơn hàng
+                                    </Button>
+                                </React.Fragment>
+                            )) ||
+                            ((order.status === 'confirmed' ||
+                                order.status === 'intrans' ||
+                                order.status === 'undelivered') && (
+                                <React.Fragment>
+                                    <Button
+                                        size="lg"
+                                        variant="warning"
+                                        onClick={() => handleUpdateOrderStatus(order.orderID, order.status)}
+                                    >
+                                        Cập nhật trạng thái
+                                    </Button>
+                                </React.Fragment>
+                            ))}
                     </div>
                 </div>
-            </div>
-
-            <div className={cx('order-details--actions')}>
-                {(order.status === 'waitting' && (
-                    <>
-                        <Button type="lg" variant="primary">
-                            Xác nhận
-                        </Button>
-                        <Button type="lg" variant="danger">
-                            Từ chối
-                        </Button>
-                    </>
-                )) ||
-                    ((order.status === 'success' || order.status === 'cancel') && (
-                        <React.Fragment>
-                            <Button type="lg" variant="secondary">
-                                Danh sách đơn hàng
-                            </Button>
-                        </React.Fragment>
-                    )) ||
-                    ((order.status === 'confirmed' || order.status === 'intrans' || order.status === 'undelivered') && (
-                        <React.Fragment>
-                            <Button size="lg" variant="warning">
-                                Cập nhật trạng thái
-                            </Button>
-                        </React.Fragment>
-                    ))}
-            </div>
+            )}
         </DefaultLayout>
     );
 }
