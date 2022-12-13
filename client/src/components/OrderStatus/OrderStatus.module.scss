@@ -1,6 +1,6 @@
 .wrapper {
     font-weight: 400;
-    font-size: 1.4rem;
+    font-size: 14px;
     padding: 4px;
     border-radius: 8px;
     color: var(--white);
@@ -9,7 +9,7 @@
     }
 }
 
-.waitting {
+.waiting {
     background-color: #5a6268;
 }
 .confirmed {
@@ -21,7 +21,7 @@
 .success {
     background-color: #28a745;
 }
-.undelivered {
+.faild {
     color: #333;
     background-color: #ffa500;
 }

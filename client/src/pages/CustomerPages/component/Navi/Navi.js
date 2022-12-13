@@ -1,23 +1,20 @@
-import {faBars,faFilter} from '@fortawesome/free-solid-svg-icons'
-import classNames from 'classnames/bind'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faBars,faFilter} from '@fortawesome/free-solid-svg-icons';
+import classNames from 'classnames/bind';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 
 
 import styles from './Navi.module.scss';
 
 const cx = classNames.bind(styles);
-
-
-
 function Navi({cates = []}){
 
     return (
         <div className={cx('Navi')}>
             <div className={cx('wrap-category')}>
                 <div className={cx('category')}>
-                    <p>Category</p>
                     <FontAwesomeIcon icon={faBars} />
+                    <p>Category</p>
                 </div>
                 <div className={cx('listType')}>
                     {cates.map((cate,index)=>(

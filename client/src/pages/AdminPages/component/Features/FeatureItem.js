@@ -9,7 +9,7 @@ const cx = classNames.bind(styles);
 function FeatureItem({ feature }) {
     return (
         <li className={cx('feature-item')}>
-            <h3>{feature.name}</h3>
+            <h5>{feature.name}</h5>
             <p>{feature.description}</p>
             <MyButton
                 primary

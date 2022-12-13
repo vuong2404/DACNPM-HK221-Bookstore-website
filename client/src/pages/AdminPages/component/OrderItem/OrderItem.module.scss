@@ -12,17 +12,11 @@
     }
     .order-id {
         color: var(--admin-primary);
-        font-size: 1.4rem;
+        font-size: 14px;
         font-weight: 400;
         margin-bottom: 8px;
     }
 
-    .order-status {
-        margin-bottom: 8px;
-        button {
-            max-height: 30px;
-        }
-    }
 
     .total-cost {
         opacity: 1;
@@ -31,10 +25,9 @@
         background-color: var(--black);
         padding: 8px;
         max-height: 30px;
-    } 
+    }
     .status {
         max-height: 30px;
         opacity: 1;
     }
 }
-

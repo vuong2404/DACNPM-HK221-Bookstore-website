@@ -24,15 +24,14 @@
 
 html {
     box-sizing: border-box;
-    font-size: 62.5%;
 }
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    font-size: 1.6rem;
-    line-height: 1.6rem;
     text-rendering: optimizespeed;
     color: var(--text-color);
+    font-size: 1rem;
+    line-height: 1rem;
 }
 
 button,
@@ -48,4 +47,37 @@ a {
     &:hover {
         text-decoration: none;
     }
+}
+
+//custm form-floating from bootstrap
+
+.form-floating {
+    .form-control,
+    .form-control-plaintext {
+        padding: 1rem 0.75rem;
+    }
+    .form-control,
+    .form-control-plaintext {
+        height: calc(2.5rem + 2px);
+        line-height: 1;
+    }
+    .form-select {
+        height: calc(2.7rem + 2px);
+        padding-top: 1rem;
+        padding-bottom: 0;
+    }
+}
+
+.form-floating > label {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.9rem;
+    color: #999;
+    transition: 0.2s all linear;
+}
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: var(--customer-primary);
+    outline: 0;
+    box-shadow: 0 0 0 1px rgb(165, 42, 42);
 }

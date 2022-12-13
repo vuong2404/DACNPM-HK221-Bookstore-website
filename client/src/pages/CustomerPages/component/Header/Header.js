@@ -47,11 +47,13 @@ function Header() {
                     placement="bottom-end"
                     zIndex={999}
                 >
-                    <button className={cx('user')}>
-                        <FontAwesomeIcon className={cx('iconUser')} icon={faUser} />
-                        <p>username</p>
-                        <FontAwesomeIcon className={cx('iconDown')} icon={faAngleDown} />
-                    </button>
+                    <Link to="/viewProfile">
+                        <button className={cx('user')}>
+                            <FontAwesomeIcon className={cx('iconUser')} icon={faUser} />
+                            <p>username</p>
+                            <FontAwesomeIcon className={cx('iconDown')} icon={faAngleDown} />
+                        </button>
+                    </Link>
                 </Tippy>
             </div>
         </header>

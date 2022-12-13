@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 
-import './AddressModal.scss';
+import '../Modal.scss';
 
 import MyButton from '~/components/Button';
 import CreateAddress from './CreateAddr';
@@ -27,7 +27,7 @@ function AddressModaL() {
     };
 
     return (
-        <AddrModalContext.Provider value={value}>
+        <AddrModalContext.Provider value={value} backdrop="static">
             <MyButton className="text-primary" onClick={handleShow}>
                 Thay đổi
             </MyButton>

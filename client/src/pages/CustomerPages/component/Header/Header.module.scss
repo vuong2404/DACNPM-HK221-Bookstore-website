@@ -4,7 +4,7 @@
     width: 100%;
     z-index: 100;
     background-color: brown;
-    height: var(--admin-header-height);
+    height: var(--custommer-header-height);
     text-align: center;
 }
 
@@ -74,7 +74,7 @@
     }
     p {
         margin: 0;
-        font-size: 1.6rem;
+        font-size: 1rem;
         font-weight: 500;
     }
 }

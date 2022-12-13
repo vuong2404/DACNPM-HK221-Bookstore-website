@@ -30,12 +30,12 @@ function Payment() {
     return (
         <DefaultLayout>
             <div className={cx('heading')}>
-                <h1>Thanh toán</h1>
+                <h3>Thanh toán</h3>
             </div>
 
             <div className={cx('wrapper')}>
-                <div className={cx('addr-info', 'mb-5')}>
-                    <h1>Địa chỉ nhận hàng</h1>
+                <div className={cx('addr-info')}>
+                    <h4>Địa chỉ nhận hàng</h4>
                     <div className={(cx('details'), 'd-flex align-items-center my-3 border-bottom py-2')}>
                         <div className="mr-5">
                             <p>
@@ -61,8 +61,8 @@ function Payment() {
                         </div>
                     </div>
                 </div>
-                <div className={cx('products-info', 'mb-5 border-bottom py-2')}>
-                    <h1>Chi tiết sản phẩm</h1>
+                <div className={cx('products-info', 'border-bottom py-2')}>
+                    <h4>Chi tiết sản phẩm</h4>
                     <Table borderless>
                         <thead className="border-bottom">
                             <tr className="">
@@ -91,8 +91,8 @@ function Payment() {
                         ))}
                     </Table>
                 </div>
-                <div className={(cx('payemnt-info'), 'd-flex align-items-center  my-3 border-bottom py-2')}>
-                    <h1>Phương thức thanh toán</h1>
+                <div className={(cx('payemnt-info'), 'd-flex align-items-center my-2 border-bottom py-2')}>
+                    <h4>Phương thức thanh toán</h4>
                     <span className="ml-auto font-weight-normal">Thanh toán khi nhận hàng</span>
                     <PaymentModal />
                 </div>

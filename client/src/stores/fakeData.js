@@ -1,6 +1,6 @@
 const addresses = [
     {
-        id: 'A1',
+        id: 100001,       
         receiverName: 'Liễu Minh Vương',
         phoneNumber: '0397638114',
         active: true,
@@ -13,7 +13,7 @@ const addresses = [
         },
     },
     {
-        id: 'A2',
+        id: 100001,       
         receiverName: 'Liễu Minh Vương',
         phoneNumber: '0397638114',
         active: false,
@@ -26,7 +26,7 @@ const addresses = [
         },
     },
     {
-        id: 'A3',
+        id: 100001,       
         receiverName: 'Liễu Minh Vương',
         phoneNumber: '0397638114',
         active: false,
@@ -43,7 +43,8 @@ const addresses = [
 const products = [
     {
         product: {
-            id: 'BOOK1',
+            id: 100000,
+     
             title: "Sophie's World (Sofies verden)",
             price: 160000,
             image: 'https://isachhay.net/wp-content/uploads/2017/08/sach-hay-moi-lan-vap-nga-la-mot-lan-truong-thanh.jpg',
@@ -53,7 +54,8 @@ const products = [
     },
     {
         product: {
-            id: 'BOOK2',
+            id: 100001,
+     
             title: 'The Name of the Rose (Il Nome della Rosa)',
             price: 150000,
             image: 'https://isachhay.net/wp-content/uploads/2017/08/sach-hay-moi-lan-vap-nga-la-mot-lan-truong-thanh.jpg',
@@ -63,7 +65,8 @@ const products = [
     },
     {
         product: {
-            id: 'BOOK4',
+            id: 100002,
+     
             title: "Sophie's World (Sofies verden)",
             price: 170000,
             image: 'https://isachhay.net/wp-content/uploads/2017/08/sach-hay-moi-lan-vap-nga-la-mot-lan-truong-thanh.jpg',
@@ -73,7 +76,18 @@ const products = [
     },
     {
         product: {
-            id: 'BOOK3',
+            id: 100003,
+     
+            title: 'How the Steel Was Tempered (Как закалялась сталь))',
+            price: 160000,
+            image: 'https://isachhay.net/wp-content/uploads/2017/08/sach-hay-moi-lan-vap-nga-la-mot-lan-truong-thanh.jpg',
+        },
+        count: 3,
+        isSelected: false,
+    },
+    {
+        product: {
+            id: 100003,
             title: 'How the Steel Was Tempered (Как закалялась сталь))',
             price: 160000,
             image: 'https://isachhay.net/wp-content/uploads/2017/08/sach-hay-moi-lan-vap-nga-la-mot-lan-truong-thanh.jpg',

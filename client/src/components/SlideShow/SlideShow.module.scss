@@ -21,7 +21,7 @@
         transform: translateX(-50%);
     }
     .ctrl-icon {
-        font-size: 1rem;
+        font-size: 10px;
         color: #ccc;
         padding: 2px;
         &.active {
@@ -39,13 +39,13 @@
 }
 
 .leftIcon {
-    font-size: 4rem;
+    font-size: 40px;
     position: absolute;
     left: 0;
 }
 
 .rightIcon {
-    font-size: 4rem;
+    font-size: 40px;
     position: absolute;
     right: 0;
 }
