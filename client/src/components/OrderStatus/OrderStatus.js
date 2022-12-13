@@ -4,7 +4,7 @@ import styles from './OrderStatus.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Status({ type = 'watting', title = '', onClick, className, children, ...passProps }) {
+function Status({ type = 'waiting', title = '', onClick, className, children, ...passProps }) {
     const classes = [
         cx('wrapper', {
             [type]: type,

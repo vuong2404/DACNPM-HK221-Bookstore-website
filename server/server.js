@@ -31,7 +31,6 @@ app.get("/", (req, res) => {
 require("./routes/order.routes")(app);
 require("./routes/address.routes")(app);
 require("./routes/cart.routes")(app);
-// require('./routes/address.routes')(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
