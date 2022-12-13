@@ -64,7 +64,7 @@ function ManageOrder() {
             .get(`http://localhost:8080/api/order?key=${key}`)
             .then((res) => res.data)
             .then((data) => setOrderLists(data))
-            .catch((err) => Alert('Đã xảy ra lỗi!', err));
+            .catch((err) => alert('Đã xảy ra lỗi!', err));
     };
     return (
         <DefaultLayout>
