@@ -2,60 +2,95 @@ const { conn, sql } = require("../config/dbconfig");
 
 module.exports = function () {
   this.getAll = async (id, result) => {
-    var query = `SELECT * FROM CART WHERE userid = ${id}`;
+    var query1 = `SELECT * FROM CART WHERE userid = ${id}`;
+    var query2 = `SELECT * FROM CART_ITEM WHERE cartId = @cartID `
     try {
       let pool = await conn;
-      let res = await pool.request().query(query);  
-      result(null, res.recordset);
+      let res1 = await pool.request().query(query1);  
+
+      let cartID = res1.recordset[0].cartID;
+      console.log(cartID)
+      pool = await conn;
+      let res2 = await pool.request().input("cartId", sql.Int, cartID)
+          .query(query2);  
+
+      data = res1.recordset[0]; 
+      data.books = res2.recordset ;
+
+      result(null, data);
     } catch (error) {
       console.error("Error in start():", error);
       result(error, null);
     }
   };
 
+  this.add = async (user_id, cartItem, result) => {
+    console.log(cartItem);
+    var query = `INSERT INTO cart_item(cartId, bookId, quantity) VALUES (@cartID, ${cartItem.bookID}, ${cartItem.quantity})`;
+    try {
+      let pool = await conn;
+      const res1 = await pool
+        .request()
+        .query(`SELECT cartID from CART where userID = ${user_id}`);
 
-//   this.add = async (cartItem, result) => {
-//     console.log(newAddress);
-//     var query = `INSERT INTO cart VALUES ()`;
-//     try {
-//       let pool = await conn;
-//       const res = await pool
-//         .request()
-//         .query(query);
+      let cartID = res1.recordset[0].cartID;
+      console.log(cartID)
 
-//       result(null, res);
-//     } catch (error) {
-//       console.error("Error in start()::", error);
-//       result(error, null);
-//     }
-//   };
+      pool = await conn;
+      const res = await pool
+        .request().input("cartId", sql.Int, cartID)
+        .query(query);
 
-//   this.update = async (id, newAddress, result) => {
-//     let query = `UPDATE WHERE id = ${id}`;
-//     try {
-//       let pool = await conn;
-//       const res1 = await pool
-//         .request()
-       
-//         .query(query);
-//       result(null, res1);
-//     } catch (error) {
-//       console.error("Error in start()::", error);
-//       result(error, null);
-//     }
-//   };
+      console.log(res)
+      result(null, res);
+    } catch (error) {
+      console.error("Error in start()::", error);
+      result(error, null);
+    }
+  };
 
-//   this.delete = async (id, result) => {
-//     let query = `Delete from cart where id = ${id}`;
-//     try {
-//       let pool = await conn;
-//       const res = await pool
-//         .request()
-//         .query(query);
-//       result(null, res);
-//     } catch (error) {
-//       console.error("Error in start()::", error);
-//       result(error, null);
-//     }
-//   };
+  this.update = async (user_id, cart_item, result) => {
+    let query = `UPDATE Cart_item SET quantity = ${cart_item.quantity} WHERE cartId = @cartId`;
+    try {
+      let pool = await conn;
+      const res1 = await pool
+        .request()
+        .query(`SELECT cartID from CART where userID = ${user_id}`);
+      let cartID = res1.recordset[0].cartID;
+
+      console.log(cartID)
+      pool = await conn;
+      const res = await pool
+        .request()
+        .input("cartId", sql.Int, cartID)
+        .query(query);
+      result(null, res);
+
+    } catch (error) {
+      console.error("Error in start()::", error);
+      result(error, null);
+    }
+  };
+
+  this.delete = async (user_id,bookID, result) => {
+    let query = `Delete from cart_item where cartId = @cartID AND bookId = @bookID`;
+    try {
+      let pool = await conn;
+      const res1 = await pool
+        .request()
+        .query(`SELECT cartID from CART where userID = ${user_id}`);
+      let cartID = res1.recordset[0].cartID;
+
+      pool = await conn;
+      const res = await pool
+        .request()
+        .input("cartID", sql.Int, cartID)
+        .input("bookID", sql.Int, bookID)
+        .query(query);
+      result(null, res);
+    } catch (error) {
+      console.error("Error in start()::", error);
+      result(error, null);
+    }
+  };
 };

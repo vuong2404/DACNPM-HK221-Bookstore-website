@@ -4,7 +4,7 @@ var model = new Cart();
 exports.getCart = async (req, res) => {
   let user_id = req.params.user_id;
   console.log(user_id)
-  model.getAll(user_id, (err, data) => {
+  model.getAll(user_id, async (err, data) => {
     if (err) {
       res.status(400).send(err);
     } else {
@@ -13,36 +13,36 @@ exports.getCart = async (req, res) => {
   });
 };
 
-// exports.addToCart = async (req, res) => {
-//   model.add(req.body, (err, data) => {
-//     if (err) {
-//       res.status(400).send(err);
-//     } else {
-//       res.status(200).send(data);
-//     }
-//   });
-// };
+exports.addToCart = async (req, res) => {
+  let user_id = req.params.user_id;
+  model.add(user_id, req.body, (err, data) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      res.status(200).send(data);
+    }
+  });
+};
 
-// exports.updateCart = async (req, res) => {
-//   let id = req.params.id;
+exports.updateCart = async (req, res) => {
+  let user_id = req.params.user_id;
 
-//   model.update(id, req.body, (err, data) => {
-//     if (err) {
-//       res.status(400).send(err);
-//     } else {
-//         res.status(200).send(data);
-//     }
-//   });
-// };
+  model.update(user_id, req.body, (err, data) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+        res.status(200).send(data);
+    }
+  });
+};
 
-// exports.deleteCartItem= async (req, res) => {
-//   let id = req.params.id;
-
-//   model.delete(id, (err, data) => {
-//     if (err) {
-//       res.status(400).send(err);
-//     } else {
-//         res.status(200).send(data);
-//     }
-//   });
-//};
+exports.deleteCartItem= async (req, res) => {
+  let id = req.params.id;
+  model.delete(id,req.body.bookID, (err, data) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+        res.status(200).send(data);
+    }
+  });
+};
