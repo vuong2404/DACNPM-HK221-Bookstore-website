@@ -229,7 +229,7 @@ GO
 
 CREATE TRIGGER tri_cartItem
 ON CART_ITEM
-FOR INSERT, UPDATE
+FOR INSERT, UPDATE, DELETE
 AS
 BEGIN
 	UPDATE CART_ITEM
@@ -241,6 +241,37 @@ BEGIN
 
 END
 GO
+
+CREATE TRIGGER cart_item_duplicate
+ON cart_item
+INSTEAD OF INSERT
+AS
+BEGIN
+    SET NOCOUNT ON
+    IF EXISTS 
+    (
+        SELECT 1 
+        FROM dbo.cart_item T 
+        INNER JOIN INSERTED I 
+        ON T.cartId = I.cartId 
+            AND T.bookId = I.bookId
+    )
+    BEGIN
+       UPDATE CART_ITEM
+	   SET CART_ITEM.quantity = CART_ITEM.quantity + inserted.quantity FROM inserted
+		WHERE CART_ITEM.bookId = inserted.bookId and CART_ITEM.cartId = inserted.cartId
+        return
+    END
+
+    ELSE INSERT INTO CART_ITEM 
+		SELECT * FROM INSERTED I
+END
+GO
+--UPDATE CART_ITEM
+--	SET CART_ITEM.quantity = CART_ITEM.quantity + inserted.quantity FROM inserted
+--	WHERE CART_ITEM.bookId = inserted.bookId and CART_ITEM.cartId = inserted.cartId
+
+
 
 CREATE TRIGGER tri_orderItem
 ON ORDER_ITEM
@@ -321,7 +352,7 @@ INSERT INTO BOOK VALUES
 (N'Tiêu đề 11', 230000, N'Tác giả 11', N'Nhà Xuất Bản 11', 2000, N'Mô tả 11', '', 0, 10)
 
 INSERT INTO CART_ITEM(cartId, bookId, quantity) VALUES
-(1000, 100000,2),
+(1000, 100004,2),
 (1000, 100001,2),
 (1000, 100002,2),
 (1001, 100000,2),
@@ -335,14 +366,12 @@ INSERT INTO CART_ITEM(cartId, bookId, quantity) VALUES
 (1006, 100008,1),
 (1007, 100008,3),
 (1008, 100008,2),
-(100, 100008,1),
-(1006, 100008,1),
-(1007, 100008,3),
-(1008, 100008,2),
-(1009, 100008,3),
-(10010, 100008,2)
-
+(1009, 100008,1),
+(1010, 100008,1)
 go 
+
+select * from cart
+select * from CART_ITEM
 
 INSERT INTO Receive_Info VALUES
 (1000000, N'Bắc Giang', N'Huyện Lục Ngạn', N'Xã Nghĩa Hồ', N'Số nhà 1', '0923236277', N'Nguyễn Văn Anh', 1),

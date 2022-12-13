@@ -22,6 +22,7 @@ const reducer = (state, action) => {
         case SET_NUM_DISPLAY:
             return {
                 ...state,
+                currentPage: 1,
                 numberLine: action.payload,
             };
         default:
