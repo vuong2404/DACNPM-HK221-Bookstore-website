@@ -1,6 +1,5 @@
 
-use master
-drop database BOOKSTORE
+
 CREATE DATABASE BOOKSTORE;
 GO
 USE BOOKSTORE
@@ -67,7 +66,7 @@ CREATE TABLE ORDER_ITEM(
 -- Homepage/Book Detail 
 CREATE TABLE BOOK(
 	bookId int NOT NULL IDENTITY(100000,1),
-	title nvarchar(30) NOT NULL, 
+	title nvarchar(100) NOT NULL, 
 	price money NOT NULL,
 	author nvarchar(30) NOT NULL,
 	publisher nvarchar(30),
@@ -110,7 +109,7 @@ CREATE TABLE feedback(
 -- User/account 
 CREATE TABLE _user(
 	userId int IDENTITY(1000000,1) PRIMARY KEY,
-	fullName nvarchar(30),
+	fullName nvarchar(30), 
 	email varchar(30),
 	phoneNum varchar(20),
 	gender nvarchar(10),
@@ -301,6 +300,7 @@ INSERT INTO account VALUES
 ('ACC008', 'username8', 'password8@', 'user'),
 ('ACC009', 'username9', 'password9@', 'user'),
 ('ACC010', 'username10', 'password10@', 'user')
+GO
 
 INSERT INTO _user VALUES
 ( N'Nguyễn Văn Anh', 'nguyenvananh@gmail.com','0923236277',N'Nam','20020217','20221205', N'Phường Linh Trung, Thủ Đức, TPHCM'),
@@ -314,7 +314,7 @@ INSERT INTO _user VALUES
 ( N'Dương Đình Bảo', 'duongdinhbao@gmail.com','0923236277',N'Nam','20021206','20221205', N'Phường Linh Trung, Thủ Đức, TPHCM'),
 (N'Hà Quốc Tuấn', 'haquoctuan@gmail.com','0923236277',N'Nam','20020126','20221205', N'Phường Linh Trung, Thủ Đức, TPHCM'),
 (N'Trần Đình Nam', 'trandinhnam@gmail.com','0923236277',N'Nam','20020322','20221205', N'Phường Linh Trung, Thủ Đức, TPHCM')
-
+GO
 
 INSERT INTO CART(userId) VALUES
 (1000000),
@@ -328,6 +328,7 @@ INSERT INTO CART(userId) VALUES
 (1000008),
 (1000009),
 (1000010)
+GO
 
 INSERT INTO CATEGORY VALUES
 (N'Tiểu Thuyết'),
@@ -337,19 +338,21 @@ INSERT INTO CATEGORY VALUES
 (N'Truyện Tranh'),
 ( N'Viễn Tưởng'),
 (N'Khoa Học')
+GO
 
 INSERT INTO BOOK VALUES
-(N'Tiêu đề 1', 150000, N'Tác giả 1', N'Nhà Xuất Bản 1', 2000, N'Mô tả 1', '', 0, 10),
-(N'Tiêu đề 2', 160000, N'Tác giả 2', N'Nhà Xuất Bản 2', 2000, N'Mô tả 2', '', 0, 10),
-(N'Tiêu đề 3', 170000, N'Tác giả 3', N'Nhà Xuất Bản 3', 2000, N'Mô tả 3', '', 0, 10),
-(N'Tiêu đề 4', 280000, N'Tác giả 4', N'Nhà Xuất Bản 4', 2000, N'Mô tả 4', '', 0, 10),
-(N'Tiêu đề 5', 60000, N'Tác giả 5', N'Nhà Xuất Bản 5', 2000, N'Mô tả 5', '', 0, 10),
-(N'Tiêu đề 6', 50000, N'Tác giả 6', N'Nhà Xuất Bản 6', 2000, N'Mô tả 6', '', 0, 10),
-(N'Tiêu đề 7', 60000, N'Tác giả 7', N'Nhà Xuất Bản 7', 2000, N'Mô tả 7', '', 0, 10),
-(N'Tiêu đề 8', 10000, N'Tác giả 8', N'Nhà Xuất Bản 8', 2000, N'Mô tả 8', '', 0, 10),
-(N'Tiêu đề 9', 90000, N'Tác giả 9', N'Nhà Xuất Bản 9', 2000, N'Mô tả 9', '', 0, 10),
-(N'Tiêu đề 10', 233000, N'Tác giả 10', N'Nhà Xuất Bản 10', 2000, N'Mô tả 10', '', 0, 10),
-(N'Tiêu đề 11', 230000, N'Tác giả 11', N'Nhà Xuất Bản 11', 2000, N'Mô tả 11', '', 0, 10)
+(N'Người bán hàng vĩ đại nhất thế giới', 150000, N'Jame Json', N'Nhà Xuất Bản 1', 2000, N'Mô tả 1', '', 0, 10),
+(N'Người bán hàng vĩ đại nhất thế giới', 160000, N'Robin Server', N'Nhà Xuất Bản 2', 2000, N'Mô tả 2', '', 0, 10),
+(N'Người bán hàng vĩ đại nhất thế giới', 170000, N'Peter Client', N'Nhà Xuất Bản 3', 2000, N'Mô tả 3', '', 0, 10),
+(N'Người bán hàng vĩ đại nhất thế giới', 280000, N'Enrydo Network', N'Nhà Xuất Bản 4', 2000, N'Mô tả 4', '', 0, 10),
+(N'Người bán hàng vĩ đại nhất thế giới', 60000, N'Karik Berison', N'Nhà Xuất Bản 5', 2000, N'Mô tả 5', '', 0, 10),
+(N'Người bán hàng vĩ đại nhất thế giới', 50000, N'Olaravie Santer', N'Nhà Xuất Bản 6', 2000, N'Mô tả 6', '', 0, 10),
+(N'Người bán hàng vĩ đại nhất thế giới', 60000, N'Bill Mezkender', N'Nhà Xuất Bản 7', 2000, N'Mô tả 7', '', 0, 10),
+(N'Người bán hàng vĩ đại nhất thế giới', 10000, N'Jan Pitersen', N'Nhà Xuất Bản 8', 2000, N'Mô tả 8', '', 0, 10),
+(N'Người bán hàng vĩ đại nhất thế giới', 90000, N'Hariton Butson', N'Nhà Xuất Bản 9', 2000, N'Mô tả 9', '', 0, 10),
+(N'Người bán hàng vĩ đại nhất thế giới', 233000, N'Emily Richars', N'Nhà Xuất Bản 10', 2000, N'Mô tả 10', '', 0, 10),
+(N'Người bán hàng vĩ đại nhất thế giới', 230000, N'Algyn Teryy', N'Nhà Xuất Bản 11', 2000, N'Mô tả 11', '', 0, 10)
+GO
 
 INSERT INTO CART_ITEM(cartId, bookId, quantity) VALUES
 (1000, 100004,2),
@@ -370,9 +373,6 @@ INSERT INTO CART_ITEM(cartId, bookId, quantity) VALUES
 (1010, 100008,1)
 go 
 
-select * from cart
-select * from CART_ITEM
-
 INSERT INTO Receive_Info VALUES
 (1000000, N'Bắc Giang', N'Huyện Lục Ngạn', N'Xã Nghĩa Hồ', N'Số nhà 1', '0923236277', N'Nguyễn Văn Anh', 1),
 (1000000, N'Lâm Đồng', N'Huyện Đạ Tẻh', N'Xã Quốc Oai', N'Số nhà 2', '0923236277', N'Nguyễn Huy Quốc', 0),
@@ -389,43 +389,43 @@ INSERT INTO Receive_Info VALUES
 
 go 
 
-select* from Receive_Info
-
-select * from _ORDER
 INSERT INTO _ORDER VALUES
-(1000000, 1000,  N'cash', 0, 0, '2022-04-22 10:34:23', '', N'waiting'),
+(1000000, 1000,  N'cash', 0, 0, '2022-04-22 10:34:23', 'COD123sabcd', N'confirmed'),
+(1000001, 1002,  N'momo', 0, 0, '2022-04-22 10:34:23', 'COD123abcd', N'intrans'),
+(1000002,1003,  N'cash', 0, 0, '2022-04-22 10:34:23', 'COD123abc', N'intrans'),
+(1000003, 1004,  N'momo', 0, 0, '2022-04-22 10:34:23', '', N'cancel'),
+(1000004,1005,  N'cash',0, 0, '2022-04-22 10:34:23', 'COD123tyabc', N'confirmed'),
+(1000000, 1006,  N'vnpay', 0, 0, '2022-04-22 10:34:23', 'COD123xabc', N'waiting'),
+(1000006, 1007, N'zalopay', 0, 0, '2022-04-22 10:34:23', 'COD123abcd', N'success'),
+(1000000,1000,  N'cash', 0, 0, '2022-04-22 10:34:23', 'COD123abc', N'success'),
+(1000000, 1002,  N'momo', 0, 0, '2022-04-22 10:34:23', 'COD123abcd', N'intrans'),
+(1000002, 1003,  N'cash', 0, 0, '2022-04-22 10:34:23', 'COD123abc', N'intrans'),
+(1000003, 1004,  N'momo', 0, 0, '2022-04-22 10:34:23', '', N'cancel'),
+(1000004, 1005,  N'cash',0, 0, '2022-04-22 10:34:23', 'COD123abc', N'confirmed'),
+(1000005, 1006, N'vnpay', 0, 0, '2022-04-22 10:34:23', '', N'waiting'),
+(1000000,1007, N'zalopay', 0, 0, '2022-04-22 10:34:23', 'COD123abcd', N'success'),
+(1000000, 1000,  N'cash', 0, 0, '2022-04-22 10:34:23', 'COD123abc', N'intrans'),
 (1000001, 1002,  N'momo', 0, 0, '2022-04-22 10:34:23', 'COD123abcd', N'intrans'),
 (1000002,1003,  N'cash', 0, 0, '2022-04-22 10:34:23', 'COD123abc', N'intrans'),
 (1000003, 1004,  N'momo', 0, 0, '2022-04-22 10:34:23', '', N'cancel'),
 (1000004,1005,  N'cash',0, 0, '2022-04-22 10:34:23', 'COD123abc', N'confirmed'),
 (1000005, 1006,  N'vnpay', 0, 0, '2022-04-22 10:34:23', '', N'waiting'),
 (1000006, 1007, N'zalopay', 0, 0, '2022-04-22 10:34:23', 'COD123abcd', N'success'),
-(1000000,1000,  N'cash', 0, 0, '2022-04-22 10:34:23', '', N'waiting'),
+(1000000,1000,  N'cash', 0, 0, '2022-04-22 10:34:23', 'COD123abc', N'cancel'),
 (1000001, 1002,  N'momo', 0, 0, '2022-04-22 10:34:23', 'COD123abcd', N'intrans'),
 (1000002, 1003,  N'cash', 0, 0, '2022-04-22 10:34:23', 'COD123abc', N'intrans'),
 (1000003, 1004,  N'momo', 0, 0, '2022-04-22 10:34:23', '', N'cancel'),
 (1000004, 1005,  N'cash',0, 0, '2022-04-22 10:34:23', 'COD123abc', N'confirmed'),
 (1000005, 1006, N'vnpay', 0, 0, '2022-04-22 10:34:23', '', N'waiting'),
-(1000006,1007, N'zalopay', 0, 0, '2022-04-22 10:34:23', 'COD123abcd', N'success'),
-(1000000, 1000,  N'cash', 0, 0, '2022-04-22 10:34:23', '', N'waiting'),
-(1000001, 1002,  N'momo', 0, 0, '2022-04-22 10:34:23', 'COD123abcd', N'intrans'),
-(1000002,1003,  N'cash', 0, 0, '2022-04-22 10:34:23', 'COD123abc', N'intrans'),
-(1000003, 1004,  N'momo', 0, 0, '2022-04-22 10:34:23', '', N'cancel'),
-(1000004,1005,  N'cash',0, 0, '2022-04-22 10:34:23', 'COD123abc', N'confirmed'),
-(1000005, 1006,  N'vnpay', 0, 0, '2022-04-22 10:34:23', '', N'waiting'),
-(1000006, 1007, N'zalopay', 0, 0, '2022-04-22 10:34:23', 'COD123abcd', N'success'),
-(1000000,1000,  N'cash', 0, 0, '2022-04-22 10:34:23', '', N'waiting'),
-(1000001, 1002,  N'momo', 0, 0, '2022-04-22 10:34:23', 'COD123abcd', N'intrans'),
-(1000002, 1003,  N'cash', 0, 0, '2022-04-22 10:34:23', 'COD123abc', N'intrans'),
-(1000003, 1004,  N'momo', 0, 0, '2022-04-22 10:34:23', '', N'cancel'),
-(1000004, 1005,  N'cash',0, 0, '2022-04-22 10:34:23', 'COD123abc', N'confirmed'),
-(1000005, 1006, N'vnpay', 0, 0, '2022-04-22 10:34:23', '', N'waiting'),
-(1000006,1007, N'zalopay', 0, 0, '2022-04-22 10:34:23', 'COD123abcd', N'success')
-
+(1000000,1007, N'zalopay', 0, 0, '2022-04-22 10:34:23', 'COD123abcd', N'success')
+GO
 
 INSERT INTO ORDER_ITEM (orderID,bookID, quantity) VALUES
 (10001, 100010, 2),
 (10001, 100001, 1),
+(10001, 100002, 4),
+(10001, 100003, 2),
+(10001, 100005, 3),
 (10002, 100001, 1),
 (10003, 100001, 1),
 (10004, 100001, 1),
@@ -477,7 +477,7 @@ INSERT INTO feedback VALUES
 (100000, 1000006, 5, N'Sách này rất thú vị'),
 (100000, 1000007, 5, N'Sách này rất thú vị'),
 (100000, 1000008, 5, N'Sách này rất thú vị')
-
+GO
 delete from _ORDER where total_quantity = 0
 
 SELECT * FROM CART
@@ -494,4 +494,7 @@ SELECT * FROM ACCOUNT
 SELECT bookID, quantity, totalMoney from  ORDER_ITEM
 
 SELECT * FROM _ORDER WHERE (orderID LIKE '%%' OR status LIKE '%%') AND status = 'undelivered'    
+
+
+
 

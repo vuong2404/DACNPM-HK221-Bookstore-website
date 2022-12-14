@@ -1,12 +1,15 @@
-const User = require("../models/order.models");
+const User = require("../models/user.models");
 var model = new User();
 
 exports.getList = async (req, res) => {
-  model.getAll((err, data) => {
+  let user_id = req.params.user_id;
+  console.log(user_id);
+  model.getAll(user_id, (err, data) => {
     if (err) {
       res.status(400).send(err);
+    } else {
+      res.status(200).send(data);
     }
-    res.send(data);
   });
 };
 
@@ -15,8 +18,7 @@ exports.getDetails = async (req, res) => {
   model.getOne(id, (err, data) => {
     if (err) {
       res.status(400).send(err);
-    }
-    res.send(data);
+    } else res.status(200).send(data);
   });
 };
 
@@ -24,16 +26,20 @@ exports.addNew = async (req, res) => {
   model.create(req.body, (err, data) => {
     if (err) {
       res.status(400).send(err);
+    } else {
+      res.status(200).send(data);
     }
-    res.send(data);
   });
 };
 
-exports.updateStatus = async (req, res) => {
-  model.updateStatus(req.body, (err, data) => {
+exports.updateUser = async (req, res) => {
+  let id = req.params.id;
+
+  model.update(id, req.body, (err, data) => {
     if (err) {
       res.status(400).send(err);
+    } else {
+      res.status(200).send(data);
     }
-    res.send(data);
   });
 };

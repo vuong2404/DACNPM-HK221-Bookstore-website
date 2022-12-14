@@ -1,75 +1,87 @@
-const { sql, conn } = require("../config/dbconfig");
+const { conn, sql } = require("../config/dbconfig");
+
 module.exports = function () {
-  this.getAll = async (result) => {
-    var query = "SELECT * FROM _USER";
+  this.getAll = async (id, result) => {
+    var query = `SELECT * FROM _USER WHERE userid = ${id}`;
     try {
       let pool = await conn;
       let res = await pool.request().query(query);
       result(null, res.recordset);
     } catch (error) {
       console.error("Error in start():", error);
-      result(true, null);
+      result(error, null);
     }
   };
 
   this.getOne = async (id, result) => {
-    var query = `SELECT * FROM _USER WHERE userID = @varID`;
+    var query1 = `SELECT o.orderID, o.userID, o.addressID, o.paymentMethod, o.total_quantity, o.totalMoney, o.createAt, o.deliveryCode, o.status, u.fullName FROM _ORDER o, _USER u WHERE o.userID = ${id} and u.userID = o.userID`;
+
     try {
       let pool = await conn;
-      let res = await pool.request().input("varID", sql.Int, id).query(query);
-      result(null, res.recordset);
+      let data1 = await pool.request().query(query1);
+
+      let res = data1.recordset;
+      var n = res.length;
+      for (i = 0; i < n; i++) {
+        var query2 = `SELECT o.bookID, o.quantity, o.totalMoney, b.title, b.price, b.author from ORDER_ITEM o, BOOK b WHERE o.orderID = ${res[i].orderID} and b.bookId = o.bookID`;
+        pool = await conn;
+        let data2 = await pool.request().query(query2);
+        res[i].books = [];
+        res[i].books = data2.recordset;
+      }
+      console.log(res);
+
+      result(null, res);
     } catch (error) {
       console.error("Error in start():", error);
-      result(true, null);
+      result(error, null);
     }
   };
 
   this.create = async (newUser, result) => {
-    let orderCode = Math.floor(Math.random() * 100000);
-    var query1 = `INSERT INTO _ORDER (userID, address, orderCode, paymentMethod, total_quantity, totalMoney, createAt, deliveryCode) 
-                    VALUES (@userId, @address, @orderCode, @p_method, @quantity, @cost , @time, @d_code)
-                    SELECT SCOPE_IDENTITY() AS id`;
-    let books = newOrder.books;
+    console.log(newUser);
+    var query = `INSERT INTO _USER (fullName, email, phoneNum, gender, birthDate, registerDate, address) VALUES(@fullName, @email, @phoneNum, @gender, @birthDate, @registerDate, @address)`;
     try {
       let pool = await conn;
-      const res1 = await pool
+      const res = await pool
         .request()
-        .input("userId", sql.Int, newOrder.userID)
-        .input("address", sql.NVarChar, newOrder.address)
-        .input("orderCode", sql.VarChar, orderCode)
-        .input("p_method", sql.NVarChar, newOrder.paymentMethod)
-        .input("quantity", sql.Int, newOrder.total_quantity)
-        .input("cost", sql.Money, newOrder.total_money)
-        .input("time", sql.DateTime, "2022-04-22 10:34:23")
-        .input("d_code", sql.VarChar, newOrder.d_code)
-        .query(query1);
+        .input("fullName", sql.NVarChar, newUser.fullName)
+        .input("email", sql.VarChar, newUser.email)
+        .input("phoneNum", sql.VarChar, newUser.phoneNum)
+        .input("gender", sql.NVarChar, newUser.gender)
+        .input("birthDate", sql.Date, newUser.birthDate)
+        .input("registerDate", sql.Date, newUser.registerDate)
+        .input("address", sql.NVarChar, newUser.address)
+        .query(query);
 
-      let id = res1.recordset[0].id;
-      books.forEach((item) => item.unshift(id));
-
-      const res2 = await pool
-        .request()
-        .query(
-          `INSERT INTO ORDER_ITEM(orderID, bookID, quantity, totalMoney) VALUES ${books.map(
-            (book) => `(${book})`
-          )}`
-        );
-
-      result(null, res2);
+      result(null, res);
     } catch (error) {
       console.error("Error in start()::", error);
       result(error, null);
     }
   };
 
-  this.updateStatus = async (order, result) => {
-    let query = `UPDATE _ORDER SET status = @status WHERE orderID = @id`;
+  this.update = async (id, newUser, result) => {
+    let query = `UPDATE _USER 
+                      SET fullName = @fullName, 
+                          email = @email, 
+                          phoneNum = @phoneNum, 
+                          gender = @gender, 
+                          birthDate = @birthDate, 
+                          registerDate = @registerDate, 
+                          address = @address 
+                      WHERE userId = ${id}`;
     try {
       let pool = await conn;
       const res1 = await pool
         .request()
-        .input("status", sql.VarChar, order.status)
-        .input("id", sql.Int, order.id)
+        .input("fullName", sql.NVarChar, newUser.fullName)
+        .input("email", sql.VarChar, newUser.email)
+        .input("phoneNum", sql.VarChar, newUser.phoneNum)
+        .input("gender", sql.NVarChar, newUser.gender)
+        .input("birthDate", sql.Date, newUser.birthDate)
+        .input("registerDate", sql.Date, newUser.registerDate)
+        .input("address", sql.NVarChar, newUser.address)
         .query(query);
       result(null, res1);
     } catch (error) {

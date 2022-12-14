@@ -1,0 +1,15 @@
+.input {
+    background-color: white;
+    color: black;
+
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 3px 3px rgba(230, 230, 230, 0.6);
+
+    padding: 10px;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: #dfdfdf;
+}

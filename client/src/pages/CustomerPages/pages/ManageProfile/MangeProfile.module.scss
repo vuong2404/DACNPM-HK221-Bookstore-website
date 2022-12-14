@@ -116,9 +116,6 @@ hr {
 }
 
 .cancel {
-    height: 30px;
-    width: 70px;
-
     margin-left: 355px;
     margin-right: 15px;
     background-color: red;
@@ -127,9 +124,16 @@ hr {
 }
 
 .change-inf {
-    height: 30px;
-    width: 110px;
-
     background-color: green;
     color: #fff;
+}
+
+.cancel:hover {
+    background-color: red;
+    color: #fff;
+}
+
+.change-inf:hover {
+    color: #fff;
+    background-color: green;
 }

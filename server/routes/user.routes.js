@@ -3,10 +3,11 @@ const user = require("../controllers/user.controllers.js");
 
 module.exports = (app) => {
   router = express.Router();
+  router.get("/:user_id", user.getList);
+  router.get("/order/:id", user.getDetails);
 
-  router.get("/", user.getList); // example localhost:8080/api/user
-  router.get("/:id", user.getDetails); //example localhost:8080/api/user/10001
   router.post("/", user.addNew);
-  router.put("/", user.updateStatus);
+  router.put("/:id", user.updateUser);
+
   app.use("/api/user", router);
 };

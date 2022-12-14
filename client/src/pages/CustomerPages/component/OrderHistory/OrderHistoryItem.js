@@ -1,86 +1,14 @@
 import classNames from 'classnames/bind';
-import { ccAmex } from 'fontawesome';
 import styles from './OrderHistoryItem.module.scss';
 import OrderHistoryProduct from './OrderHistoryProduct';
-import { useContext } from 'react';
-import { Context } from '../../../../stores';
 import Status from '~/components/OrderStatus/OrderStatus';
 import MyButton from '~/components/Button';
+import Button from './../Button/Button';
+import useSWR from 'swr';
+import fetch from 'unfetch';
 
+const fetcher = (url) => fetch(url).then((r) => r.json());
 const cx = classNames.bind(styles);
-
-const Product = [
-    {
-        image: 'https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2',
-        name: 'Người bán hàng vĩ đại nhất thế giới1',
-        author: 'OG. Mardino1',
-        price: '100000',
-        amount: '6',
-    },
-    {
-        image: 'https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2',
-        name: 'Người bán hàng vĩ đại nhất thế giới2',
-        author: 'OG. Mardino2',
-        price: '200000',
-        amount: '6',
-    },
-    {
-        image: 'https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2',
-        name: 'Người bán hàng vĩ đại nhất thế giới3',
-        author: 'OG. Mardino3',
-        price: '200000',
-        amount: '3',
-    },
-    {
-        image: 'https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2',
-        name: 'Người bán hàng vĩ đại nhất thế giới4',
-        author: 'OG. Mardino4',
-        price: '250000',
-        amount: '4',
-    },
-    {
-        image: 'https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2',
-        name: 'Người bán hàng vĩ đại nhất thế giới5',
-        author: 'OG. Mardino5',
-        price: '150000',
-        amount: '9',
-    },
-    {
-        image: 'https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2',
-        name: 'Người bán hàng vĩ đại nhất thế giới6',
-        author: 'OG. Mardino6',
-        price: '294000',
-        amount: '7',
-    },
-    {
-        image: 'https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2',
-        name: 'Người bán hàng vĩ đại nhất thế giới7',
-        author: 'OG. Mardino7',
-        price: '100000',
-        amount: '5',
-    },
-    {
-        image: 'https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2',
-        name: 'Người bán hàng vĩ đại nhất thế giới8',
-        author: 'OG. Mardino8',
-        price: '300000',
-        amount: '1',
-    },
-    {
-        image: 'https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2',
-        name: 'Người bán hàng vĩ đại nhất thế giới9',
-        author: 'OG. Mardino9',
-        price: '213000',
-        amount: '3',
-    },
-    {
-        image: 'https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2',
-        name: 'Người bán hàng vĩ đại nhất thế giới10',
-        author: 'OG. Mardino10',
-        price: '206000',
-        amount: '4',
-    },
-];
 
 function StatusSame({ type = 'watting', title = '', onClick, className, children, ...passProps }) {
     const classes = [
@@ -95,7 +23,7 @@ function StatusSame({ type = 'watting', title = '', onClick, className, children
         <MyButton className={classes} {...props}>
             {children ||
                 title ||
-                (type === 'waitting' && 'Hủy') ||
+                (type === 'waiting' && 'Hủy') ||
                 (type === 'confirmed' && 'Xem chi tiết') ||
                 (type === 'success' && 'Đánh giá') ||
                 (type === 'cancel' && 'Mua lại') ||
@@ -106,54 +34,38 @@ function StatusSame({ type = 'watting', title = '', onClick, className, children
 }
 
 function OrderHistoryItem(props) {
-    const a = Math.floor(Math.random() * 10);
-    const b = Math.floor(Math.random() * 10);
-    const c = Math.floor(Math.random() * 10);
+    const { data } = useSWR('http://localhost:8080/api/user/order/1000000', fetcher);
     return (
         <div className={cx('container')}>
             <div className={cx('item1')}>
                 <div className={cx('item1-1')}>Mã đơn hàng: {props.orderID}</div>
-                <div className={cx('item1-2')}>Mã đơn vị vận chuyển: {props.supID}</div>
+                <div className={cx('item1-2')}>Mã đơn vị vận chuyển: {props.deliveryCode}</div>
             </div>
             <div className={cx('item2')}>
-                <div className={cx('item2-1')}>Đã đặt ngày: {props.time}</div>
+                <div className={cx('item2-1')}>Đã đặt ngày: {props.createAt}</div>
                 <div className={cx('item2-2')}>
                     <Status type={props.status} />
                 </div>
             </div>
             <div className={cx('item3')}>
-                <OrderHistoryProduct
-                    image={Product[a].image}
-                    name={Product[a].name}
-                    author={Product[a].author}
-                    price={Product[a].price}
-                    amount={Product[a].amount}
-                ></OrderHistoryProduct>
-                <OrderHistoryProduct
-                    image={Product[b].image}
-                    name={Product[b].name}
-                    author={Product[b].author}
-                    price={Product[b].price}
-                    amount={Product[b].amount}
-                ></OrderHistoryProduct>
-                <OrderHistoryProduct
-                    image={Product[c].image}
-                    name={Product[c].name}
-                    author={Product[c].author}
-                    price={Product[c].price}
-                    amount={Product[c].amount}
-                ></OrderHistoryProduct>
+                {data[0].books
+                    ? data[0].books.map((item) => (
+                          <OrderHistoryProduct
+                              image="https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2"
+                              title={item['title']}
+                              quantity={item['quantity']}
+                              totalMoney={item['totalMoney']}
+                              author={item['author']}
+                              price={item['price']}
+                          ></OrderHistoryProduct>
+                      ))
+                    : null}
             </div>
-            <MyButton className={cx('item4')}>
-                Tổng số tiền:
-                {Product[a].amount * Product[a].price +
-                    Product[b].amount * Product[b].price +
-                    Product[c].amount * Product[c].price}
-            </MyButton>
+            <MyButton className={cx('item4')}>Tổng số tiền:{props.totalMoney}</MyButton>
             <div className={cx('item5')}>
                 <StatusSame className={cx('item5-1')} type={props.status} />
-                <div className={cx('item5-2')}>Mua lại</div>
-                <div className={cx('item5-3')}>Liên hệ người bán</div>
+                <Button className={cx('item5-2')}>Mua lại</Button>
+                <Button className={cx('item5-3')}>Liên hệ người bán</Button>
             </div>
         </div>
     );
