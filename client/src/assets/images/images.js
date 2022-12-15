@@ -9,6 +9,7 @@ const images = {
     zalopay: require('./zalopay.png'),
     vnpay: require('./vnpay.png'),
     shipCode: require('./thanh-toan-khi-nhan-hang.png'),
+    policy: require('./policy.png'),
 };
 
 export default images;
