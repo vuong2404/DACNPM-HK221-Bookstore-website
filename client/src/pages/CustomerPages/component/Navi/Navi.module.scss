@@ -1,4 +1,4 @@
-.Navi{
+.Navi {
     margin-top: 8vh;
     width: 100%;
     height: 6vh;
@@ -7,20 +7,20 @@
     flex-direction: row;
     background-color: brown;
 
-    .itemNavi{
+    .itemNavi {
         margin-left: 30px;
         width: 10%;
         height: 60%;
         display: flex;
         align-items: center;
         background-color: white;
-        a{
+        a {
             margin: 0 auto;
         }
     }
 }
 
-.wrap-category{
+.wrap-category {
     margin-left: 30px;
     position: relative;
     width: 10%;
@@ -28,43 +28,43 @@
     display: flex;
     align-items: center;
     background-color: white;
-    .listType{
+    .listType {
         display: none;
     }
 
-    .category{
+    .category {
         margin: 0 auto;
-        p{
+        p {
             display: inline;
             padding-left: 20px;
         }
     }
 }
 
-.wrap-category:hover{
-    color: #9747FF;
+.wrap-category:hover {
+    color: #9747ff;
     height: 70%;
 }
 
-.wrap-category:hover > .listType{
+.wrap-category:hover > .listType {
     z-index: 2;
     display: flex;
     flex-wrap: wrap;
     width: 90vw;
     position: absolute;
-    top: calc(0.7*6vh);
+    top: calc(0.7 * 6vh);
     background-color: white;
     color: black;
-    .box{
+    .box {
         width: 20%;
         margin-top: 20px;
     }
-    .btn{
+    .btn {
         margin-left: 80%;
         margin-top: 20px;
         width: 8%;
         height: 30px;
         display: block;
-        background-color: #FFC0CB;
+        background-color: #ffc0cb;
     }
 }
