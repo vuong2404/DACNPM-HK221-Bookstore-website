@@ -29,7 +29,6 @@ app.get("/", (req, res) => {
 });
 
 require("./routes/order.routes")(app);
-require("./routes/book.routes")(app);
 require("./routes/address.routes")(app);
 require("./routes/cart.routes")(app);
 require("./routes/user.routes")(app);

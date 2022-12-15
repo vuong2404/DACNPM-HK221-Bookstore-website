@@ -1,0 +1,26 @@
+.wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    background-color: var(--white);
+
+    img {
+        width: 60px;
+        margin: 0 16px;
+    }
+    .remove-btn {
+        font-size: 14px;
+        padding: 4px 8px;
+    }
+}
+
+.quantity-controller {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    margin: 0 32px 0 auto;
+    gap: 8px;
+}

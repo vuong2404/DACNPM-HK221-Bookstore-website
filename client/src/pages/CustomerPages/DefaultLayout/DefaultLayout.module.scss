@@ -1,0 +1,20 @@
+.wrapper {
+    background-color: #f5f5f5;
+}
+
+.container {
+    min-height: calc(90vh - var(--custommer-header-height) - var(--custommer-footer-height));
+    width: 100%;
+
+    margin: var(--custommer-header-height) auto 0;
+
+
+    flex: 1;
+}
+
+a {
+    text-decoration: none;
+    &:hover {
+        color: black;
+    }
+}

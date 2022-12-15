@@ -1,0 +1,29 @@
+// for all pages
+.wrapper {
+    max-width: 1200px;
+}
+.heading {
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 8px 0;
+}
+
+//Home page css
+.report {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    line-height: 3rem;
+    .report-heading {
+        color: rgb(255, 0, 166);
+    }
+    .num-order {
+        font-size: 3rem;
+        color: red;
+    }
+    .total-turnover {
+        font-size: 3rem;
+        color: red;
+    }
+}
+
+// Manage order page css

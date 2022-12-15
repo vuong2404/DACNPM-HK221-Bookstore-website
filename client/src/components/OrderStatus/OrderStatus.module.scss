@@ -1,0 +1,30 @@
+.wrapper {
+    font-weight: 400;
+    font-size: 14px;
+    padding: 4px;
+    border-radius: 8px;
+    color: var(--white);
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.waiting {
+    background-color: #5a6268;
+}
+.confirmed {
+    background-color: #007bff;
+}
+.intrans {
+    background-color: #17a2b8;
+}
+.success {
+    background-color: #28a745;
+}
+.faild {
+    color: #333;
+    background-color: #ffa500;
+}
+.cancel {
+    background-color: #dc3545;
+}

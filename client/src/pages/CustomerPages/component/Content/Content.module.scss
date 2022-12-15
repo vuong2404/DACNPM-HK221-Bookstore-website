@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.book{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    border: 2px solid black;
+    h3{
+        font-size: 20px;
+    }
+    img{
+        width: 80%;
+    }
+    margin:  20px auto;
+}
+
+.sellInfo{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+    .price{
+        color: red;
+    }
+
+    .sell{
+        max-width: 30%;
+        font-size: smaller;
+        font-weight: normal;
+        opacity: 0.5;
+    }
+}
+

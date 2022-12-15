@@ -1,0 +1,23 @@
+.modal-content {
+    padding: 8px;
+}
+
+.modal-body {
+    padding: 0;
+}
+
+.modal-height {
+    max-height: 70vh;
+}
+
+@media screen and (min-width: 992px) {
+    .modal-width {
+        width: 50vw;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 991px) {
+    .modal-width {
+        width: 100vw;
+    }
+}

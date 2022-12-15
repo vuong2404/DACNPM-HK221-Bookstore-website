@@ -1,0 +1,33 @@
+.wrapper {
+    border: 1px solid #ccc;
+    margin: 8px 0;
+    padding: 8px;
+    .heading {
+        display: flex;
+        justify-content: space-between;
+        padding: 0px;
+        p {
+            margin: 0;
+        }
+    }
+    .order-id {
+        color: var(--admin-primary);
+        font-size: 14px;
+        font-weight: 400;
+        margin-bottom: 8px;
+    }
+
+
+    .total-cost {
+        opacity: 1;
+        color: var(--white);
+        font-weight: 400;
+        background-color: var(--black);
+        padding: 8px;
+        max-height: 30px;
+    }
+    .status {
+        max-height: 30px;
+        opacity: 1;
+    }
+}
