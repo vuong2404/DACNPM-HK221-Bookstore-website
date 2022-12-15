@@ -5,14 +5,13 @@ module.exports = function () {
     var query = `SELECT * FROM receive_info WHERE userid = ${id}`;
     try {
       let pool = await conn;
-      let res = await pool.request().query(query);  
+      let res = await pool.request().query(query);
       result(null, res.recordset);
     } catch (error) {
       console.error("Error in start():", error);
       result(error, null);
     }
   };
-
 
   this.create = async (newAddress, result) => {
     console.log(newAddress);
@@ -71,9 +70,7 @@ module.exports = function () {
     let query = `Delete from receive_info where id = ${id}`;
     try {
       let pool = await conn;
-      const res = await pool
-        .request()
-        .query(query);
+      const res = await pool.request().query(query);
       result(null, res);
     } catch (error) {
       console.error("Error in start()::", error);

@@ -1,5 +1,5 @@
 require("dotenv").config();
-var sql = require('mssql/msnodesqlv8')
+var sql = require("mssql/msnodesqlv8");
 
 let config = {
   database: process.env.DATABASE,
@@ -12,16 +12,15 @@ let config = {
   },
   options: {
     trustedConnection: true,
-    trustServerCertificate: true
+    trustServerCertificate: true,
   },
 };
 
-
-const conn = new sql.ConnectionPool(config).connect().then(pool => {
-  return pool ; 
-})
+const conn = new sql.ConnectionPool(config).connect().then((pool) => {
+  return pool;
+});
 
 module.exports = {
   conn,
-  sql
-}
+  sql,
+};

@@ -16,9 +16,11 @@
 }
 
 .item2-viewProfile {
-    flex-grow: 3;
+    flex-grow: 1;
     background-color: #fff;
-    padding: 50px;
+    margin-left: 50px;
+    margin-bottom: 50px;
+    padding: 50px 50px 30px 50px;
 }
 
 .text1-viewProfile {
@@ -94,7 +96,6 @@ hr {
     height: 46px;
     width: 100%;
     display: flex;
-
     .iconSearch {
         height: 30px;
         padding: 8px 15px;
@@ -110,15 +111,12 @@ hr {
         height: 46px;
         padding-left: 10px;
         font-size: 16px;
-        width: 85%;
+        width: 90%;
         background-color: #d9d9d9;
     }
 }
 
 .cancel {
-    height: 30px;
-    width: 70px;
-
     margin-left: 355px;
     margin-right: 15px;
     background-color: red;
@@ -127,9 +125,16 @@ hr {
 }
 
 .change-inf {
-    height: 30px;
-    width: 110px;
-
     background-color: green;
     color: #fff;
+}
+
+.cancel:hover {
+    background-color: red;
+    color: #fff;
+}
+
+.change-inf:hover {
+    color: #fff;
+    background-color: green;
 }
