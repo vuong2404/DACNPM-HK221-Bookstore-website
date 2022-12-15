@@ -72,7 +72,7 @@ CREATE TABLE BOOK(
 	publisher nvarchar(30),
 	pubYear int,
 	description text NOT NULL,
-	urlBook char(100) NOT NULL,
+	urlBook char(1000) NOT NULL,
 	sold_number int,
 	amountInStorage int NOT NULL
 
@@ -124,6 +124,7 @@ CREATE TABLE ACCOUNT(
 	password char(30) NOT NULL,
 	typeAccount char(30) NOT NULL
 )
+go
 
 
 ALTER TABLE cart ADD CONSTRAINT fk_cart 
@@ -341,17 +342,17 @@ INSERT INTO CATEGORY VALUES
 GO
 
 INSERT INTO BOOK VALUES
-(N'Người bán hàng vĩ đại nhất thế giới', 150000, N'Jame Json', N'Nhà Xuất Bản 1', 2000, N'Mô tả 1', '', 0, 10),
-(N'Người bán hàng vĩ đại nhất thế giới', 160000, N'Robin Server', N'Nhà Xuất Bản 2', 2000, N'Mô tả 2', '', 0, 10),
-(N'Người bán hàng vĩ đại nhất thế giới', 170000, N'Peter Client', N'Nhà Xuất Bản 3', 2000, N'Mô tả 3', '', 0, 10),
-(N'Người bán hàng vĩ đại nhất thế giới', 280000, N'Enrydo Network', N'Nhà Xuất Bản 4', 2000, N'Mô tả 4', '', 0, 10),
-(N'Người bán hàng vĩ đại nhất thế giới', 60000, N'Karik Berison', N'Nhà Xuất Bản 5', 2000, N'Mô tả 5', '', 0, 10),
-(N'Người bán hàng vĩ đại nhất thế giới', 50000, N'Olaravie Santer', N'Nhà Xuất Bản 6', 2000, N'Mô tả 6', '', 0, 10),
-(N'Người bán hàng vĩ đại nhất thế giới', 60000, N'Bill Mezkender', N'Nhà Xuất Bản 7', 2000, N'Mô tả 7', '', 0, 10),
-(N'Người bán hàng vĩ đại nhất thế giới', 10000, N'Jan Pitersen', N'Nhà Xuất Bản 8', 2000, N'Mô tả 8', '', 0, 10),
-(N'Người bán hàng vĩ đại nhất thế giới', 90000, N'Hariton Butson', N'Nhà Xuất Bản 9', 2000, N'Mô tả 9', '', 0, 10),
-(N'Người bán hàng vĩ đại nhất thế giới', 233000, N'Emily Richars', N'Nhà Xuất Bản 10', 2000, N'Mô tả 10', '', 0, 10),
-(N'Người bán hàng vĩ đại nhất thế giới', 230000, N'Algyn Teryy', N'Nhà Xuất Bản 11', 2000, N'Mô tả 11', '', 0, 10)
+(N'Người bán hàng vĩ đại', 150000, N'Jame Json', N'Nhà Xuất Bản 1', 2000, N'Mô tả 1', 'https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2', 0, 10),
+(N'Giao tiếp thông minh', 160000, N'Robin Server', N'Nhà Xuất Bản 2', 2000, N'Mô tả 2', 'https://cf.shopee.vn/file/2bb756d69bcb18e07b66d522e6ed30c8_tn', 0, 10),
+(N'Bí mật DOTCOM', 170000, N'Peter Client', N'Nhà Xuất Bản 3', 2000, N'Mô tả 3', 'https://lzd-img-global.slatic.net/g/p/ba69eac643bacd9588c327b94d645175.jpg_720x720q80.jpg_.webp', 0, 10),
+(N'Đắc nhân tâm', 280000, N'Enrydo Network', N'Nhà Xuất Bản 4', 2000, N'Mô tả 4', 'https://cdn0.fahasa.com/media/catalog/product/d/n/dntttttuntitled.jpg', 0, 10),
+(N'Bảy thói quen hiệu quả', 60000, N'Karik Berison', N'Nhà Xuất Bản 5', 2000, N'Mô tả 5', 'https://muasachhay.vn/wp-content/uploads/2017/05/7-thoi-quen-hieu-qua-bia-cung-mua-sach-hay-776x1024.png', 0, 10),
+(N'Người bán hàng vĩ đại', 50000, N'Olaravie Santer', N'Nhà Xuất Bản 6', 2000, N'Mô tả 6', 'https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2', 0, 10),
+(N'Người bán hàng vĩ đại', 60000, N'Bill Mezkender', N'Nhà Xuất Bản 7', 2000, N'Mô tả 7', 'https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2', 0, 10),
+(N'Người bán hàng vĩ đại', 10000, N'Jan Pitersen', N'Nhà Xuất Bản 8', 2000, N'Mô tả 8', 'https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2', 0, 10),
+(N'Người bán hàng vĩ đại', 90000, N'Hariton Butson', N'Nhà Xuất Bản 9', 2000, N'Mô tả 9', 'https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2', 0, 10),
+(N'Người bán hàng vĩ đại', 233000, N'Emily Richars', N'Nhà Xuất Bản 10', 2000, N'Mô tả 10', 'https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2', 0, 10),
+(N'Để xây dựng doanh nghiệp', 230000, N'Algyn Teryy', N'Nhà Xuất Bản 11', 2000, N'Mô tả 11', 'https://toplist.vn/images/800px/de-xay-dung-doanh-nghiep-hieu-qua-199324.jpg', 0, 10)
 GO
 
 INSERT INTO CART_ITEM(cartId, bookId, quantity) VALUES
@@ -479,7 +480,7 @@ INSERT INTO feedback VALUES
 (100000, 1000008, 5, N'Sách này rất thú vị')
 GO
 delete from _ORDER where total_quantity = 0
-
+Go
 SELECT * FROM CART
 SELECT * FROM CART_ITEM
 SELECT * FROM Receive_Info

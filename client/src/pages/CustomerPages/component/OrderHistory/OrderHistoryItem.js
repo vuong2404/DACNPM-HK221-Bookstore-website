@@ -58,7 +58,7 @@ function OrderHistoryItem() {
                                       ? item['books'].map((number) => (
                                             <OrderHistoryProduct
                                                 key={number['bookID']}
-                                                image="https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2"
+                                                urlBook={number['urlBook']}
                                                 title={number['title']}
                                                 quantity={number['quantity']}
                                                 totalMoney={number['totalMoney']}
