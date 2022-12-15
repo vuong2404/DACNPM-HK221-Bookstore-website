@@ -33,39 +33,51 @@ function StatusSame({ type = 'watting', title = '', onClick, className, children
     );
 }
 
-function OrderHistoryItem(props) {
+function OrderHistoryItem() {
     const { data } = useSWR('http://localhost:8080/api/user/order/1000000', fetcher);
+
     return (
-        <div className={cx('container')}>
-            <div className={cx('item1')}>
-                <div className={cx('item1-1')}>Mã đơn hàng: {props.orderID}</div>
-                <div className={cx('item1-2')}>Mã đơn vị vận chuyển: {props.deliveryCode}</div>
-            </div>
-            <div className={cx('item2')}>
-                <div className={cx('item2-1')}>Đã đặt ngày: {props.createAt}</div>
-                <div className={cx('item2-2')}>
-                    <Status type={props.status} />
-                </div>
-            </div>
-            <div className={cx('item3')}>
-                {data[0].books
-                    ? data[0].books.map((item) => (
-                          <OrderHistoryProduct
-                              image="https://cf.shopee.vn/file/f8af2955a6bb8f5699ce26577fd26cb2"
-                              title={item['title']}
-                              quantity={item['quantity']}
-                              totalMoney={item['totalMoney']}
-                              author={item['author']}
-                              price={item['price']}
-                          ></OrderHistoryProduct>
+        <div>
+            <div className={cx('container')}>
+                {data
+                    ? data.map((item) => (
+                          <div className={cx('container2')}>
+                              <div className={cx('item1')}>
+                                  <div className={cx('item1-1')}>Mã đơn hàng: {item.orderID}</div>
+                                  <div className={cx('item1-2')}>Mã đơn vị vận chuyển: {item.deliveryCode}</div>
+                              </div>
+                              <div className={cx('item2')}>
+                                  <div className={cx('item2-1')}>Đã đặt ngày: {item.createAt}</div>
+                                  <div className={cx('item2-2')}>
+                                      <Status type={item.status} />
+                                  </div>
+                              </div>
+
+                              <div className={cx('item3')}>
+                                  {item
+                                      ? item['books'].map((number) => (
+                                            <OrderHistoryProduct
+                                                key={number['bookID']}
+                                                urlBook={number['urlBook']}
+                                                title={number['title']}
+                                                quantity={number['quantity']}
+                                                totalMoney={number['totalMoney']}
+                                                author={number['author']}
+                                                price={number['price']}
+                                            ></OrderHistoryProduct>
+                                        ))
+                                      : null}
+                              </div>
+
+                              <MyButton className={cx('item4')}>Tổng số tiền:{item.totalMoney}</MyButton>
+                              <div className={cx('item5')}>
+                                  <StatusSame className={cx('item5-1')} type={item.status} />
+                                  <Button className={cx('item5-2')}>Mua lại</Button>
+                                  <Button className={cx('item5-3')}>Liên hệ người bán</Button>
+                              </div>
+                          </div>
                       ))
                     : null}
-            </div>
-            <MyButton className={cx('item4')}>Tổng số tiền:{props.totalMoney}</MyButton>
-            <div className={cx('item5')}>
-                <StatusSame className={cx('item5-1')} type={props.status} />
-                <Button className={cx('item5-2')}>Mua lại</Button>
-                <Button className={cx('item5-3')}>Liên hệ người bán</Button>
             </div>
         </div>
     );

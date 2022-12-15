@@ -23,7 +23,7 @@ module.exports = function () {
       let res = data1.recordset;
       var n = res.length;
       for (i = 0; i < n; i++) {
-        var query2 = `SELECT o.bookID, o.quantity, o.totalMoney, b.title, b.price, b.author from ORDER_ITEM o, BOOK b WHERE o.orderID = ${res[i].orderID} and b.bookId = o.bookID`;
+        var query2 = `SELECT o.bookID, o.quantity, o.totalMoney,o.orderID, b.title, b.price, b.author, b.urlBook from ORDER_ITEM o, BOOK b WHERE o.orderID = ${res[i].orderID} and b.bookId = o.bookID`;
         pool = await conn;
         let data2 = await pool.request().query(query2);
         res[i].books = [];

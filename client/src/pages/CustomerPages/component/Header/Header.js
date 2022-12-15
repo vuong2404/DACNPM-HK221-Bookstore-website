@@ -17,7 +17,7 @@ const cx = classNames.bind(styles);
 const customerOption = [
     {
         name: 'Tài khoản của tôi',
-        to: '/myaccout',
+        to: '/viewProfile',
     },
     {
         name: 'Đăng xuất',
