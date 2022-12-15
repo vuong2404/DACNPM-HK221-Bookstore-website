@@ -2,6 +2,7 @@
     font-weight: 400;
     font-size: 14px;
     padding: 4px;
+
     border-radius: 8px;
     color: var(--white);
     &:hover {
@@ -30,10 +31,14 @@
 }
 
 .container {
-    border: solid #f5f5f5;
-    padding: 20px;
-    margin-bottom: 40px;
+}
+
+.container2 {
+    border: solid #b5abab;
+
+    padding: 20px 20px;
     background-color: #f5f5f5;
+    margin: 20px 0;
 }
 
 .item1 {

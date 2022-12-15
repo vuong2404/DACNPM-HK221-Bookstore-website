@@ -48,17 +48,7 @@ function ViewOrderHistory() {
                     </div>
                     {/* <div style={{ overflow: 'auto', height: 800, marginTop: 20 }}> */}
                     <div style={{ marginTop: 20 }}>
-                        {data
-                            ? data.map((item) => (
-                                  <OrderHistoryItem
-                                      orderID={item['orderID']}
-                                      deliveryCode={item['deliveryCode']}
-                                      createAt={item['createAt']}
-                                      status={item['status']}
-                                      totalMoney={item['totalMoney']}
-                                  ></OrderHistoryItem>
-                              ))
-                            : null}
+                        <OrderHistoryItem></OrderHistoryItem>
                     </div>
                 </div>
             </div>
