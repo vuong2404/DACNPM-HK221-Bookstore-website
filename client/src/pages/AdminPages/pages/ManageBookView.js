@@ -1,16 +1,18 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { useEffect, useReducer, useState } from 'react';
 import DefaultLayout from '../DefaultLayout';
 import classNames from 'classnames/bind';
 import styles from './AdminPage.module.scss';
 import MyButton from '~/components/Button';
 import { Button, Table } from 'react-bootstrap';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { useReducer } from 'react';
 import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
 import DropdownMenu from 'react-bootstrap/esm/DropdownMenu';
 import DropdownItem from 'react-bootstrap/esm/DropdownItem'
+import { getOrderLists } from '~/api/bookApi';
+import axios from 'axios';
 
 import reducer from '../reducer/orderReducer';
 import { setPage, gotoFirstPage, gotoLastPage, setNumberLine } from '../reducer/action';
@@ -78,12 +80,38 @@ const products = [
 
 function ManageBookView(){
     let pages = 10; // = orderList.length ;
+
+    const [orderLists, setOrderLists] = useState([]);
+    const [keySearch, setKeySearch] = useState('');
+    const [records, setRecords] = useState([]) ;
+
     const initState = {
         currentPage: 1,
         numberLine: 10,
         listOrder: products,
     };
     const [state, dispatch] = useReducer(reducer, initState);
+    const loadData = async () => {
+        return await getOrderLists().then((res) => setOrderLists(res));
+    };
+
+    useEffect(() => {
+        loadData();
+    }, []);
+
+    useEffect(() => { 
+        console.log(state)
+        let from = (state.currentPage - 1)*state.numberLine ;
+        let to = state.currentPage*state.numberLine 
+        if (to > orderLists.length) {
+            to = orderLists.length;
+        }
+        setRecords(orderLists.slice(from,to))
+    }, [state, orderLists])
+
+    console.log(records)
+
+
     return(
         <DefaultLayout>
             <div className={cx('manage-book-wrapper')}>
