@@ -20,7 +20,7 @@ function LogIn() {
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     // User Login info
-    const database = [
+    const AdminDatabase = [
         // admin account
         {
             username: "admin1",
@@ -47,7 +47,7 @@ function LogIn() {
         var { username, password, code } = document.forms[0];
 
         // Find user login info
-        const userData = database.find((user) => user.username === username.value);
+        const userData = AdminDatabase.find((user) => user.username === username.value);
 
         // Compare user info
         if (userData) {
