@@ -13,17 +13,17 @@ function Register1() {
                     <div className={cx('box')}>
                         <h2 class="header">Đăng ký</h2>
                         <form action='./Register-2'>
-                            <form action='#'>
-                                <div>
-                                    <input type="text" placeholder="Số điện thoại" />
-                                    <button class="get-code">
-                                        Lấy mã xác nhận
-                                    </button>
-                                </div>
-                            </form>
+
                             <div>
-                                <input type="text" placeholder="Mã xác nhận" />
+                                <input type="text" placeholder="Số điện thoại" required />
+                                {/* <button class="get-code">
+                                        Lấy mã xác nhận
+                                    </button> */}
                             </div>
+
+                            {/* <div>
+                                <input type="text" placeholder="Mã xác nhận" />
+                            </div> */}
 
                             <button class="submit" type="submit">
                                 Xác nhận
