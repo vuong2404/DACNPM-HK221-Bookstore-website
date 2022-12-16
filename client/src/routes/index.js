@@ -23,6 +23,9 @@ import ManageCustomerView from '~/pages/AdminPages/pages/ManageCustomerView';
 import ManageCustomerAdd from '~/pages/AdminPages/CRUDCustomer/ManageCustomerAdd';
 import ManageCustomerFilter from '~/pages/AdminPages/CRUDCustomer/ManageCustomerFilter';
 
+import Page1 from '~/pages/CustomerPages/pages/Support/Page1';
+import Page2 from '~/pages/CustomerPages/pages/Support/Page2';
+import Page3 from '~/pages/CustomerPages/pages/Support/Page3';
 
 const routes = [
     //Authorization
@@ -30,7 +33,12 @@ const routes = [
     { path: '/Register-1', component: Register1 },
     { path: '/Register-2', component: Register2 },
     { path: '/Forgot', component: Forgot },
-    
+
+    //support Customer
+    { path: '/cau-hoi-thuong-gap', component: Page1 },
+    { path: '/chinh-sach-doi-tra-hang', component: Page2 },
+    { path: '/tieu-chuan-binh-luan', component: Page3 },
+
     //customer
     { path: '/', component: HomePage },
     { path: '/cart', component: Cart },
@@ -48,19 +56,19 @@ const routes = [
     },
     {
         path: '/manage-book',
-        component: ManageBookView
-    },    
+        component: ManageBookView,
+    },
     {
         path: '/manage-book/add',
-        component: ManageBookAdd
-    },   
+        component: ManageBookAdd,
+    },
     {
         path: '/manage-book/advanced-search',
-        component: ManageBookAdvancedSearch
-    },    
+        component: ManageBookAdvancedSearch,
+    },
     {
         path: '/manage-book/details/:id',
-        component: ManageBookDetail
+        component: ManageBookDetail,
     },
     {
         path: '/manage-order/details',
@@ -69,15 +77,15 @@ const routes = [
     {
         path: '/member',
         component: ManageCustomerView,
-    },  
+    },
     {
         path: '/member/add',
         component: ManageCustomerAdd,
-    },  
+    },
     {
         path: '/member/filter',
         component: ManageCustomerFilter,
-    }, 
+    },
 ];
 
 export default routes;
