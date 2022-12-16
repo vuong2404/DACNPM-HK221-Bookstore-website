@@ -21,68 +21,46 @@ function LogIn() {
 
     // User Login info
     const database = [
-        // admin account
-        {
-            username: "admin1",
-            password: "admin123",
-            type: "AD"
-        },
-        {
-            username: "admin2",
-            password: "admin123",
-            type: "AD"
-        },
-
         //customer account
         {
             username: "username1",
             password: "password1@",
-            type: "US"
         },
         {
             username: "username2",
             password: "password2@",
-            type: "US"
         },
         {
             username: "username3",
             password: "password3@",
-            type: "US"
         },
         {
             username: "username4",
             password: "password4@",
-            type: "US"
         },
         {
             username: "username5",
             password: "password5@",
-            type: "US"
         },
         {
             username: "username6",
             password: "password6@",
-            type: "US"
         },
         {
             username: "username7",
             password: "password7@",
-            type: "US"
         },
         {
             username: "username8",
             password: "password8@",
-            type: "US"
         },
         {
             username: "username9",
             password: "password9@",
-            type: "US"
         },
         {
             username: "username10",
             password: "password10@",
-            type: "US"
         },
     ];
 
