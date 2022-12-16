@@ -33,7 +33,7 @@ function ManageBookAdd(){
       })
       const handleSubmit = async() => {
         // store the states in the form data
-        axios.get(`http://localhost:8080/api/book/`).then((res)=>res.data)
+        axios.get(`http://localhost:8080/api/book/`,state).then((res)=>res.data)
         console.log(state);
       }
       const handleChange = (event) => {
@@ -99,12 +99,7 @@ function ManageBookAdd(){
                 <div className={cx('button-field')}>
 
                     <input type="submit" value="Tìm kiếm" className="btn btn-primary btn-lg w-25" />
-                    <MyButton
-                    className="btn btn-primary btn-lg w-25"
-                    to="/search-result"
-                    >
-                        tìm kiếm
-                    </MyButton>
+                    
                 </div>
                 <code>{JSON.stringify(state)}</code>
             </form>

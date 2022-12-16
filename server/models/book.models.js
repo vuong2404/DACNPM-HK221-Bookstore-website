@@ -40,21 +40,20 @@ module.exports = function () {
 
   this.create = async (newBook, result) => {
     console.log(newBook.bookId);
-    var query = `INSERT INTO BOOK VALUES (@bookId, @title, @price, @author, @publisher , @pubYear, @description,@urlBook,'' , @amountInStorage, @categoryId)`;
+    var query = `INSERT INTO BOOK VALUES ( @title, @price, @author, @publisher , @pubYear, @description,@urlBook,@sold_number , @amountInStorage)`;
     console.log(query);
     try {
       let pool = await conn;
       const res = await pool
         .request()
-        .input("bookId", sql.NVarChar, newBook.bookId)
         .input("title", sql.NVarChar, newBook.title)
         .input("price", sql.Float, newBook.price)
         .input("author", sql.NVarChar, newBook.author)
         .input("publisher", sql.NVarChar, newBook.publisher)
         .input("pubYear", sql.Int, newBook.pubYear)
         .input("description", sql.NVarChar, newBook.description)
+        .input("sold_number", sql.Int, book.sold_number)
         .input("amountInStorage", sql.Int, newBook.amountInStorage)
-        .input("categoryId", sql.NVarChar, newBook.categoryId)
         .input("urlBook", sql.NVarChar, newBook.urlBook)
         .query(query);
 
@@ -67,22 +66,20 @@ module.exports = function () {
 
   this.update = async (id, book, result) => {
     let query = `UPDATE BOOK
-                      SET bookId = @bookId, 
-                          title = @title, 
+                      SET title = @title, 
                           price = @price, 
                           author = @author, 
                           publisher = @publisher, 
                           pubYear = @pubYear, 
                           description = @description, 
                           amountInStorage = @amountInStorage, 
-                          categoryId = @categoryId,
+                          sold_number = @sold_number,
                           urlBook= @urlBook
                       WHERE bookId = '${id}'`;
     try {
       let pool = await conn;
       const res = await pool
         .request()
-        .input("bookId", sql.NVarChar, book.bookId)
         .input("title", sql.VarChar, book.title)
         .input("price", sql.Float, book.price)
         .input("author", sql.NVarChar, book.author)
@@ -90,7 +87,7 @@ module.exports = function () {
         .input("pubYear", sql.Int, book.pubYear)
         .input("description", sql.NVarChar, book.description)
         .input("amountInStorage", sql.Int, book.amountInStorage)
-        .input("categoryId", sql.NVarChar, book.categoryId)
+        .input("sold_number", sql.Int, book.sold_number)
         .input("urlBook", sql.NVarChar, book.urlBook)
         .query(query);
       result(null, res);
