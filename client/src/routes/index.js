@@ -2,6 +2,7 @@ import AdminHomePage from '~/pages/AdminPages/pages/Home';
 import ManageOrder from '~/pages/AdminPages/pages/ManageOrder';
 import ManageBookView from '~/pages/AdminPages/pages/ManageBookView';
 import ManageBookAdvancedSearch from '~/pages/AdminPages/CRUDBook/ManageBookAdvancedSearch';
+import ManageBookSearchResult from '~/pages/AdminPages/CRUDBook/ManageBookSearchResult';
 import ManageBookAdd from '~/pages/AdminPages/CRUDBook/ManageBookAdd';
 import ManageBookDetail from '~/pages/AdminPages/CRUDBook/ManageBookDetail';
 import OrderDetail from '~/pages/AdminPages/pages/OrderDetails';
@@ -57,7 +58,11 @@ const routes = [
     {
         path: '/manage-book/advanced-search',
         component: ManageBookAdvancedSearch
-    },    
+    },      
+    {
+        path: '/manage-book/search-result',
+        component: ManageBookSearchResult
+    },   
     {
         path: '/manage-book/details/:id',
         component: ManageBookDetail
