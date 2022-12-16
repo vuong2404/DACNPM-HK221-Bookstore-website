@@ -15,7 +15,7 @@ module.exports = function () {
 
   this.create = async (newAddress, result) => {
     console.log(newAddress);
-    var query = `INSERT INTO receive_info VALUES (@userID, @city, @district, @ward, @specificAddress, @phoneNumber, @receiverName,0)`;
+    var query = `INSERT INTO receive_info VALUES (@userID, @city, @district, @ward, @specificAddress, @phoneNumber, @receiverName,@type)`;
     try {
       let pool = await conn;
       const res = await pool
@@ -27,6 +27,7 @@ module.exports = function () {
         .input("specificAddress", sql.NVarChar, newAddress.specificAddress)
         .input("phoneNumber", sql.NVarChar, newAddress.phoneNumber)
         .input("receiverName", sql.NVarChar, newAddress.receiverName)
+        .input("type", sql.NVarChar, newAddress.type)
         .query(query);
 
       result(null, res);

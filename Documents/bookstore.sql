@@ -19,7 +19,8 @@ CREATE TABLE CART_ITEM(
 	cartId int NOT NULL, 
 	bookId int NOT NULL, 
 	quantity int NOT NULL, 
-	total money
+	total money,
+	isSelected BIT DEFAULT 0
 
 	PRIMARY KEY(cartId, bookId)
 )

@@ -8,8 +8,18 @@ export const getOrderById = async (id) => {
     return await axios.get(`http://localhost:8080/api/order/${id}`).then((res) => res.data);
 };
 
+export const createOrder = async (order) => {
+    return await axios({
+            method: 'post',
+            data: order,
+            url: 'http://localhost:8080/api/order',
+        })
+        .then((res) => res)
+        .catch((err) => alert('Đã xảy ra lỗi vui lòng thử lại'));
+}
+
 export const confirmOrder = async (id) => {
-    await axios({
+    return await axios({
         method: 'put',
         url: 'http://localhost:8080/api/order',
         data: {

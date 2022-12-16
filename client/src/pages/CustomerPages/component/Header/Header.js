@@ -19,6 +19,7 @@ import { setCart } from '~/stores/actions';
 import Price from '~/components/PriceDisplay/Price';
 import Mybutton from '~/components/Button';
 import Navi from '../Navi/Navi';
+import { getCartAPI } from '~/api/CartAPI';
 
 const cx = classNames.bind(styles);
 
@@ -36,25 +37,10 @@ function Header() {
   const [state, dispatch] = useContext(Context);
 
   if (!sessionStorage.user) {
-    sessionStorage.setItem('user', JSON.stringify({ id: 10000000 }));
+    sessionStorage.setItem('user', JSON.stringify({ id: 1000000 }));
   }
 
-  const getCartAPI = async () => {
-    if (state.user) {
-      return await axios
-        .get(`http://localhost:8080/api/cart/${state.user.id}`)
-        .then((res) => res.data)
-        .then((res) => dispatch(setCart(res)));
-    } else {
-      console.log('Chưa đăng nhập');
-    }
-  };
 
-  useEffect(() => {
-    getCartAPI();
-  }, []);
-
-  console.log(state.cart);
   return (
     <header className={cx('wrapper')}>
       <div className={cx('inner-header') +' container'}>
