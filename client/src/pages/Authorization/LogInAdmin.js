@@ -21,59 +21,30 @@ function LogIn() {
 
     // User Login info
     const database = [
-        //customer account
+        // admin account
         {
-            username: "username1",
-            password: "password1@",
+            username: "admin1",
+            password: "admin123",
+            code: "AD100"
         },
         {
-            username: "username2",
-            password: "password2@",
-        },
-        {
-            username: "username3",
-            password: "password3@",
-        },
-        {
-            username: "username4",
-            password: "password4@",
-        },
-        {
-            username: "username5",
-            password: "password5@",
-        },
-        {
-            username: "username6",
-            password: "password6@",
-        },
-        {
-            username: "username7",
-            password: "password7@",
-        },
-        {
-            username: "username8",
-            password: "password8@",
-        },
-        {
-            username: "username9",
-            password: "password9@",
-        },
-        {
-            username: "username10",
-            password: "password10@",
+            username: "admin2",
+            password: "admin123",
+            code: "AD200"
         },
     ];
 
     const errors = {
         username: "Invalid username!",
-        password: "Invalid password!"
+        password: "Invalid password!",
+        code: "Invalid code!"
     };
 
     const handleSubmit = (event) => {
         //Prevent page reload
         event.preventDefault();
 
-        var { username, password } = document.forms[0];
+        var { username, password, code } = document.forms[0];
 
         // Find user login info
         const userData = database.find((user) => user.username === username.value);
@@ -83,7 +54,12 @@ function LogIn() {
             if (userData.password !== password.value) {
                 // Invalid password
                 setErrorMessages({ name: "password", message: errors.password });
-            } else {
+            }
+            else if (userData.code !== code.value) {
+                // Invalid code
+                setErrorMessages({ name: "code", message: errors.code });
+            }
+            else {
                 setIsSubmitted(true);
             }
         } else {
@@ -105,21 +81,23 @@ function LogIn() {
                 <input type="text" name="username" placeholder="User name" required />
                 {renderErrorMessage("username")}
             </div>
+
             <div>
                 <input type="password" name="password" placeholder="Password" required />
                 {renderErrorMessage("password")}
             </div>
+
+            <div>
+                <input type="text" name="code" placeholder="Mã nhân viên" required />
+                {renderErrorMessage("code")}
+            </div>
+
             <button className={cx('submit')} type="submit">
                 Đăng nhập
             </button>
-            <a href="./Forgot">
-                <div class="goto">Quên mật khẩu</div>
-            </a>
-            <a href="./Register-1">
-                <div class="goto" to="./Register-1">Tạo tài khoản mới</div>
-            </a>
+
             <a href="./LogInAdmin">
-                <div class="goto" to="./LogInAdmin">Đăng nhập với tư cách quản lý</div>
+                <div class="goto" to="./LogInAdmin">Đăng nhập với tư cách khách hàng</div>
             </a>
         </form>
     )
@@ -130,9 +108,9 @@ function LogIn() {
                 <div className={cx('form')}>
                     <div class="box">
                         {isSubmitted ?
-                            <a href="./">
+                            <a href="./admin">
                                 <button className={cx('submit')}>
-                                    Đi vào trang chủ
+                                    Đi vào trang quản lý
                                 </button>
                             </a>
                             : renderForm}
