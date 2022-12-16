@@ -96,8 +96,8 @@ function LogIn() {
                 Đăng nhập
             </button>
 
-            <a href="./LogInAdmin">
-                <div class="goto" to="./LogInAdmin">Đăng nhập với tư cách khách hàng</div>
+            <a href="./LogIn">
+                <div class="goto" to="./LogIn">Đăng nhập với tư cách khách hàng</div>
             </a>
         </form>
     )
