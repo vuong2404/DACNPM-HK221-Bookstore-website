@@ -11,11 +11,6 @@ const cx = classNames.bind(styles);
 
 
 function LogIn() {
-    // handleLogin = () => {
-    //     console.log('username : ', this.state.username, 'password : ', this.state.password);
-
-    //     console.log('all state ', this.state)
-    // }
     const [errorMessages, setErrorMessages] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
 
