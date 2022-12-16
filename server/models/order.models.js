@@ -52,7 +52,7 @@ module.exports = function () {
 
   this.create = async (newOrder, result) => {
     console.log(newOrder);
-    var query1 = `INSERT INTO _ORDER VALUES (@userId, @address, @p_method, @count, @cost , GETDATE(), '', 'waiting')
+    var query1 = `INSERT INTO _ORDER VALUES (@userId, @addressId, @p_method, @count, @cost , GETDATE(), '', 'waiting')
                    SELECT SCOPE_IDENTITY() AS id`;
     let books = newOrder.books;
     console.log(query1);
@@ -61,7 +61,7 @@ module.exports = function () {
       const res1 = await pool
         .request()
         .input("userId", sql.Int, newOrder.userID)
-        .input("address", sql.NVarChar, newOrder.address)
+        .input("addressId", sql.NVarChar, newOrder.addressId)
         .input("p_method", sql.NVarChar, newOrder.paymentMethod)
         .input("count", sql.Int, 0)
         .input("cost", sql.Int, 0)

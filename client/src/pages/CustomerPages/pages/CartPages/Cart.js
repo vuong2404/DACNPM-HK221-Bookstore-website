@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 import { Context } from '../../../../stores';
 import styles from './Cart.module.scss';
@@ -14,10 +14,11 @@ const cx = classNames.bind(styles);
 
 function Cart() {
     const [state, dispatch] = useContext(Context);
-    const products = state.listBooks;
+    
+    const products = state.cart ? state.cart.books : [];
 
     let isSelectedAll = products.every((item) => item.isSelected);
-    let ProductsCounter = products.reduce((res, item) => (item.isSelected ? item.count + res : res), 0);
+    let ProductsCounter = products.reduce((res, item) => (item.isSelected ? item.quantity + res : res), 0);
 
     const handleSeclectAll = (isChecked) => {
         dispatch(selectAllProducts(isChecked));
@@ -26,10 +27,10 @@ function Cart() {
     return (
         <DefaultLayout>
             <div className={cx('heading')}>
-                <h3>Giỏ hàng của bạn</h3>
+                <h3 className='container py-3 text-brown'>Giỏ hàng của bạn</h3>
             </div>
 
-            <div className={cx('wrapper')}>
+            <div className='container'>
                 <div className={cx('cart-wrapper')}>
                     {products.length > 0 ? (
                         products.map((item, index) => {
@@ -59,7 +60,7 @@ function Cart() {
                             </b>
                             <Price primary large>
                                 {products.reduce(
-                                    (res, item) => (item.isSelected ? res + item.product.price * item.count : res),
+                                    (res, item) => (item.isSelected ? res + item.price * item.quantity : res),
                                     0,
                                 )}
                             </Price>

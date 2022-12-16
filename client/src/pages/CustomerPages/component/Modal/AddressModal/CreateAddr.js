@@ -1,14 +1,9 @@
-import { useContext, useState, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
 
 import '../Modal.scss';
 
 import MyButton from '~/components/Button';
-import { Context } from '../../../../../stores';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { AddrModalContext } from './AddressModal';
-import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 function CreateAddress({ close, show, callback }) {
     const [error, setError] = useState(null);
