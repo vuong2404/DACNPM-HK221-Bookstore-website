@@ -5,19 +5,19 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import images from '~/assets/images';
+// import images from '~/assets/images';
 import styles from './Content.module.scss';
 
 const cx= classNames.bind(styles);
 function Book({value}){
   return (
       <Col>
-          <Link to="/bookDetail" className={cx('book')}>
-              <img src={images.content1} alt="" />
+          <Link to= {`/bookDetail?id=${value.bookId}`} className={cx('book')}>
+              <img src={value.urlBook} alt="" />
               <h3>{value.name}</h3>
               <div className={cx('sellInfo')}>
                 <h3 className={cx('price')}>{value.price}vnd</h3>
-                <h3 className={cx('sell')}>Đã bán: {value.sell}</h3>
+                <h3 className={cx('sell')}>Đã bán: {value.sold_number}</h3>
               </div>
           </Link>
       </Col>

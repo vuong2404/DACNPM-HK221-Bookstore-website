@@ -7,54 +7,64 @@ import Content from "../component/Content/Content";
 import DefaultLayout from "../DefaultLayout";
 import styles from "./CustomerPage.module.scss";
 
+import { getBookLists } from "~/api/bookApi";
+import { useState,useEffect } from "react";
 
-const bookInfo = [
-    {
-        name: 'Thiên tài bên trái, kẻ điên bên phải',
-        price: '138000',
-        sell: '389',
-    },
-    {
-        name: 'Thiên tài bên trái, kẻ điên bên phải',
-        price: '138000',
-        sell: '389',
-    },
-    {
-        name: 'Thiên tài bên trái, kẻ điên bên phải',
-        price: '138000',
-        sell: '389',
-    },
-    {
-        name: 'Thiên tài bên trái, kẻ điên bên phải',
-        price: '138000',
-        sell: '389',
-    },
-    {
-        name: 'Thiên tài bên trái, kẻ điên bên phải',
-        price: '138000',
-        sell: '389',
-    },
-    {
-        name: 'Thiên tài bên trái, kẻ điên bên phải',
-        price: '138000',
-        sell: '389',
-    },
-    {
-        name: 'Thiên tài bên trái, kẻ điên bên phải',
-        price: '138000',
-        sell: '389',
-    },
-    {
-        name: 'Thiên tài bên trái, kẻ điên bên phải',
-        price: '138000',
-        sell: '389',
-    },
-];
+
+// const bookInfo = [
+//     {
+//         name: 'Thiên tài bên trái, kẻ điên bên phải',
+//         price: '138000',
+//         sell: '389',
+//     },
+//     {
+//         name: 'Thiên tài bên trái, kẻ điên bên phải',
+//         price: '138000',
+//         sell: '389',
+//     },
+//     {
+//         name: 'Thiên tài bên trái, kẻ điên bên phải',
+//         price: '138000',
+//         sell: '389',
+//     },
+//     {
+//         name: 'Thiên tài bên trái, kẻ điên bên phải',
+//         price: '138000',
+//         sell: '389',
+//     },
+//     {
+//         name: 'Thiên tài bên trái, kẻ điên bên phải',
+//         price: '138000',
+//         sell: '389',
+//     },
+//     {
+//         name: 'Thiên tài bên trái, kẻ điên bên phải',
+//         price: '138000',
+//         sell: '389',
+//     },
+//     {
+//         name: 'Thiên tài bên trái, kẻ điên bên phải',
+//         price: '138000',
+//         sell: '389',
+//     },
+//     {
+//         name: 'Thiên tài bên trái, kẻ điên bên phải',
+//         price: '138000',
+//         sell: '389',
+//     },
+// ];
 
 const bookType=['Hài hước', 'Kinh dị', 'Đời thường', 'Bí ẩn','Học đường','Khoa học','Trẻ em','Manga']
 
 const cx= classNames.bind(styles);
 function Home() {
+    const [bookLists, setBookLists] = useState([]);
+    const loadData = async () => {
+        return await getBookLists().then((res) => setBookLists(res));
+    };
+    useEffect(() => {
+        loadData();
+    }, []);
     return (
       <>
         <DefaultLayout>
@@ -105,7 +115,7 @@ function Home() {
                         </Slide>,
                     ]}
                 />
-                <Content book={bookInfo} />
+                <Content book={bookLists} />
             </div>
         </DefaultLayout>
         </>
