@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 import DefaultLayout from '../DefaultLayout';
 import classNames from 'classnames/bind';
-import styles from './AdminPage.module.scss';
+import styles from '../pages/AdminPage.module.scss';
 import MyButton from '~/components/Button';
 import {Button, Table } from 'react-bootstrap';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -129,6 +129,12 @@ function ManageBookView(){
                         to="/manage-book/add"
                         >
                             Thêm sách
+                        </MyButton>
+                    <MyButton
+                        className={cx('unchosen')}
+                        to="/manage-book/advanced-search"  
+                        >
+                            Tìm kiếm nâng cao
                         </MyButton>
                     </div>
                     <div className={cx('searchbox')}>

@@ -6,6 +6,7 @@ module.exports = app => {
 
     router.get("/", book.getList);  // example localhost:8080/api/order
     router.get("/:id", book.getBook); //example localhost:8080/api/order/10001
+    router.get("/", book.searchBooks);
     router.post("/", book.addBook);
     router.put("/:id", book.updateBook);
     router.delete("/:id", book.deleteBook);
