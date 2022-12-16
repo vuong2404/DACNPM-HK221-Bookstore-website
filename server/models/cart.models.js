@@ -3,7 +3,8 @@ const { conn, sql } = require("../config/dbconfig");
 module.exports = function () {
   this.getAll = async (id, result) => {
     var query1 = `SELECT * FROM CART WHERE userid = ${id}`;
-    var query2 = `SELECT * FROM CART_ITEM WHERE cartId = @cartID `
+    var query2 = `SELECT C.cartId, C.bookId, C.quantity, C.total, B.title, B.price, B.urlBook FROM CART_ITEM C, Book B 
+                                  WHERE cartId = @cartID AND B.bookId = C.bookId`
     try {
       let pool = await conn;
       let res1 = await pool.request().query(query1);  
