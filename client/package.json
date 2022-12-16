@@ -28,6 +28,7 @@
         "react-app-rewired": "^2.2.1",
         "react-bootstrap": "^2.6.0",
         "react-dom": "^18.2.0",
+        "react-icons": "^4.7.1",
         "react-router-dom": "^6.4.2",
         "react-scripts": "5.0.1",
         "react-simple-star-rating": "^5.1.7",

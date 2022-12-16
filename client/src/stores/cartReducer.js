@@ -1,9 +1,8 @@
-import { REMOVE_CART_ITEM, SELECT_ALL_CART_ITEM, SELECT_CART_ITEM, UPDATE_CART } from './constants';
+import { REMOVE_CART_ITEM, SELECT_ALL_CART_ITEM, SELECT_CART_ITEM, SET_CART, UPDATE_CART } from './constants';
 import { addresses, products } from './fakeData';
 
 const initState = {
-    listBooks: products,
-    addresses: addresses,
+    cart: {books: []},
     user: {
         id: 1000001,
         fullname: 'Nguyễn Văn Anh',
@@ -42,6 +41,13 @@ const reducer = (state, action) => {
         case UPDATE_CART: {
             return {
                 ...state,
+            };
+        }
+
+        case SET_CART: {
+            return {
+                ...state,
+                cart: action.payload
             };
         }
         default:
