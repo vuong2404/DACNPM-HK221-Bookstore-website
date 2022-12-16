@@ -4,6 +4,10 @@ import { addresses, products } from './fakeData';
 const initState = {
     listBooks: products,
     addresses: addresses,
+    user: {
+        id: 1000001,
+        fullname: 'Nguyễn Văn Anh',
+    }
 };
 
 const reducer = (state, action) => {
