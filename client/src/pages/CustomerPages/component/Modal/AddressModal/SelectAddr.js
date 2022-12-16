@@ -10,14 +10,12 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { AddrModalContext } from './AddressModal';
 function SelectAddr() {
     const [state, dispatch] = useContext(Context);
-    console.log(dispatch);
     const addresses = state.addresses;
 
     const value = useContext(AddrModalContext);
     const { show, handleClose, setModalShow } = value;
 
-    console.log('Select modal');
-
+    
     return (
         <Modal
             contentClassName="modal-height"

@@ -1,15 +1,18 @@
-import { createContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 import '../Modal.scss';
 
 import MyButton from '~/components/Button';
 import CreateAddress from './CreateAddr';
 import SelectAddr from './SelectAddr';
+import { Context } from '~/stores';
 
 export const AddrModalContext = createContext();
 
-function AddressModaL() {
+function AddressModaL({addresses}) {
+    const [state, dispatch] = useContext(Context);
     const [modalShow, setModalShow] = useState(1);
+    
     // modalShow = 1 => show Select Address Modal
     // modalShow = 2 => show Create new Address Modal
 
