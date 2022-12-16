@@ -54,9 +54,9 @@ function Home() {
                         <h2
                             style={{
                                 color: 'rgb(255, 0, 166)',
-                                margin: '80px 0',
                                 fontFamily: "Georgia, 'Times New Roman', Times, serif",
                             }}
+                            className='p-4'
                         >
                             Có thêm 123 khách hàng thành viên mới
                         </h2>
@@ -74,7 +74,6 @@ function Home() {
                         <h2
                             style={{
                                 color: 'rgb(255, 0, 166)',
-                                margin: '80px 0',
                                 fontFamily: "Georgia, 'Times New Roman', Times, serif",
                             }}
                         >
