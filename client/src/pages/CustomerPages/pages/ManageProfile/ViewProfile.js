@@ -13,9 +13,9 @@ const cx = classNames.bind(styles);
 const bookType = ['Hài hước', 'Kinh dị', 'Đời thường', 'Bí ẩn', 'Học đường', 'Khoa học', 'Trẻ em', 'Manga'];
 
 function ViewProfile() {
-    /*var id = sessionStorage.getItem('id');
-    const { data } = useSWR(`http://localhost:8080/api/user/${id}`, fetcher);
-    if (id === '') {
+    var user_id = JSON.parse(sessionStorage.getItem('user')).id;
+    const { data } = useSWR(`http://localhost:8080/api/user/${user_id}`, fetcher);
+    if (!sessionStorage.getItem('user')) {
         return (
             <div className={cx('warning')}>
                 <Link to="/login">
@@ -25,8 +25,8 @@ function ViewProfile() {
                 </Link>
             </div>
         );
-    }*/
-    const { data } = useSWR('http://localhost:8080/api/user/1000000', fetcher);
+    }
+
     return (
         <>
             <DefaultLayout>
