@@ -10,48 +10,6 @@ import styles from './CustomerPage.module.scss';
 import { getBookLists } from '~/api/bookApi';
 import { useState, useEffect } from 'react';
 
-// const bookInfo = [
-//     {
-//         name: 'Thiên tài bên trái, kẻ điên bên phải',
-//         price: '138000',
-//         sell: '389',
-//     },
-//     {
-//         name: 'Thiên tài bên trái, kẻ điên bên phải',
-//         price: '138000',
-//         sell: '389',
-//     },
-//     {
-//         name: 'Thiên tài bên trái, kẻ điên bên phải',
-//         price: '138000',
-//         sell: '389',
-//     },
-//     {
-//         name: 'Thiên tài bên trái, kẻ điên bên phải',
-//         price: '138000',
-//         sell: '389',
-//     },
-//     {
-//         name: 'Thiên tài bên trái, kẻ điên bên phải',
-//         price: '138000',
-//         sell: '389',
-//     },
-//     {
-//         name: 'Thiên tài bên trái, kẻ điên bên phải',
-//         price: '138000',
-//         sell: '389',
-//     },
-//     {
-//         name: 'Thiên tài bên trái, kẻ điên bên phải',
-//         price: '138000',
-//         sell: '389',
-//     },
-//     {
-//         name: 'Thiên tài bên trái, kẻ điên bên phải',
-//         price: '138000',
-//         sell: '389',
-//     },
-// ];
 
 const cx = classNames.bind(styles);
 function Home() {

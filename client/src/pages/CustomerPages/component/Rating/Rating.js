@@ -4,16 +4,18 @@ import images from "~/assets/images";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 import { Button } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Rating } from "react-simple-star-rating";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
+import { getFeedback } from '~/api/feedbackApi';
 
 const cx=classNames.bind(styles);
 
 function Rate({feedbacks=[]}){
     var [cmt,setCmt]=useState(false);
     var [valCmt, setValCmt]=useState('');
+    const [feedback,setFeedback] = useState(null);
     const [searchParams, setSearchParams] = useSearchParams();
     let id = searchParams.get('id');
     var avgStar=0;
@@ -30,9 +32,13 @@ function Rate({feedbacks=[]}){
         await axios.post('http://localhost:8080/api/feedback',newfeedback).then((response)=>{console.log(response)});
         setCmt(false);
         setRated(0);
-        window.location.reload();
+        feedbacks.push({fullName: 'username',bookId: id, userId: 1000001,rateStar: rated, review: valCmt })
     }
     };
+
+    useEffect(()=>{
+        getFeedback(id).then((data)=>setFeedback(data))
+    }, [])
 
     const handleChange = e =>{
         setValCmt(e.target.value);
