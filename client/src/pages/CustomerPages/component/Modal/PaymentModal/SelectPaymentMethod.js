@@ -31,7 +31,6 @@ const paymentMethods = [
 function SelectPaymentMethod() {
     const value = useContext(PaymentModalContext);
     const { show, setShow, handleClose, modalShow, setModalShow, handleShow } = value;
-    console.log('create modal');
 
     return (
         <Modal

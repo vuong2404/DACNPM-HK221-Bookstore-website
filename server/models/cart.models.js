@@ -3,7 +3,8 @@ const { conn, sql } = require("../config/dbconfig");
 module.exports = function () {
   this.getAll = async (id, result) => {
     var query1 = `SELECT * FROM CART WHERE userid = ${id}`;
-    var query2 = `SELECT * FROM CART_ITEM WHERE cartId = @cartID `
+    var query2 = `SELECT C.cartId, C.bookId, C.quantity, C.isSelected, C.total, B.title, B.price, B.urlBook FROM CART_ITEM C, Book B 
+                                  WHERE cartId = @cartID AND B.bookId = C.bookId`
     try {
       let pool = await conn;
       let res1 = await pool.request().query(query1);  
@@ -50,12 +51,13 @@ module.exports = function () {
   };
 
   this.update = async (user_id, cart_item, result) => {
-    let query = `UPDATE Cart_item SET quantity = ${cart_item.quantity} WHERE cartId = @cartId`;
+    let query = `UPDATE Cart_item SET quantity = ${cart_item.quantity} WHERE Cart_item.cartId = @cartId AND Cart_item.bookId = ${cart_item.bookId}`;
     try {
       let pool = await conn;
       const res1 = await pool
         .request()
         .query(`SELECT cartID from CART where userID = ${user_id}`);
+        console.log(res1)
       let cartID = res1.recordset[0].cartID;
 
       console.log(cartID)
@@ -73,7 +75,7 @@ module.exports = function () {
   };
 
   this.delete = async (user_id,bookID, result) => {
-    let query = `Delete from cart_item where cartId = @cartID AND bookId = @bookID`;
+    let query = `Delete from cart_item WHERE cartId = @cartID AND bookId = @bookID`;
     try {
       let pool = await conn;
       const res1 = await pool

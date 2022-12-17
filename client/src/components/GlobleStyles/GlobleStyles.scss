@@ -7,7 +7,7 @@
     --text-color: #333;
 
     //for customer UI
-    --custommer-primary: #a52a2a;
+    --customer-primary: #a52a2a;
 
     // For admin Ui
     --admin-primary: #007bff;
@@ -15,8 +15,8 @@
     --admin-header-height: 56px;
     --admin-footer-height: 60px;
 
-    --custommer-header-height: 56px;
-    --custommer-footer-height: 60px;
+    --customer-header-height: 70px;
+    --customer-footer-height: 60px;
 }
 * {
     box-sizing: inherit;
@@ -26,7 +26,6 @@ html {
     box-sizing: border-box;
 }
 body {
-    margin: 0;
     font-family: 'Roboto', sans-serif;
     text-rendering: optimizespeed;
     color: var(--text-color);
@@ -81,3 +80,37 @@ a {
     outline: 0;
     box-shadow: 0 0 0 1px rgb(165, 42, 42);
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--customer-primary);
+    border-radius: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--customer-primary);
+  }
+  
+  #tippy-1 {
+    inset: 0px -100px auto auto !important;
+  }
+
+  .text-overflow-ellipsis-2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .text-brown {
+    color: #a52a2a;
+  }

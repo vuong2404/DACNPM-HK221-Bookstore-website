@@ -1,22 +1,14 @@
-import { useContext, useState, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
 
 import '../Modal.scss';
 
 import MyButton from '~/components/Button';
-import { Context } from '../../../../../stores';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { AddrModalContext } from './AddressModal';
+import { useEffect, useState } from 'react';
 
-function CreateAddress() {
-    const [state, dispatch] = useContext(Context);
-    const addresses = state.addresses;
-
-    const value = useContext(AddrModalContext);
-    const { show, setShow, handleClose, modalShow, setModalShow, handleShow } = value;
+function CreateAddress({ close, show, callback }) {
     const [error, setError] = useState(null);
     const [data, setData] = useState([]);
+    const handleClose = () => close() ;
 
     const [districts, setDistrict] = useState([]);
     const [wards, setWard] = useState([]);
@@ -39,11 +31,6 @@ function CreateAddress() {
         }
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        console.log(e);
-    };
     useEffect(() => {
         fetch('https://provinces.open-api.vn/api/?depth=3%20')
             .then((res) => res.json())
@@ -55,6 +42,33 @@ function CreateAddress() {
                 setError(err);
             });
     }, []);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const data = {};
+        let form = e.target;
+
+        console.log(form);
+
+        data.receiverName = form.address__fullname.value;
+        data.phoneNumber = form.address_phoneNumber.value;
+        data.city = form.payment__selectCity.value;
+        data.district = form.payment__selectDistricts.value;
+        data.ward = form.payment__selectWards.value;
+        data.specificAddress = form.payment__SpecificAddrr.value;
+        data.type = form.set_default.checked;
+
+        if (
+            !data.receiverName ||
+            !data.phoneNumber ||
+            !data.city ||
+            !data.district ||
+            !data.phoneNumber ||
+            !data.specificAddress
+        ) {
+            alert("Vui lòng điền đầy đủ thông tin!")
+        } else callback(data);
+    };
 
     if (error) {
         alert('Đã có lỗi xảy ra');
@@ -68,7 +82,7 @@ function CreateAddress() {
                 dialogClassName="modal-width"
                 backdrop="static"
             >
-                <form action="submit" onSubmit={(e) => handleSubmit(e)}>
+                <form name="createAddress" onSubmit={(e) => handleSubmit(e)}>
                     <Modal.Header closeButton>
                         <Modal.Title>
                             <h4>Địa chỉ mới</h4>
@@ -82,6 +96,7 @@ function CreateAddress() {
                                     type="text"
                                     className="form-control"
                                     id="address__fullname"
+                                    name="address__fullname"
                                     placeholder="Họ và tên"
                                 />
                                 <label htmlFor="address__fullname">Họ và tên</label>
@@ -93,6 +108,7 @@ function CreateAddress() {
                                     type="text"
                                     className="form-control"
                                     id="address_phoneNumber"
+                                    name="address_phoneNumber"
                                     placeholder="Họ và tên"
                                 />
                                 <label htmlFor="address_phoneNumber">Số điện thoại</label>
@@ -104,6 +120,7 @@ function CreateAddress() {
                                 <select
                                     className="form-select"
                                     id="payment__selectCity"
+                                    name="payment__selectCity"
                                     aria-label="Floating label select example"
                                     defaultValue={'----'}
                                     disabled={data.length <= 0}
@@ -122,6 +139,7 @@ function CreateAddress() {
                                 <select
                                     className="form-select"
                                     id="payment__selectDistricts"
+                                    name="payment__selectDistricts"
                                     aria-label="Floating label select example"
                                     defaultValue={'----'}
                                     disabled={districts.length <= 0}
@@ -139,6 +157,7 @@ function CreateAddress() {
                                 <select
                                     className={`form-select  ${wards.length > 0 ? '' : 'opacity-75'}`}
                                     id="payment__selectWards"
+                                    name="payment__selectWards"
                                     aria-label="Floating label select example"
                                     disabled={wards.length <= 0}
                                     defaultValue={'----'}
@@ -156,6 +175,7 @@ function CreateAddress() {
                                 type="text"
                                 className="form-control"
                                 id="payment__SpecificAddrr"
+                                name="payment__SpecificAddrr"
                                 placeholder="phone number"
                                 defaultValue=""
                             />
@@ -163,12 +183,12 @@ function CreateAddress() {
                         </div>
 
                         <label className="d-flex align-items-center py-2 my-2">
-                            <input type={'checkbox'} defaultChecked={false} className="mr-2" />
+                            <input type={'checkbox'} defaultChecked={false} className="mr-2" name="set_default" />
                             Đặt làm địa chỉ mặt định
                         </label>
                     </Modal.Body>
                     <Modal.Footer>
-                        <MyButton outline className="border font-weight-normal px-5" onClick={() => setModalShow(1)}>
+                        <MyButton outline type="button" className="border font-weight-normal px-5" onClick={handleClose}>
                             Trở về
                         </MyButton>
                         <button type="submit" className="btn btn-danger">

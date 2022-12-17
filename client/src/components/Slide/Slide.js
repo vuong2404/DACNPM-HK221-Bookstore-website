@@ -13,7 +13,6 @@ function Slide({
     className,
     children,
 }) {
-    const classes = cx('wrapper', { [className]: className });
 
     return (
         <div
@@ -25,7 +24,7 @@ function Slide({
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: `100% 100%`,
             }}
-            className={classes}
+            className={className}
         >
             {children}
         </div>

@@ -3,10 +3,10 @@
 }
 
 .container {
-    min-height: calc(90vh - var(--custommer-header-height) - var(--custommer-footer-height));
+    min-height: calc(90vh - var(--customer-header-height) - var(--customer-footer-height));
     width: 100%;
 
-    margin: var(--custommer-header-height) auto 0;
+    margin: var(--customer-header-height) auto 0;
 
 
     flex: 1;

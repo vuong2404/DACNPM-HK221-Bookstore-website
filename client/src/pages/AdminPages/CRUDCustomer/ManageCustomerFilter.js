@@ -41,6 +41,9 @@ function ManageCustomerFilter() {
 
                             <input type="button" className={cx('choice')} value="1 năm">
                             </input>
+
+                            <input type="button" className={cx('choice')} value="Tất cả">
+                            </input>
                         </div>
                         <br /><br />
                         <div className={cx('button-field')}>

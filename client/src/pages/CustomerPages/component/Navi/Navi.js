@@ -1,44 +1,54 @@
 import { faBars, faFilter } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { BiMenu, BiSearch, BiUserCircle, BiLocationPlus } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 
 import styles from './Navi.module.scss';
+import { Button } from 'react-bootstrap';
+
+const cates=['Hài hước', 'Kinh dị', 'Đời thường', 'Bí ẩn','Học đường','Khoa học','Trẻ em','Manga']
 
 const cx = classNames.bind(styles);
-function Navi({ cates = [] }) {
-    return (
-        <div className={cx('Navi')}>
-            <div className={cx('wrap-category')}>
-                <div className={cx('category')}>
-                    <FontAwesomeIcon icon={faBars} />
-                    <p>Category</p>
-                </div>
-                <div className={cx('listType')}>
-                    {cates.map((cate, index) => (
-                        <label key={index} className={cx('box')}>
-                            <input type="checkbox" />
-                            {cate}
-                        </label>
-                    ))}
-                    <button className={cx('btn')}>
-                        <FontAwesomeIcon icon={faFilter} />
-                        Lọc
-                    </button>
-                </div>
-            </div>
+function Navi() {
+  return (
+    <div className="container py-2 border-bottom">
+     <div className='d-flex -align-items-center'>
+         <div class="dropdown">
+           <button
+             class="btn btn-warning "
+             type="button"
+             id="dropdownMenu2"
+             data-bs-toggle="dropdown"
+             aria-expanded="false"
+           >
+             <FontAwesomeIcon icon={faBars} className="mr-2" /> Danh mục
+           </button>
+           <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+             {cates.map((cate, index) => (
+               <li className=''>
+                 <button class="dropdown-item py-3" type="button">
+                   {cate}
+                 </button>
+               </li>
+             ))}
+           </ul>
+         </div>
+           <div className="d-flex justify-content-between">
+             <button className='mx-3 py-2 px-3 btn btn-light'>
+               <Link to="/hotDeal">Hot Deal</Link>
+             </button>
+             <button className='mx-3 py-2 px-3 btn btn-light'>
+               <Link to="/newBook">Sách mới</Link>
+             </button>
+             <button className='mx-3 py-2 px-3 btn btn-light'>
+               <Link to="/bestSeller">Bán chạy</Link>
+             </button>
+           </div>
+     </div>
+      </div>
 
-            <div className={cx('itemNavi')}>
-                <Link to="/hotDeal">Hot Deal</Link>
-            </div>
-            <div className={cx('itemNavi')}>
-                <Link to="/newBook">Sách mới</Link>
-            </div>
-            <div className={cx('itemNavi')}>
-                <Link to="/bestSeller">Bán chạy</Link>
-            </div>
-        </div>
-    );
+  );
 }
 
 export default Navi;

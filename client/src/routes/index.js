@@ -15,6 +15,7 @@ import Payment from '~/pages/CustomerPages/pages/Paymentpage/Payment';
 import BookDetail from '~/pages/CustomerPages/pages/BookDetail/BookDetail';
 
 import LogIn from '~/pages/Authorization/LogIn';
+import LogInAdmin from '~/pages/Authorization/LogInAdmin';
 import Register1 from '~/pages/Authorization/Register-1';
 import Register2 from '~/pages/Authorization/Register-2';
 import Forgot from '~/pages/Authorization/Forgot';
@@ -30,6 +31,7 @@ import Page3 from '~/pages/CustomerPages/pages/Support/Page3';
 const routes = [
     //Authorization
     { path: '/LogIn', component: LogIn },
+    { path: '/LogInAdmin', component: LogInAdmin },
     { path: '/Register-1', component: Register1 },
     { path: '/Register-2', component: Register2 },
     { path: '/Forgot', component: Forgot },

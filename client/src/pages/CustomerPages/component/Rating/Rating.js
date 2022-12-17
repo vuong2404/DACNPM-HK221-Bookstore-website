@@ -6,24 +6,32 @@ import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 import { Button } from "react-bootstrap";
 import { useState } from "react";
 import { Rating } from "react-simple-star-rating";
+import axios from "axios";
+import { useSearchParams } from "react-router-dom";
 
 const cx=classNames.bind(styles);
 
 function Rate({feedbacks=[]}){
     var [cmt,setCmt]=useState(false);
     var [valCmt, setValCmt]=useState('');
+    const [searchParams, setSearchParams] = useSearchParams();
+    let id = searchParams.get('id');
     var avgStar=0;
     feedbacks.forEach(element => {
-        avgStar+=element.rate
+        avgStar+=element.rateStar
     });
     avgStar/=feedbacks.length;
 
-    function handleSubmit(){
+    async function handleSubmit() {
         if(rated===0) alert('Hãy đánh giá số sao')
         else
-        {feedbacks.push({id: 99, name:'Nguyễn Văn D',rate: rated, review: valCmt })
+        {
+        const newfeedback = {bookId: id, userId: 1000001,rateStar: rated, review: valCmt };
+        await axios.post('http://localhost:8080/api/feedback',newfeedback).then((response)=>{console.log(response)});
         setCmt(false);
-        setRated(0);}
+        setRated(0);
+        window.location.reload();
+    }
     };
 
     const handleChange = e =>{
@@ -35,17 +43,28 @@ function Rate({feedbacks=[]}){
         setRated(rate)
     };
 
+    const [frate, setFrate] = useState(0);
+    var first=true
+
+    function handleFilter(value){
+        setFrate(value);
+        first=true;
+    }
+    
+
     function Review({value}){
-        if(value.id===1){
+        if(frate===0 || value.rateStar===frate){
+        if(first){
+            first=false;
             return(
                 <div className={cx('feedback')}>
                     <img src={images.avatar} alt=''/>
                     <div className={cx('info-review')}>
                         <div className={cx('info')}>
-                            <p>{value.name}</p>
+                            <p>{value.fullName}</p>
                             <div className={cx('mini-stars')}>
                             
-                            <Rating initialValue={value.rate} readonly={true} size={18} />
+                            <Rating initialValue={value.rateStar} readonly={true} size={18} />
                             </div>
                         </div>
                         <p>{value.review}</p>
@@ -53,7 +72,7 @@ function Rate({feedbacks=[]}){
                 </div>
             )
         }
-        else{
+        else {
             return(
                 <>
                 <hr/>
@@ -61,10 +80,10 @@ function Rate({feedbacks=[]}){
                     <img src={images.avatar} alt=''/>
                     <div className={cx('info-review')}>
                         <div className={cx('info')}>
-                            <p>{value.name}</p>
+                            <p>{value.fullName}</p>
                             <div className={cx('mini-stars')}>
                             
-                            <Rating initialValue={value.rate} readonly={true} size={18} />
+                            <Rating initialValue={value.rateStar} readonly={true} size={18} />
                             </div>
                         </div>
                         <p>{value.review}</p>
@@ -75,27 +94,29 @@ function Rate({feedbacks=[]}){
         }
     }
 
+    }
+
     return(
         <div className={cx('rating')}>
             <div className={cx('avg-rating')}>
                 <div className={cx('avg')}>
                     <h2>Đánh giá sản phẩm</h2>
                     <div className={cx('numstar')}>
-                        <p>{avgStar.toPrecision(3)}</p>
+                        {avgStar?<p>{avgStar.toPrecision(3)}</p>:<p>0</p>}
                         <div className={cx('stars')}>
                         
-                            <Rating initialValue={avgStar} readonly={true} />
+                            {avgStar?<Rating initialValue={avgStar} readonly={true} />:<Rating initialValue={0} readonly={true} />}
                         </div>
                     </div>
                 </div>
                 
                 <div className={cx('filter')}>
-                    <Button className={cx('filter-btn')}>Tất cả</Button>
-                    <Button className={cx('filter-btn')}>5 sao</Button>
-                    <Button className={cx('filter-btn')}>4 sao</Button>
-                    <Button className={cx('filter-btn')}>3 sao</Button>
-                    <Button className={cx('filter-btn')}>2 sao</Button>
-                    <Button className={cx('filter-btn')}>1 sao</Button>
+                    <Button className={cx('filter-btn')} onClick={()=>handleFilter(0)}>Tất cả</Button>
+                    <Button className={cx('filter-btn')} onClick={()=>handleFilter(5)}>5 sao</Button>
+                    <Button className={cx('filter-btn')} onClick={()=>handleFilter(4)}>4 sao</Button>
+                    <Button className={cx('filter-btn')} onClick={()=>handleFilter(3)}>3 sao</Button>
+                    <Button className={cx('filter-btn')} onClick={()=>handleFilter(2)}>2 sao</Button>
+                    <Button className={cx('filter-btn')} onClick={()=>handleFilter(1)}>1 sao</Button>
                 </div>
             </div>
 
@@ -106,7 +127,6 @@ function Rate({feedbacks=[]}){
             </div>
 
             {!cmt ? <div className={cx('comment')}>
-                <p>Chế độ chỉ dành cho khách đã mua hàng</p>
                 <Button className={cx('comment-btn')} onClick={()=>setCmt(true)} >
                     <FontAwesomeIcon icon={faPenToSquare} />
                     <p>Viết đánh giá</p>
@@ -117,7 +137,7 @@ function Rate({feedbacks=[]}){
             <img src={images.avatar} alt=''/>
                     <div className={cx('info-review')}>
                         <div className={cx('info')}>
-                            <p>Nguyễn Văn D</p>
+                            <p>username</p>
                             <div className={cx('mini-stars')}>
                             
                             <Rating onClick={handleRated} />

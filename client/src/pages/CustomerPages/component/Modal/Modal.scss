@@ -4,6 +4,8 @@
 
 .modal-body {
     padding: 0;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 .modal-height {
