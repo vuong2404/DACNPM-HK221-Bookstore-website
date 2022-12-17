@@ -15,27 +15,6 @@ import { useState,useEffect } from 'react';
 import { getBelongById } from '~/api/belongApi';
 import { getFeedback } from '~/api/feedbackApi';
 
-// let FeedBack=[
-//     {
-//         id: 1,
-//         name: 'Nguyễn Văn A',
-//         rate: 2,
-//         review: 'sách quá tuyệt vời'
-//     },
-//     {
-//         id: 2,
-//         name: 'Nguyễn văn B',
-//         rate: 3,
-//         review: 'Sách hay, mọi người nên mua'
-//     },
-//     {
-//         id: 3,
-//         name: 'Nguyễn Văn C',
-//         rate: 5,
-//         review: 'sách đọc gây lú ghê'
-//     }
-// ];
-
 const cx= classNames.bind(styles);
 function BookDetail(){
     const [searchParams, setSearchParams] = useSearchParams();
@@ -89,13 +68,13 @@ function BookDetail(){
 
                     <div className={cx('cart-btn')}>
                         <Button className={cx('plus-btn')}>
-                            <FontAwesomeIcon icon={faCartPlus} />
+                            <FontAwesomeIcon icon={faCartPlus} className={cx('logo-btn')} />
                             <p>Thêm vào giỏ</p>
                         </Button>
 
                         <Button className={cx('buy-btn')}>
                             <Link to='/Cart'>
-                                <FontAwesomeIcon icon={faCartArrowDown} />
+                                <FontAwesomeIcon icon={faCartArrowDown} className={cx('logo-btn')} />
                                 <p>Mua ngay</p>
                             </Link>
                         </Button>

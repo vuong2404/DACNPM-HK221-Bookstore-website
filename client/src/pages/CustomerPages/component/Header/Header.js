@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { faAngleDown, faMagnifyingGlass, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,7 +12,7 @@ import 'tippy.js/dist/svg-arrow.css';
 import images from '~/assets/images';
 import styles from './Header.module.scss';
 import UserOpt from '~/components/UserOption/UserOption';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Context } from '~/stores';
 import axios from 'axios';
 import { setCart } from '~/stores/actions';
@@ -34,6 +34,7 @@ const customerOption = [
 ];
 function Header() {
   const [state, dispatch] = useContext(Context);
+  const [keySearch, setKeySearch] = useState('');
 
   if (!sessionStorage.user) {
     sessionStorage.setItem('user', JSON.stringify({ id: 10000000 }));
@@ -54,6 +55,12 @@ function Header() {
     getCartAPI();
   }, []);
 
+  const navigate = useNavigate();
+  async function handleDown(){
+    return await navigate(`/search?key=${keySearch}`,{replace: true});
+  }
+
+
   console.log(state.cart);
   return (
     <header className={cx('wrapper')}>
@@ -64,7 +71,14 @@ function Header() {
 
         <div className={cx('searching')}>
           <FontAwesomeIcon icon={faMagnifyingGlass} className={cx('iconSearch')} />
-          <input placeholder="Bạn cần tìm gì ?" className={cx('search-bar') + ' p-2'}></input>
+          <input placeholder="Bạn cần tìm gì ?" className={cx('search-bar') + ' p-2'} 
+          onChange={(e) => setKeySearch(e.target.value)}
+                    onKeyDown={((e) => {
+                        if (e.key == 'Enter') {
+                            handleDown();
+                            e.target.value='';
+                        }
+                    })}></input>
         </div>
 
         <div className="d-flex align-items-center">

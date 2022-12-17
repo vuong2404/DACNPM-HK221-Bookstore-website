@@ -6,6 +6,7 @@ import ManageBookAdd from '~/pages/AdminPages/CRUDBook/ManageBookAdd';
 import ManageBookDetail from '~/pages/AdminPages/CRUDBook/ManageBookDetail';
 import OrderDetail from '~/pages/AdminPages/pages/OrderDetails';
 import HomePage from '~/pages/CustomerPages/pages/HomePage';
+import SearchPage from '~/pages/CustomerPages/searchBook/Search';
 import ViewProfilePage from '~/pages/CustomerPages/pages/ManageProfile/ViewProfilePage';
 import EditProfilePage from '~/pages/CustomerPages/pages/ManageProfile/EditProfilePage';
 import ViewOrderHistoryPage from '~/pages/CustomerPages/pages/ManageProfile/ViewOrderHistoryPage';
@@ -41,6 +42,7 @@ const routes = [
 
     //customer
     { path: '/', component: HomePage },
+    { path: '/search', component: SearchPage },
     { path: '/cart', component: Cart },
     { path: '/payment', component: Payment },
     { path: '/bookDetail', component: BookDetail },

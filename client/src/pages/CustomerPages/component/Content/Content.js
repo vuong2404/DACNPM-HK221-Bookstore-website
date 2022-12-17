@@ -9,6 +9,8 @@ import styles from './Content.module.scss';
 import Price from '~/components/PriceDisplay/Price';
 import { useViewport } from '~/hooks/hooks';
 import RateStar from '../../RateStar/RateStar';
+import { useEffect, useState } from 'react';
+import { getFeedback } from '~/api/feedbackApi';
 
 const cx = classNames.bind(styles);
 function Book({ value }) {
@@ -17,6 +19,7 @@ function Book({ value }) {
   const handleAddToCart = () => {
     //......
   };
+  
   return (
     <div
       className={cx('book-item') + ' col-12 col-md-4 col-lg-2 bg-white rounded py-2'}
@@ -34,7 +37,7 @@ function Book({ value }) {
           <p className="m-0">Đã bán: {value.sold_number}</p>
         </div>
         <div>
-          <RateStar number={3} />
+          <RateStar number={value.star} />
         </div>
         <div className="mt-3 text-center">
           <Link to={`/bookDetail?id=${value.id}`}>
@@ -62,7 +65,7 @@ function Content({ book = [] }) {
     //     </Row>
     // </Container>
     <div className="container my-4">
-      <h4 className="text-center my-3">Sách mới hôm nay</h4>
+      {/* <h4 className="text-center my-3">Sách mới hôm nay</h4> */}
       <div className="row g-3 bg-white">
         {book.map((item, index) => {
           return <Book key={index} value={item} />;

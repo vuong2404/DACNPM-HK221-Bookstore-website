@@ -4,7 +4,7 @@
     justify-content: space-between;
     max-width: 1200px;
     padding-top: 30px;
-    margin: 0 auto 30px;
+    margin: 0 auto 30px;   
 }
 
 .picture{
@@ -16,6 +16,11 @@
     justify-content: space-around;
     align-items: center;
     height: 85vh;
+    box-shadow: 2px 4px;
+    transition-duration: 1s;
+}
+.picture:hover{
+    box-shadow: 10px 10px lightcoral;
 }
 .big-pic{
     width: 100%;
@@ -39,6 +44,7 @@
     justify-content: space-between;
     width: 60%;
     border: 2px solid brown;
+    background-color: white;
     .title-price{
         margin-top: 20px;
         background-color: white;
@@ -102,6 +108,7 @@
                 padding-left: 10px;
                 color: white;
             }
+            transition-duration: 1s;
         }
 
         .buy-btn{
@@ -114,6 +121,16 @@
                 padding-left: 10px;
                 color: white;
             }
+            transition-duration: 1s;
+        }
+
+        .plus-btn:hover,.buy-btn:hover{
+            background-color: rgba($color: blue, $alpha: 0.8);
+        }
+
+        .plus-btn:hover .logo-btn,
+        .buy-btn:hover .logo-btn{
+            color: white;
         }
         margin-bottom: 30px;
     }
@@ -124,6 +141,7 @@
     margin: 0 auto 30px;
     h1{
         font-size: 40px;
+        margin-left: -10px;
     }
     p{
         line-height: 1.2;

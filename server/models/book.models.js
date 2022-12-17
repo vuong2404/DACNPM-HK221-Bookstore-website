@@ -1,8 +1,13 @@
 const { conn, sql } = require("../config/dbconfig");
 
 module.exports = function () {
-  this.getAll = async (id, result) => {
+  this.getAll = async (params, result) => {
     var query = `SELECT * FROM BOOK`;
+    let key = params.key || "";
+    if (key) {
+      query += ` WHERE title LIKE '%${key}%' `;
+    }
+    
     try {
       let pool = await conn;
       let res = await pool.request().query(query);
