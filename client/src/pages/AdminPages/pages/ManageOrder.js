@@ -50,7 +50,7 @@ function ManageOrder() {
         setRecords(orderLists.slice(from,to))
     }, [state, orderLists])
 
-    console.log(records)
+    console.log(keySearch)
     let pages = orderLists.length // = orderList.length ;
     const handleFilterByStatus = async (status) => {
         await axios
@@ -60,11 +60,12 @@ function ManageOrder() {
             .catch((err) => alert('Đã xảy ra lỗi!', err));
     };
     const handleSearch = async (key) => {
-        await axios
+       await axios
             .get(`http://localhost:8080/api/order?key=${key}`)
             .then((res) => res.data)
             .then((data) => setOrderLists(data))
             .catch((err) => alert('Đã xảy ra lỗi!', err));
+        dispatch(gotoFirstPage());
     };
     return (
         <DefaultLayout>

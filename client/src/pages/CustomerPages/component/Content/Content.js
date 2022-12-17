@@ -43,10 +43,10 @@ function Book({ book }) {
           <p className="m-0">Đã bán: {book.sold_number}</p>
         </div>
         <div>
-          <RateStar number={value.star} />
+          <RateStar number={book.star} />
         </div>
         <div className="mt-3 text-center">
-          <Link to={`/bookDetail?id=${book.id}`}>
+          <Link to={`/bookDetail?id=${book.bookId}`}>
             <button className="btn btn-info mr-3">
               <GrIcons.GrView />
             </button>

@@ -41,9 +41,6 @@ function Header() {
     sessionStorage.setItem('user', JSON.stringify({ id: 1000000 }));
   }
 
-
-
-
   const navigate = useNavigate();
   async function handleDown(){
     return await navigate(`/search?key=${keySearch}`,{replace: true});

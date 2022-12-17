@@ -16,6 +16,7 @@ import CreateAddress from '../../component/Modal/AddressModal/CreateAddr';
 import images from '~/assets/images';
 import { GrReturn } from 'react-icons/gr';
 import { createOrder } from '~/api/orderApi';
+import { removeCartItemAPI } from '~/api/CartAPI';
 const cx = classNames.bind(styles);
 
 const SELECT_ADDRESS = 'select';
@@ -146,17 +147,9 @@ function Payment() {
         }
 
         //Xoá sản phẩm đã chọn trong giỏ hàng
-        // await order.products.forEach(async (item) => {
-        //     await axios({
-        //         method: 'delete',
-        //         url: `http://localhost:8080/api/cart/${id}`,
-        //         data: {
-        //             product_id: item[0],
-        //         },
-        //     })
-        //         .then((res) => console.log(res))
-        //         .catch((err) => alert(err));
-        // });
+        await order.books.forEach(async (item) => {
+            await removeCartItemAPI(item[0]).then(res => res)
+        });
 
         return;
     };

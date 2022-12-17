@@ -2,11 +2,12 @@ const { conn, sql } = require("../config/dbconfig");
 
 module.exports = function () {
   this.getAll = async (params, result) => {
-    var query = "SELECT * FROM _ORDER";
+    var query = "SELECT O.*, R.receiverName FROM _ORDER O, Receive_Info R WHERE O.addressID = R.id";
     let key = params.key || "";
     let status = params.status || "";
     if (key || status) {
-      query += ` WHERE (orderID LIKE '%${key}%' OR status LIKE '%${key}%') `;
+      query += ` AND (orderID LIKE N'%${key}%' OR status LIKE N'%${key}%' 
+                        OR R.receiverName LIKE N'%${key}%' OR O.deliveryCode LIKE N'%${key}%') `;
       if (status) {
         query += `AND status = '${status}'`;
       }
@@ -25,8 +26,8 @@ module.exports = function () {
   };
 
   this.getOne = async (id, result) => {
-    var query1 = `SELECT * FROM _ORDER WHERE orderID = ${id}`;
-    var query2 = `SELECT bookID, quantity, totalMoney from  ORDER_ITEM WHERE orderID = ${id}`;
+    var query1 = `SELECT _ORDER.*, U.fullname FROM _ORDER, _User U WHERE orderID = ${id} AND _ORDER.userId = U.userId`;
+    var query2 = `SELECT O.bookID, O.quantity, O.totalMoney, B.title, B.price from  ORDER_ITEM O, Book B WHERE orderID = ${id} AND O.bookId = B.bookId`;
     try {
       let pool = await conn;
       let data1 = await pool.request().query(query1);
@@ -86,13 +87,11 @@ module.exports = function () {
   };
 
   this.updateStatus = async (order, result) => {
-    let query = `UPDATE _ORDER SET status = @status WHERE orderID = @id`;
+    let query = `UPDATE _ORDER SET status = '${order.status}', deliveryCode = '${order.deliveryCode}' WHERE orderID = ${order.id}`;
     try {
       let pool = await conn;
       const res1 = await pool
         .request()
-        .input("status", sql.VarChar, order.status)
-        .input("id", sql.Int, order.id)
         .query(query);
       result(null, res1);
     } catch (error) {

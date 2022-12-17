@@ -19,7 +19,7 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner-header')}>
                 <Link to="/admin" className={cx('logo-wrapper')}>
-                    <img className={cx('logo')} src={images.logo} alt="...." />
+                    <img className={cx('logo')} src={require('~/assets/images/logo2.png')} alt="...." width={200}/>
                 </Link>
                 <ul className={cx('menu')}>
                     {menu.map((item, index) => (

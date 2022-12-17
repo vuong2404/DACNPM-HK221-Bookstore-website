@@ -49,7 +49,7 @@ export const cancelOrder = async (id) => {
         .catch((err) => alert('Đã xảy ra lỗi', err));
 };
 
-export const updateOrderStatus = async (id, cur_status) => {
+export const updateOrderStatus = async (id, cur_status, d_code ='') => {
     let status = '';
     console.log(cur_status)
     if (cur_status === 'confirmed') {
@@ -65,7 +65,8 @@ export const updateOrderStatus = async (id, cur_status) => {
         url: 'http://localhost:8080/api/order',
         data: {
             id,
-            status: status
+            status: status,
+            deliveryCode: d_code,
         },
     })
         .then((res) => {
