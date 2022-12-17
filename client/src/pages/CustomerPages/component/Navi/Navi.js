@@ -26,7 +26,7 @@ function Navi() {
            </button>
            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
              {cates.map((cate, index) => (
-               <li className=''>
+               <li key={index} className=''>
                  <button class="dropdown-item py-3" type="button">
                    {cate}
                  </button>

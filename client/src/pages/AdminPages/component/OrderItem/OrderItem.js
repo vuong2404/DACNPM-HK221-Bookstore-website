@@ -10,7 +10,7 @@ function OrderItem({ order }) {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('heading')}>
-                <h5>Mã thành viên #{order.userID}</h5>
+                <h6>Người nhận: {order.receiverName}</h6>
                 <p>{moment.utc(order.createAt).format('YYYY-MM-DD  HH:MM:SS') }</p>
             </div>
             <p className={cx('order-id')}>Mã đơn hàng: #{order.orderID}</p>
