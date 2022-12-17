@@ -3,7 +3,7 @@ import DefaultLayout from '../../DefaultLayout';
 import styles from './PageSupport.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSnapchat } from '@fortawesome/free-brands-svg-icons';
-import { Link } from 'react-router-dom';
+
 import images from '~/assets/images';
 
 const cx = classNames.bind(styles);

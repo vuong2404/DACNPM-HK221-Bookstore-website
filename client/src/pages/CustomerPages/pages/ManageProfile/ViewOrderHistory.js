@@ -14,8 +14,6 @@ const cx = classNames.bind(styles);
 const bookType = ['Hài hước', 'Kinh dị', 'Đời thường', 'Bí ẩn', 'Học đường', 'Khoa học', 'Trẻ em', 'Manga'];
 
 function ViewOrderHistory() {
-    const { data } = useSWR('http://localhost:8080/api/user/order/1000000', fetcher);
-
     return (
         <DefaultLayout>
             <Navi cates={bookType} />
