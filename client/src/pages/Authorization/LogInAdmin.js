@@ -5,40 +5,56 @@ import classNames from 'classnames/bind';
 // import React, { Component } from 'react';
 import { render } from '@testing-library/react';
 import React, { useState, useEffect } from "react";
-
-import { Col, Row, Container, Form } from 'react-bootstrap';
-
-import { Navigate, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import database from './userInfo'
+import Axios from "axios";
 
 const cx = classNames.bind(styles);
+
 
 function LogIn() {
     const [errorMessages, setErrorMessages] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
 
+    // User Login info
+    const AdminDatabase = [
+        // admin account
+        {
+            username: "admin1",
+            password: "admin123",
+            code: "AD100"
+        },
+        {
+            username: "admin2",
+            password: "admin123",
+            code: "AD200"
+        },
+    ];
+
     const errors = {
         username: "Invalid username!",
-        password: "Invalid password!"
+        password: "Invalid password!",
+        code: "Invalid code!"
     };
 
     const handleSubmit = (event) => {
         //Prevent page reload
         event.preventDefault();
 
-        var { username, password } = document.forms[0];
+        var { username, password, code } = document.forms[0];
 
         // Find user login info
-        const userData = database.find((user) => user.username === username.value);
+        const userData = AdminDatabase.find((user) => user.username === username.value);
 
         // Compare user info
         if (userData) {
             if (userData.password !== password.value) {
                 // Invalid password
                 setErrorMessages({ name: "password", message: errors.password });
-            } else {
-                sessionStorage.setItem("user", JSON.stringify({ id: userData.id, user: userData.username, password: userData.password, fullname: userData.fullname, email: userData.email, phoneNum: userData.phoneNum, gender: userData.gender, birthDate: userData.birthDate, registerDate: userData.registerDate, address: userData.address }))
+            }
+            else if (userData.code !== code.value) {
+                // Invalid code
+                setErrorMessages({ name: "code", message: errors.code });
+            }
+            else {
                 setIsSubmitted(true);
             }
         } else {
@@ -60,21 +76,23 @@ function LogIn() {
                 <input type="text" name="username" placeholder="User name" required />
                 {renderErrorMessage("username")}
             </div>
+
             <div>
                 <input type="password" name="password" placeholder="Password" required />
                 {renderErrorMessage("password")}
             </div>
+
+            <div>
+                <input type="text" name="code" placeholder="Mã nhân viên" required />
+                {renderErrorMessage("code")}
+            </div>
+
             <button className={cx('submit')} type="submit">
                 Đăng nhập
             </button>
-            <a href="./Forgot">
-                <div class="goto">Quên mật khẩu</div>
-            </a>
-            <a href="./Register-1">
-                <div class="goto" to="./Register-1">Tạo tài khoản mới</div>
-            </a>
-            <a href="./LogInAdmin">
-                <div class="goto" to="./LogInAdmin">Đăng nhập với tư cách quản lý</div>
+
+            <a href="./LogIn">
+                <div class="goto" to="./LogIn">Đăng nhập với tư cách khách hàng</div>
             </a>
         </form>
     )
@@ -85,9 +103,9 @@ function LogIn() {
                 <div className={cx('form')}>
                     <div class="box">
                         {isSubmitted ?
-                            <a href="./">
+                            <a href="./admin">
                                 <button className={cx('submit')}>
-                                    Đi vào trang chủ
+                                    Đi vào trang quản lý
                                 </button>
                             </a>
                             : renderForm}
@@ -95,6 +113,7 @@ function LogIn() {
                 </div>
             </div>
         </DefaultLayout>
+
     )
 }
 

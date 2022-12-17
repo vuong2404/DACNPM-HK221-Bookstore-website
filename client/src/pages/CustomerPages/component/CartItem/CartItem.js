@@ -5,11 +5,11 @@ import { useContext, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
 
-import images from '~/assets/images';
 import Price from '~/components/PriceDisplay/Price';
-import { selectItem, removeCartItem, updateCart } from '../../../../stores/actions';
 import { Context } from '../../../../stores';
 import styles from './CartItem.module.scss';
+import { getCartAPI, removeCartItem, removeCartItemAPI, updateCartItemAPI, updateCartItemAPi } from '~/api/CartAPI';
+import { selectItem, setCart, updateCart } from '~/stores/actions';
 
 const cx = classNames.bind(styles);
 
@@ -17,27 +17,37 @@ function CartItem({ cartItem }) {
     const [state, dispatch] = useContext(Context);
     const [confirmDelete, setConfirmDelete] = useState(false);
     const handleClose = () => setConfirmDelete(false);
-    const handleConfirm = () => {
-        dispatch(removeCartItem(cartItem.product.id));
+
+    const handleConfirm = async () => {
+        await handleRemoveCart();
         handleClose();
     };
 
     // Xử lý xoá sản phẩm khỏi giỏ hàng
-    const handleRemoveCart = () => {
-        dispatch(removeCartItem(cartItem.product.id));
+    const handleRemoveCart = async () => {
+        await removeCartItemAPI(cartItem.bookId);
+        await getCartAPI().then((res) => dispatch(setCart(res)));
+        console.log("cart: ", state.cart)
     };
 
     // Xử lý giảm sản phẩm
-    const handleDecrease = () => {
+    const handleDecrease = async () => {
         if (cartItem.count === 1) {
             setConfirmDelete(true);
-        } else dispatch(updateCart(cartItem.count--));
+        } else {
+            await updateCartItemAPI({ bookId: cartItem.cartId, quantity: cartItem.quantity - 1 });
+            dispatch(updateCart(cartItem.quantity--));
+        }
     };
 
     // Xử lý tăng sản phẩm
-    const handleIncrease = () => {
-        dispatch(updateCart(cartItem.count++));
-    };
+    const handleIncrease = async () => {
+        await updateCartItemAPI({ bookId: cartItem.bookId, quantity: cartItem.quantity + 1 });
+        dispatch(updateCart(cartItem.quantity++));
+    }; 
+
+    
+    console.log(cartItem);
     return (
         <div className={cx('wrapper')}>
             <input
@@ -45,18 +55,18 @@ function CartItem({ cartItem }) {
                 key={Math.random()}
                 defaultChecked={cartItem.isSelected}
                 onChange={(e) => {
-                    dispatch(selectItem(cartItem.product.id));
+                    dispatch(selectItem(cartItem.bookId));
                 }}
             />
-            <img src={cartItem.product.image} alt="" />
+            <img src={cartItem.urlBook} alt="" />
             <div className={cx('book-info')}>
-                <p>{cartItem.product.title}</p>
-                <Price primary>{cartItem.product.price}</Price>
+                <p>{cartItem.title}</p>
+                <Price primary>{cartItem.price}</Price>
             </div>
 
             <div className={cx('quantity-controller')}>
                 <FontAwesomeIcon size="lg" icon={faSquareMinus} onClick={handleDecrease} />
-                <span>{cartItem.count}</span>
+                <span>{cartItem.quantity}</span>
                 <FontAwesomeIcon size="lg" icon={faSquarePlus} onClick={handleIncrease} />
             </div>
 

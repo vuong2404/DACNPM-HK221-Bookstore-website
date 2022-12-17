@@ -24,7 +24,7 @@ function Rate({feedbacks=[]}){
     });
     avgStar/=feedbacks.length;
 
-    async function handleSubmit(){
+    async function handleSubmit() {
         if(rated===0) alert('Hãy đánh giá số sao')
         else
         {

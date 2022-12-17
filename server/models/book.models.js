@@ -30,23 +30,37 @@ module.exports = function () {
     }
   };
 
+  this.getBooks = async (props, result) => {
+    var query = `SELECT * FROM BOOK WHERE (bookId = '${props.bookId}' AND author='${props.author}' AND categoryId='${props.categoryId}') AND publisher='${props.publisher}}')`;
+    console.log(query);
+    try {
+      let pool = await conn;
+      let res = await pool.request().query(query);
+      result(null, res.recordset);
+    } catch (error) {
+      console.error("Error in start():", error);
+      result(error, null);
+    }
+  };
+
   this.create = async (newBook, result) => {
-    console.log(newBook);
-    var query = `INSERT INTO BOOK VALUES (@bookId, @title, @price, @author, @publisher , @pubyear, @description,'','' , @amountInStorage, @categoryId)`;
+    console.log(newBook.bookId);
+    var query = `INSERT INTO BOOK VALUES (@bookId, @title, @price, @author, @publisher , @pubYear, @description,@urlBook,'' , @amountInStorage, @categoryId)`;
     console.log(query);
     try {
       let pool = await conn;
       const res = await pool
         .request()
-        .input("bookId", sql.NVarChar, newBook.bookID)
+        .input("bookId", sql.NVarChar, newBook.bookId)
         .input("title", sql.NVarChar, newBook.title)
         .input("price", sql.Float, newBook.price)
         .input("author", sql.NVarChar, newBook.author)
         .input("publisher", sql.NVarChar, newBook.publisher)
-        .input("pubyear", sql.Int, newBook.pubyear)
+        .input("pubYear", sql.Int, newBook.pubYear)
         .input("description", sql.NVarChar, newBook.description)
         .input("amountInStorage", sql.Int, newBook.amountInStorage)
         .input("categoryId", sql.NVarChar, newBook.categoryId)
+        .input("urlBook", sql.NVarChar, newBook.urlBook)
         .query(query);
 
       result(null, res);
@@ -56,31 +70,33 @@ module.exports = function () {
     }
   };
 
-  this.update = async (order, result) => {
+  this.update = async (id, book, result) => {
     let query = `UPDATE BOOK
                       SET bookId = @bookId, 
                           title = @title, 
                           price = @price, 
                           author = @author, 
                           publisher = @publisher, 
-                          pubyear = @pubyear, 
+                          pubYear = @pubYear, 
                           description = @description, 
                           amountInStorage = @amountInStorage, 
-                          categoryId = @categoryId
+                          categoryId = @categoryId,
+                          urlBook= @urlBook
                       WHERE bookId = '${id}'`;
     try {
       let pool = await conn;
       const res = await pool
         .request()
-        .input("bookId", sql.NVarChar, newUser.bookId)
-        .input("title", sql.VarChar, newUser.title)
-        .input("price", sql.Float, newUser.price)
-        .input("author", sql.NVarChar, newUser.author)
-        .input("publisher", sql.NVarChar, newUser.publisher)
-        .input("pubyear", sql.Int, newUser.pubyear)
-        .input("description", sql.NVarChar, newUser.description)
-        .input("amountInStorage", sql.Int, newUser.amountInStorage)
-        .input("categoryId", sql.NVarChar, newUser.categoryId)
+        .input("bookId", sql.NVarChar, book.bookId)
+        .input("title", sql.VarChar, book.title)
+        .input("price", sql.Float, book.price)
+        .input("author", sql.NVarChar, book.author)
+        .input("publisher", sql.NVarChar, book.publisher)
+        .input("pubYear", sql.Int, book.pubYear)
+        .input("description", sql.NVarChar, book.description)
+        .input("amountInStorage", sql.Int, book.amountInStorage)
+        .input("categoryId", sql.NVarChar, book.categoryId)
+        .input("urlBook", sql.NVarChar, book.urlBook)
         .query(query);
       result(null, res);
     } catch (error) {
@@ -88,16 +104,17 @@ module.exports = function () {
       result(error, null);
     }
   };
-};
 
-this.delete = async (id, result) => {
-  let query = `Delete from BOOK where bookId = '${id}'`;
-  try {
-    let pool = await conn;
-    const res = await pool.request().query(query);
-    result(null, res);
-  } catch (error) {
-    console.error("Error in start()::", error);
-    result(error, null);
-  }
+  this.delete = async (id, result) => {
+    let query = `Delete from BOOK where bookId = '${id}'`;
+    try {
+      let pool = await conn;
+      const res = await pool.request().query(query);
+      result(null, res);
+    } catch (error) {
+      console.error("Error in start()::", error);
+      result(error, null);
+    }
+  };
+  
 };

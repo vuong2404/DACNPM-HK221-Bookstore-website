@@ -1,26 +1,23 @@
 import { faChevronLeft, faChevronRight, faCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
-import { useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import styles from './SlideShow.module.scss';
+import { clear } from '@testing-library/user-event/dist/clear';
 
 const cx = classNames.bind(styles);
 
 function SlideShow({ slides = [] }) {
     const [currentIndex, setCurrentIndex] = useState(1);
+    console.log(slides)
 
-    // const timer = useRef();
-    // useLayoutEffect(() => {
-    //     timer.current = setTimeout(() => {
-    //         if (currentIndex === slides.length) {
-    //             setCurrentIndex(1);
-    //         } else setCurrentIndex((prev) => prev + 1);
-    //     }, 3000);
-
-    //     return () => clearTimeout(timer);
-    // }, [currentIndex]);
-
-    // console.log(timer);
+    useLayoutEffect(() => {
+        let timerID = setInterval(() => {
+            setCurrentIndex((prev) => (prev >= slides.length ? 0 : prev + 1));
+            console.log("dfasfas")
+        }, 1000)
+        return clearInterval(timerID) ;
+    }, [currentIndex])
 
     return (
         <div className={cx('wrapper')}>
