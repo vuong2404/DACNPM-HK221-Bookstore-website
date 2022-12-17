@@ -9,10 +9,12 @@ import styles from './Content.module.scss';
 import Price from '~/components/PriceDisplay/Price';
 import { useViewport } from '~/hooks/hooks';
 import RateStar from '../../RateStar/RateStar';
+
 import { addToCartAPI, getCartAPI } from '~/api/CartAPI';
 import { useContext } from 'react';
 import { Context } from '~/stores';
 import { setCart } from '~/stores/actions';
+
 
 const cx = classNames.bind(styles);
 function Book({ book }) {
@@ -23,6 +25,7 @@ function Book({ book }) {
     await addToCartAPI(book.bookId).then(res => res).catch(err => alert("Đã xảy ra lỗi!", err))
     await getCartAPI().then(res => dispatch(setCart(res)))
   };
+  
   return (
     <div
       className={cx('book-item') + ' col-12 col-md-4 col-lg-2 bg-white rounded py-2'}
@@ -40,7 +43,7 @@ function Book({ book }) {
           <p className="m-0">Đã bán: {book.sold_number}</p>
         </div>
         <div>
-          <RateStar number={3} />
+          <RateStar number={value.star} />
         </div>
         <div className="mt-3 text-center">
           <Link to={`/bookDetail?id=${book.id}`}>
@@ -68,7 +71,7 @@ function Content({ book = [] }) {
     //     </Row>
     // </Container>
     <div className="container my-4">
-      <h4 className="text-center my-3">Sách mới hôm nay</h4>
+      {/* <h4 className="text-center my-3">Sách mới hôm nay</h4> */}
       <div className="row g-3 bg-white">
         {book.map((item, index) => {
           return <Book key={index} book={item} />;

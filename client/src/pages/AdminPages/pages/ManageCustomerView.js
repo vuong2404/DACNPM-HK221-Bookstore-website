@@ -11,66 +11,29 @@ import { useReducer } from 'react';
 import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
 import DropdownMenu from 'react-bootstrap/esm/DropdownMenu';
 import DropdownItem from 'react-bootstrap/esm/DropdownItem'
-
 import reducer from '../reducer/orderReducer';
 import { setPage, gotoFirstPage, gotoLastPage, setNumberLine } from '../reducer/action';
+import customer from './customerInfo';
+import { Link, useNavigate } from 'react-router-dom'
 const cx = classNames.bind(styles);
 
-const customer = [
-    {
-        id: 1,
-        name: "Nguyễn Văn A",
-        date: "2022-02-10",
-        address: "78/5 An Dương Vương, Phường 1, Quận 5, TPHCM",
-        email: "A.Nguyen0210@gmail.com",
-        phone: "0901000011"
-    },
-    {
-        id: 2,
-        name: "Nguyễn Văn B",
-        date: "2022-02-10",
-        address: "78/5 An Dương Vương, Phường 1, Quận 5, TPHCM",
-        email: "B.Nguyen0210@gmail.com",
-        phone: "0901000011"
-    },
-    {
-        id: 3,
-        name: "Nguyễn Văn C",
-        date: "2022-02-10",
-        address: "78/5 An Dương Vương, Phường 1, Quận 5, TPHCM",
-        email: "C.Nguyen0210@gmail.com",
-        phone: "0901000011"
-    },
-    {
-        id: 4,
-        name: "Nguyễn Văn D",
-        date: "2022-02-10",
-        address: "78/5 An Dương Vương, Phường 1, Quận 5, TPHCM",
-        email: "D.Nguyen0210@gmail.com",
-        phone: "0901000011"
-    },
-    {
-        id: 5,
-        name: "Nguyễn Văn E",
-        date: "2022-02-10",
-        address: "78/5 An Dương Vương, Phường 1, Quận 5, TPHCM",
-        email: "E.Nguyen0210@gmail.com",
-        phone: "0901000011"
-    },
-];
-
-function openForm() {
-    document.getElementById("myForm").style.display = "block";
-}
-
 function ManageCustomerView() {
-    let pages = 10; // = orderList.length ;
+    let sum = customer.length;
+    let pages = 2; // = orderList.length ;
     const initState = {
         currentPage: 1,
         numberLine: 10,
         listOrder: customer,
     };
     const [state, dispatch] = useReducer(reducer, initState);
+    let history = useNavigate();
+    const handleDelete = (id) => {
+        var index = customer.map(function (e) {
+            return e.id
+        }).indexOf(id);
+        customer.splice(index, 1);
+        history('/member')
+    }
     return (
         <DefaultLayout>
             <div className={cx('member-wrapper')}>
@@ -78,7 +41,7 @@ function ManageCustomerView() {
                 <br></br>
 
                 <div className={cx('group')}>
-                    <span className={cx('total')}>172 thành viên</span>
+                    <span className={cx('total')}>{sum} khách hàng</span>
                     <MyButton className={cx('filter')} onclick="openForm()" to="./filter">
                         <FontAwesomeIcon icon={faFilter} style={{ color: 'gray', fontSize: '30px' }} />
                     </MyButton>
@@ -114,12 +77,8 @@ function ManageCustomerView() {
                                     <td className="text-center">{item.email}</td>
                                     <td className="text-center">{item.phone}</td>
                                     <td className="text-center">
-                                        <MyButton class="btn btn-outline-primary"
-                                            to={`details/${item.id}`}
-                                        >
-                                            <FontAwesomeIcon icon={faEdit} />
-                                        </MyButton>
-                                        <MyButton class="btn btn-outline-danger">
+                                        <MyButton class="btn btn-outline-danger"
+                                            onClick={() => handleDelete(item.id)}>
                                             <FontAwesomeIcon icon={faTrash} />
                                         </MyButton>
                                     </td>
@@ -130,23 +89,7 @@ function ManageCustomerView() {
 
                 </div>
                 <div className={cx('bottom-pagination')}>
-                    <Dropdown className={cx('dropdown-custom')}>
-                        <DropdownToggle className={cx('title')}>
-                            <span>{state.numberLine}</span> dòng
-                        </DropdownToggle>
-                        <DropdownMenu className={cx('menu')}>
-                            {[10, 20, 30, 50].map((item, index) => (
-                                <DropdownItem
-                                    key={index}
-                                    className={cx('menu-item')}
-                                    active={state.numberLine === item}
-                                    onClick={() => dispatch(setNumberLine(item))}
-                                >
-                                    <span>{item}</span> dòng
-                                </DropdownItem>
-                            ))}
-                        </DropdownMenu>
-                    </Dropdown>
+
                     <MyButton
                         className={cx('pagination-btn')}
                         disabled={state.currentPage === 1}
