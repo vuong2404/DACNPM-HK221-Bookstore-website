@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './forAuthorization.scss';
-import DefaultLayout from './DefaultLayout';
+import DefaultLayout from '~/layout/AuthenLayout';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);

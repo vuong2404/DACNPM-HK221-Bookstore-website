@@ -1,0 +1,29 @@
+.sellInfo{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+    .price{
+        color: red;
+    }
+
+    .sell{
+        max-width: 30%;
+        font-size: smaller;
+        font-weight: normal;
+        opacity: 0.5;
+    }
+}
+
+.book-item {
+    &:hover {
+        transform: translateY(-2px);
+        border: 1px solid var(--customer-primary);
+    }
+    transition: all linear 0.3s;
+    min-height: 400px;
+}
+
+

@@ -2,14 +2,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faSearch, faImage } from '@fortawesome/free-solid-svg-icons'
 import React, { useState } from 'react';
-import DefaultLayout from '../DefaultLayout';
+import DefaultLayout from '~/layout/AdminLayout';
 import classNames from 'classnames/bind';
-import styles from '../pages/AdminPage.module.scss';
+import styles from '../AdminPage.module.scss';
 import MyButton from '~/components/Button';
-import { Link, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import { v4 as uuid } from "uuid";
-import { Form, Button } from 'react-bootstrap';
-import customer from '../pages/customerInfo';
+import { Form } from 'react-bootstrap';
+import customer from '../customerInfo';
 
 const cx = classNames.bind(styles);
 
@@ -33,7 +33,6 @@ function ManageCustomerAdd() {
         let newDate = date;
         customer.push({ id: uniqueId, name: newName, email: newEmail, phone: newPhone, address: newAddress, date: "2022-12-17" })
         
-
         history('/member')
     }
 

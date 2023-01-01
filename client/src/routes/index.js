@@ -1,19 +1,21 @@
-import AdminHomePage from '~/pages/AdminPages/pages/Home';
-import ManageOrder from '~/pages/AdminPages/pages/ManageOrder';
-import ManageBookView from '~/pages/AdminPages/pages/ManageBookView';
+// Admin page
+import AdminHomePage from '~/pages/AdminPages/Home';
+import ManageOrder from '~/pages/AdminPages/ManageOrder';
+import OrderDetail from '~/pages/AdminPages/OrderDetails';
+import ManageBookView from '~/pages/AdminPages/ManageBookView';
 import ManageBookAdvancedSearch from '~/pages/AdminPages/CRUDBook/ManageBookAdvancedSearch';
 import ManageBookAdd from '~/pages/AdminPages/CRUDBook/ManageBookAdd';
 import ManageBookDetail from '~/pages/AdminPages/CRUDBook/ManageBookDetail';
-import OrderDetail from '~/pages/AdminPages/pages/OrderDetails';
-import HomePage from '~/pages/CustomerPages/pages/HomePage';
-import SearchPage from '~/pages/CustomerPages/searchBook/Search';
-import ViewProfilePage from '~/pages/CustomerPages/pages/ManageProfile/ViewProfilePage';
-import EditProfilePage from '~/pages/CustomerPages/pages/ManageProfile/EditProfilePage';
-import ViewOrderHistoryPage from '~/pages/CustomerPages/pages/ManageProfile/ViewOrderHistoryPage';
-import Cart from '~/pages/CustomerPages/pages/CartPages/Cart';
 
-import Payment from '~/pages/CustomerPages/pages/Paymentpage/Payment';
-import BookDetail from '~/pages/CustomerPages/pages/BookDetail/BookDetail';
+//Customer page
+import HomePage from '~/pages/CustomerPages/Home';
+import SearchPage from '~/pages/CustomerPages/searchBook/Search';
+import ViewProfilePage from '~/pages/CustomerPages/ManageProfile/ViewProfilePage';
+import EditProfilePage from '~/pages/CustomerPages/ManageProfile/EditProfilePage';
+import ViewOrderHistoryPage from '~/pages/CustomerPages/ManageProfile/ViewOrderHistoryPage';
+import Cart from '~/pages/CustomerPages/CartPage/Cart';
+import Payment from '~/pages/CustomerPages/Paymentpage/Payment';
+import BookDetail from '~/pages/CustomerPages/BookDetail/BookDetail';
 
 import LogIn from '~/pages/Authorization/LogIn';
 import LogInAdmin from '~/pages/Authorization/LogInAdmin';
@@ -21,13 +23,13 @@ import Register1 from '~/pages/Authorization/Register-1';
 import Register2 from '~/pages/Authorization/Register-2';
 import Forgot from '~/pages/Authorization/Forgot';
 
-import ManageCustomerView from '~/pages/AdminPages/pages/ManageCustomerView';
+import ManageCustomerView from '~/pages/AdminPages/ManageCustomerView';
 import ManageCustomerAdd from '~/pages/AdminPages/CRUDCustomer/ManageCustomerAdd';
 import ManageCustomerFilter from '~/pages/AdminPages/CRUDCustomer/ManageCustomerFilter';
 
-import Page1 from '~/pages/CustomerPages/pages/Support/Page1';
-import Page2 from '~/pages/CustomerPages/pages/Support/Page2';
-import Page3 from '~/pages/CustomerPages/pages/Support/Page3';
+import Page1 from '~/pages/CustomerPages/Support/Page1';
+import Page2 from '~/pages/CustomerPages/Support/Page2';
+import Page3 from '~/pages/CustomerPages/Support/Page3';
 
 const routes = [
     //Authorization
