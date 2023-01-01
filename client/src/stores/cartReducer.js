@@ -1,5 +1,4 @@
 import { REMOVE_CART_ITEM, SELECT_ALL_CART_ITEM, SELECT_CART_ITEM, SET_CART, UPDATE_CART } from './constants';
-import { addresses, products } from './fakeData';
 
 const initState = {
     cart: { books: [] },

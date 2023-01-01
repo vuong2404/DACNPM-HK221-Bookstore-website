@@ -1,15 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './forAuthorization.scss';
-import DefaultLayout from './DefaultLayout';
+import DefaultLayout from '~/layout/AuthenLayout';
 import classNames from 'classnames/bind';
 // import React, { Component } from 'react';
-import { render } from '@testing-library/react';
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-import { Col, Row, Container, Form } from 'react-bootstrap';
-
-import { Navigate, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import database from './userInfo'
 
 const cx = classNames.bind(styles);

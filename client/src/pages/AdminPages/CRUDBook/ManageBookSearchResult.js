@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
-import DefaultLayout from '../DefaultLayout';
+import DefaultLayout from '../../../layout/AdminLayout';
 import classNames from 'classnames/bind';
 import styles from '../pages/AdminPage.module.scss';
 import MyButton from '~/components/Button';

@@ -1,29 +1,8 @@
-## Git Config
-Sau khi fork repo này về, hãy sử dụng git clone repo đã fork về máy
-```bash
-git clone https://github.com/<username>/DACNPM-HK221-Bookstore-website.git
-```
-Sau đó, set up remote upstream để pull code mới nhất về
-```bash
-git remote add upstream https://github.com/vuong2404/DACNPM-HK221-Bookstore-website.git
-```
-Để pull code mới nhất về, sử dụng lệnh:
-```bash
-git pull upstream master
-```
-Sau đó code phần của mình và commit code lên repo của mình
-```bash
-git add .
-git commit -m "commit message"
-git push origin master
-```
-Sau đó, tạo pull request trên Github để gửi code của mình lên repo chính thức.
-
 ## Sơ đồ usecase
 Tất cả sơ đồ usecase thêm vào đây [eidt](https://lucid.app/lucidchart/106c7cd4-247e-4837-b62c-b8163644a3ba/edit?viewport_loc=-238%2C5071%2C2938%2C1273%2CCiwWk7vTuG6D&invitationId=inv_8bfef6b9-0ec8-421e-98d4-673ce1bc6556)
 
 ## MocKup 
-Tất cả link mockup vẽ bằng figma copy link vào [mockup.md](./Documents/mockup.md)
+Tất cả link mockup vẽ bằng figma  [mockup.md](./Documents/mockup.md)
 ## Một số điểm cần chỉnh sửa: 
 1. Về header footer của customer
     - Phần header màu sắc chưa ổn, có thể đổi thành màu trắng(chữ đen), hoặc xanh(chữ trắng) ,...
@@ -36,7 +15,7 @@ Tất cả link mockup vẽ bằng figma copy link vào [mockup.md](./Documents/
 4. Bỏ chức năng send message ( Nếu như có đủ thời gian thì có thể hiện thực chức năng gửi thông báo)
 5.  Sơ đồ usecase cho hệ thống, sơ đồ usecase + useecase scenartio của từng tính năng chỉnh sửa lại cho khớp với design.
 
-## Các trang sẽ hiện thực
+## Các trang hiện thực
 ### Trang xác thực: (Lương)
     - Trang đăng nhập: (Lương)
         + Xác thực OTP nếu là tài khoản admin

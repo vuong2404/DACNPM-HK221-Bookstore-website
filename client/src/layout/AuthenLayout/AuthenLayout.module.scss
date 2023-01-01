@@ -1,0 +1,19 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('../../assets/images/login_background.jpg');
+    background-size: cover;
+}
+
+.container {
+    margin: var(--custommer-header-height) auto 0;
+}
+
+a {
+    text-decoration: none;
+    &:hover {
+        color: black;
+    }
+}

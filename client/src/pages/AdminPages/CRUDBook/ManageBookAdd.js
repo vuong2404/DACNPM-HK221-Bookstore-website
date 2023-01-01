@@ -1,9 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faImage } from '@fortawesome/free-solid-svg-icons'
-import DefaultLayout from '../DefaultLayout';
+import DefaultLayout from '~/layout/AdminLayout';
 import classNames from 'classnames/bind';
-import styles from '../pages/AdminPage.module.scss';
+import styles from '../AdminPage.module.scss';
 import MyButton from '~/components/Button';
 import React from 'react';
 import axios from 'axios';

@@ -1,15 +1,11 @@
-import classNames from 'classnames';
-import Content from '../component/Content/Content';
-import Navi from '../component/Navi/Navi';
-import images from '~/assets/images';
-import DefaultLayout from '../DefaultLayout';
-import styles from './Search.module.scss';
+import Content from '~/components/Customer/Content/Content';
+import Navi from '~/components/Customer/Navi/Navi';
+import DefaultLayout from '~/layout/CustomerLayout';
 
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 
-const cx = classNames.bind(styles);
 function SearchPage() {
     const [bookList, setBookList] = useState([]);
 
