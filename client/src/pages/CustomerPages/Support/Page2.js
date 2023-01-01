@@ -3,8 +3,8 @@ import DefaultLayout from '~/layout/CustomerLayout';
 import styles from './PageSupport.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSnapchat } from '@fortawesome/free-brands-svg-icons';
-import images from '~/assets/images';
 
+import images from '~/assets/images';
 const cx = classNames.bind(styles);
 
 function Page1() {

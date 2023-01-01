@@ -6,6 +6,7 @@ import MyButton from '~/components/Button';
 import Button from '../../../../components/Customer/Button/Button';
 import useSWR from 'swr';
 import fetch from 'unfetch';
+import { Link } from 'react-router-dom';
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 const cx = classNames.bind(styles);
@@ -34,7 +35,19 @@ function StatusSame({ type = 'watting', title = '', onClick, className, children
 }
 
 function OrderHistoryItem() {
-    const { data } = useSWR('http://localhost:8080/api/user/order/1000000', fetcher);
+    var user_id = JSON.parse(sessionStorage.getItem('user')).id;
+    const { data } = useSWR(`http://localhost:8080/api/user/order/${user_id}`, fetcher);
+    if (!sessionStorage.getItem('user')) {
+        return (
+            <div className={cx('warning')}>
+                <Link to="/login">
+                    <Button>
+                        <h1>Bạn cần đăng nhập</h1>
+                    </Button>
+                </Link>
+            </div>
+        );
+    }
 
     return (
         <div>

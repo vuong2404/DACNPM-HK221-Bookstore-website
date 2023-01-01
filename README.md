@@ -1,6 +1,10 @@
 ## Sơ đồ usecase
 Tất cả sơ đồ usecase thêm vào đây [eidt](https://lucid.app/lucidchart/106c7cd4-247e-4837-b62c-b8163644a3ba/edit?viewport_loc=-238%2C5071%2C2938%2C1273%2CCiwWk7vTuG6D&invitationId=inv_8bfef6b9-0ec8-421e-98d4-673ce1bc6556)
 
+## ScreenFlow
+
+https://lucid.app/lucidchart/106c7cd4-247e-4837-b62c-b8163644a3ba/edit?viewport_loc=-1529%2C702%2C2838%2C1295%2C--if-a.VGZdJ&invitationId=inv_8bfef6b9-0ec8-421e-98d4-673ce1bc6556
+
 ## MocKup 
 Tất cả link mockup vẽ bằng figma  [mockup.md](./Documents/mockup.md)
 ## Một số điểm cần chỉnh sửa: 
